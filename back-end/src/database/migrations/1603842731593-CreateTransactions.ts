@@ -11,6 +11,7 @@ export default class CreateTransactions1603842731593
                         name: 'id',
                         type: 'int',
                         isPrimary: true,
+                        isGenerated: true,
                         generationStrategy: 'increment',
                     },
                     {
