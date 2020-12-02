@@ -13,8 +13,8 @@ interface Request {
 class CreateItemService {
     public async execute({
         name,
-        minimal_stock_alarm,
-        total_stock,
+        minimal_stock_alarm = '0',
+        total_stock = '0',
     }: Request): Promise<Item> {
         const itemsRepository = getRepository(Item);
 
