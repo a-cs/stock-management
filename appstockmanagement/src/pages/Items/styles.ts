@@ -16,7 +16,14 @@ export const Card = styled.View`
   flex-direction: row;
   justify-content: space-between;
   flex-grow: 0;
-  /* border: 1px solid blue; */
+  border: 1px solid black;
+`;
+
+export const CardNameColumn = styled.View`
+  flex-basis: 40%;
+  align-items: center;
+  justify-content: center;
+  /* border: 1px solid red; */
 `;
 
 export const CardColumn = styled.View`
@@ -34,8 +41,15 @@ export const CardHeader = styled.Text`
   text-align: center;
 `;
 
+export const CardFlatList = styled.FlatList`
+  flex-grow: 0;
+  height: 70%;
+  background-color: green;
+  margin-bottom: 10px;
+`;
+
 export const CardText = styled.Text`
   font-size: 24px;
-  color: #000000;
+  color: #ffffff;
   margin: 24px 24px;
 `;

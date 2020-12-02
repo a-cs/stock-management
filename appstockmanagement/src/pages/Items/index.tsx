@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { View, Button } from 'react-native';
+import { View, Button, Text } from 'react-native';
+import { FlatList } from 'react-native-gesture-handler';
 import api from '../../services/api';
 
 import {
   Container,
   Title,
   Card,
+  CardNameColumn,
   CardColumn,
   CardHeader,
   CardText,
+  CardFlatList,
 } from './styles';
 
 interface Item {
@@ -30,13 +33,11 @@ const Items: React.FC = () => {
   }, []);
 
   const createNewItem = async () => {
-    // const { data } = await api.get('items');
-    // setItems(data);
-    // data.map(item =>
-    //   console.log(
-    //     `${item.name} ${item.minimal_stock_alarm} ${item.total_stock}`,
-    //   ),
-    // );
+    const date = new Date();
+    const { data } = await api.post('items', {
+      name: `teste ${date.toISOString()}`,
+    });
+    setItems([...items, data]);
 
     console.log('saiu');
   };
@@ -44,9 +45,9 @@ const Items: React.FC = () => {
     <Container>
       <Title>Lista de Items</Title>
       <Card>
-        <CardColumn>
+        <CardNameColumn>
           <CardHeader>Nome</CardHeader>
-        </CardColumn>
+        </CardNameColumn>
         <CardColumn>
           <CardHeader>Estoque Minimo</CardHeader>
         </CardColumn>
@@ -55,19 +56,25 @@ const Items: React.FC = () => {
         </CardColumn>
       </Card>
 
-      {items.map((item: Item) => (
-        <Card key={item.id}>
-          <CardColumn>
-            <CardText>{item.name}</CardText>
-          </CardColumn>
-          <CardColumn>
-            <CardText>{item.minimal_stock_alarm}</CardText>
-          </CardColumn>
-          <CardColumn>
-            <CardText>{item.total_stock}</CardText>
-          </CardColumn>
-        </Card>
-      ))}
+      <CardFlatList<Item>
+        keyExtractor={item => {
+          item.id;
+        }}
+        data={items}
+        renderItem={({ item }) => (
+          <Card>
+            <CardNameColumn>
+              <CardText>{item.name}</CardText>
+            </CardNameColumn>
+            <CardColumn>
+              <CardText>{item.minimal_stock_alarm}</CardText>
+            </CardColumn>
+            <CardColumn>
+              <CardText>{item.total_stock}</CardText>
+            </CardColumn>
+          </Card>
+        )}
+      />
 
       <Button title="Criar novo item" onPress={createNewItem} />
     </Container>
