@@ -5,6 +5,7 @@ import {
     ManyToOne,
     CreateDateColumn,
     UpdateDateColumn,
+    JoinColumn,
 } from 'typeorm';
 import Item from './Item';
 
@@ -13,26 +14,15 @@ class Transaction {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column('int')
-    item_id: number;
-
-    @ManyToOne(() => Item, item => item.transaction)
+    @ManyToOne(() => Item, item => item.transaction, { eager: true })
+    @JoinColumn({ name: 'item_id' })
     item: Item;
-
-    @Column()
-    item_name: string;
 
     @Column('int')
     item_quantity: number;
 
     @Column()
     type: 'in' | 'out';
-
-    @Column('int')
-    user_id: number;
-
-    @Column()
-    user_name: string;
 
     @CreateDateColumn()
     created_at: Date;

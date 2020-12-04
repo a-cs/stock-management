@@ -15,14 +15,6 @@ export default class CreateTransactions1603842731593
                         generationStrategy: 'increment',
                     },
                     {
-                        name: 'item_id',
-                        type: 'int',
-                    },
-                    {
-                        name: 'item_name',
-                        type: 'varchar',
-                    },
-                    {
                         name: 'item_quantity',
                         type: 'int',
                     },
@@ -30,14 +22,7 @@ export default class CreateTransactions1603842731593
                         name: 'type',
                         type: 'varchar',
                     },
-                    {
-                        name: 'user_id',
-                        type: 'int',
-                    },
-                    {
-                        name: 'user_name',
-                        type: 'varchar',
-                    },
+
                     {
                         name: 'created_at',
                         type: 'timestamp',
