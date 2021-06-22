@@ -16,7 +16,7 @@ export default class CreateTransactions1603842731593
                     },
                     {
                         name: 'item_quantity',
-                        type: 'int',
+                        type: 'decimal',
                     },
                     {
                         name: 'type',

@@ -17,10 +17,10 @@ class Item {
     @Column()
     name: string;
 
-    @Column('int')
+    @Column('decimal',{ precision: 6, scale: 3 })
     minimal_stock_alarm: number;
 
-    @Column('int')
+    @Column('decimal',{ precision: 6, scale: 3 })
     total_stock: number;
 
     @OneToMany(() => Transaction, transaction => transaction.item)

@@ -18,7 +18,7 @@ class Transaction {
     @JoinColumn({ name: 'item_id' })
     item: Item;
 
-    @Column('int')
+    @Column('decimal',{ precision: 6, scale: 3 })
     item_quantity: number;
 
     @Column()

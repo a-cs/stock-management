@@ -1,6 +1,6 @@
 import { getRepository } from 'typeorm';
 
-// import AppError from '../errors/AppError';
+import AppError from '../errors/AppError';
 
 import Item from '../models/Item';
 import Transaction from '../models/Transaction';
@@ -14,6 +14,10 @@ interface Request {
     // res: object;
 }
 
+interface QueryResult {
+    total_stock: number;
+}
+
 class CreateTransactionService {
     public async execute({
         item_id,
@@ -23,9 +27,15 @@ class CreateTransactionService {
         const itemsRepository = getRepository(Item);
         const transactionsRepository = getRepository(Transaction);
 
-        let {
-            total_stock,
-        } = await transactionsRepository
+        const checkItemExists = await itemsRepository.findOne({
+            where: { id:item_id },
+        });
+
+        if (!checkItemExists) {
+            throw new AppError('Item not found');
+        }
+
+        let query:QueryResult = await transactionsRepository
             .createQueryBuilder()
             .select('sum(item_quantity) as total_stock')
             .where('item_id= :item_id', { item_id })
@@ -33,12 +43,18 @@ class CreateTransactionService {
             .orderBy('item_id')
             .getRawOne();
 
-        console.log(`total_stock: ${total_stock}, qty: ${item_quantity}`);
+
+        if(!query){
+            query = {total_stock:0}
+        }
+
+        let {total_stock} = query
+
+        console.log(`item_id: ${item_id} total_stock: ${total_stock}, qty: ${item_quantity}`);
         total_stock = +total_stock;
-        // total_stock += Number(item_quantity);
         total_stock += item_quantity;
 
-        itemsRepository.update({ id: item_id }, { total_stock });
+        await itemsRepository.update({ id: item_id }, { total_stock });
 
         const item = await itemsRepository.findOne({
             where: {
@@ -46,14 +62,7 @@ class CreateTransactionService {
             },
         });
 
-        // const checkItemExists = await transactionsRepository.findOne({
-        //     where: { name },
-        // });
 
-        // if (checkItemExists) {
-        //     throw new AppError('Item name already used');
-        // }
-        // const item = { id: item_id };
 
         const transaction = transactionsRepository.create({
             item,
@@ -63,15 +72,8 @@ class CreateTransactionService {
 
         await transactionsRepository.save(transaction);
 
-        // transactionsRepository.
-
-        // const test = await transactionsRepository.find({
-        //     // where: { item_id },
-        //     relations: ['item'],
-        // });
 
         return transaction;
-        // return test;
     }
 }
 

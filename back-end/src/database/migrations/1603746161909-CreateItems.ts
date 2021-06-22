@@ -20,11 +20,11 @@ export default class CreateItems1603746161909 implements MigrationInterface {
                     },
                     {
                         name: 'minimal_stock_alarm',
-                        type: 'int',
+                        type: 'decimal',
                     },
                     {
                         name: 'total_stock',
-                        type: 'int',
+                        type: 'decimal',
                     },
                     {
                         name: 'created_at',
