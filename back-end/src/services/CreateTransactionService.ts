@@ -35,6 +35,18 @@ class CreateTransactionService {
             throw new AppError('Item not found');
         }
 
+        if (typeof item_quantity !== 'number') {
+            throw new AppError('Invalid Item quantity');
+        }
+
+        if (type !== 'in' && type !== 'out' ) {
+            throw new AppError('Invalid Type');
+        }
+
+        if(type === 'out'){
+            item_quantity *= -1
+        }
+
         let query:QueryResult = await transactionsRepository
             .createQueryBuilder()
             .select('sum(item_quantity) as total_stock')
