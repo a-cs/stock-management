@@ -29,7 +29,11 @@ class CreateTransactionService {
 
         const checkItemExists = await itemsRepository.findOne({
             where: { id:item_id },
-        });
+        }); //*
+
+        // precisa
+        // *//
+
 
         if (!checkItemExists) {
             throw new AppError('Item not found');
