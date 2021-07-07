@@ -1,0 +1,52 @@
+.container{
+  background-color: #f6f5f8;
+}
+
+button {
+  background-color: #04a771;
+  color: #faffff;
+  border-radius: 24px;
+  border: 1px solid #e0e0e0;
+  padding: .8rem 1.6rem;
+  margin: 4rem 1.6rem 4rem 0;
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 2.4rem;
+  float: right;
+}
+
+button:hover{
+  cursor: pointer;
+  background-color: #04a771c5;
+  transition: 0.2s;
+}
+
+.content {
+  margin: 2.4rem 1.6rem;
+}
+
+table {
+  width: 100%;
+  border-spacing:0;
+}
+
+thead th{
+  font-weight: 900;
+  background-color: #04a771;
+  color: #faffff;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+
+
+th {
+  padding: .8rem 0;
+  text-align: left;
+  font-weight: 400;
+  font-size: 1.6rem;
+  text-align: center;
+  background-color:#fbfdfd;
+  border-bottom: 1px solid #e0e0e0;
+  color: var(--color-text);
+}

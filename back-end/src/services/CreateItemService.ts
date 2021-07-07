@@ -6,8 +6,8 @@ import Item from '../models/Item';
 
 interface Request {
     name: string;
-    minimal_stock_alarm: string;
-    total_stock: string;
+    minimal_stock_alarm?: string;
+    total_stock?: string;
 }
 
 class CreateItemService {

@@ -41,6 +41,9 @@
     "react/react-in-jsx-scope": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "prettier/prettier": "error",
+    "camelcase": "off",
+    "react/destructuring-assignment": ["off"],
+    "react/jsx-props-no-spreading": "off",
     "import/extensions": [
       "error",
       "ignorePackages",
