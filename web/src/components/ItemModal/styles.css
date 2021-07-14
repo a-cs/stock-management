@@ -1,0 +1,127 @@
+
+.modalContainer {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  display: inline-block;
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 1.6rem;
+}
+
+.CloseBtn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.CloseBtn button {
+  background-color: crimson;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  padding: 1.2rem 1.2rem;
+  color: #faffff;
+  font-weight: 700;
+  font-size: 2.4rem;
+  cursor: pointer;
+}
+
+.form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+.form label {
+  position:relative;
+  display:inline-block;
+}
+
+.form span {
+  font-weight: 400;
+  font-size: 2.4rem;
+  padding: .4rem 1.2rem 0;
+  pointer-events: none;
+  position:absolute;
+  left:0;
+  top:0;
+  transition: 0.2s;
+  transition-timing-function: ease;
+  transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+  opacity:0.5;
+}
+
+
+
+.form input {
+  width: 100%;
+  padding: 1.2rem;
+  font-weight: 400;
+  font-size: 2.4rem;
+  height: 3.6rem;
+  display: inline-block;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  box-sizing: border-box;
+  box-shadow: none;
+}
+
+input:focus + span, input:not(:placeholder-shown) + span {
+  opacity:.75;
+  transform: scale(0.75) translateY(-120%) translateX(-18px);
+}
+
+
+
+.footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer button {
+  width: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #faffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 24px;
+  font-weight: 700;
+  font-size: 2.4rem;
+  cursor: pointer;
+}
+
+#cancelBtn {
+  background-color: crimson;
+  padding: .8rem 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-right: 2rem;
+}
+
+#confirmBtn {
+  background-color: #04a771;
+  color: #faffff;
+  padding: .8rem 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
+}
+
+@media (max-width: 375px)  {
+  #cancelBtn {
+    display: none;
+  }
+}

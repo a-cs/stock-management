@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FiPlus } from 'react-icons/fi';
+import ItemModal from '../../components/ItemModal';
 
 import api from '../../services/api';
 
@@ -14,14 +15,11 @@ interface Item {
 
 const ItemsList: React.FC = () => {
   const [items, setItems] = useState<Item[]>([]);
+  const [modalOpen, setModalOpen] = useState(false);
 
-  const handleCreateNewItem = async () => {
-    const date = new Date();
-    const { data } = await api.post('items', {
-      name: `teste ${date.toISOString()}`,
-    });
-    setItems([...items, data]);
-  };
+  function toggleModal(): void {
+    setModalOpen(!modalOpen);
+  }
 
   useEffect(() => {
     api.get('/items').then(response => {
@@ -31,9 +29,17 @@ const ItemsList: React.FC = () => {
 
   return (
     <div className="container">
-      <button type="button" onClick={handleCreateNewItem}>
-        <FiPlus /> Criar novo item
-      </button>
+      <ItemModal
+        isOpen={modalOpen}
+        setIsOpen={toggleModal}
+        items={items}
+        setItems={setItems}
+      />
+      <div className="createItem">
+        <button type="button" className="createItemBtn" onClick={toggleModal}>
+          <FiPlus /> Criar novo item
+        </button>
+      </div>
 
       <div className="content">
         <table>
@@ -46,16 +52,27 @@ const ItemsList: React.FC = () => {
             </tr>
           </thead>
           <tbody>
-            {items.map((item: Item) => (
-              <tr key={item.id}>
-                <th>{item.id}</th>
-                <th>{item.name}</th>
-                <th>{item.minimal_stock_alarm}</th>
-                <th>{item.total_stock}</th>
-              </tr>
-            ))}
+            {items
+              .sort((a, b) => Number(a.id) - Number(b.id))
+              .map((item: Item) => (
+                <tr key={item.id}>
+                  <th>{Number(item.id).toLocaleString('pt-BR')}</th>
+                  <th>{item.name}</th>
+                  <th>
+                    {Number(item.minimal_stock_alarm).toLocaleString('pt-BR', {
+                      minimumFractionDigits: 3,
+                    })}
+                  </th>
+                  <th>
+                    {Number(item.total_stock).toLocaleString('pt-BR', {
+                      minimumFractionDigits: 3,
+                    })}
+                  </th>
+                </tr>
+              ))}
           </tbody>
         </table>
+        {items.length === 0 ? <p>Nenhum item cadastrado</p> : <div />}
       </div>
     </div>
   );
