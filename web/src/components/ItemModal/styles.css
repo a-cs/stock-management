@@ -3,12 +3,13 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  padding: 10% 0;
 }
 
 .title {
   display: inline-block;
   text-align: center;
-  margin-top: 1rem;
+  margin: 1rem 0;
   font-size: 1.6rem;
 }
 
@@ -17,8 +18,12 @@
   justify-content: flex-end;
 }
 
+.CloseBtn button svg{
+  color: var(--color-red);
+}
+
 .CloseBtn button {
-  background-color: crimson;
+  /* background-color: transparent; */
   border-radius: 50%;
   border: none;
   display: flex;
@@ -34,25 +39,28 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
   font-size: 1.6rem;
   text-align: center;
 }
 
 .form label {
+  width: 100%;
+  max-width: 350px;
   position:relative;
   display:inline-block;
 }
 
 .form span {
+  position: absolute;
   font-weight: 400;
   font-size: 2.4rem;
-  padding: .4rem 1.2rem 0;
+
   pointer-events: none;
   position:absolute;
-  left:0;
-  top:0;
+  left:8px;
+  top:4px;
   transition: 0.2s;
   transition-timing-function: ease;
   transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
@@ -68,15 +76,25 @@
   font-size: 2.4rem;
   height: 3.6rem;
   display: inline-block;
+  border: 2px solid var(--color-light-gray);
   border-radius: 8px;
-  border: 1px solid transparent;
-  box-sizing: border-box;
   box-shadow: none;
+}
+
+.form input:focus-visible{
+  outline: none;
+  border-color: var(--color-dark-blue);
+}
+
+.form label{
+  /* width: 100%; */
 }
 
 input:focus + span, input:not(:placeholder-shown) + span {
   opacity:.75;
-  transform: scale(0.75) translateY(-120%) translateX(-18px);
+  /* left:8px; */
+  top:-20px;
+  font-size: 1.6rem;
 }
 
 
@@ -84,44 +102,46 @@ input:focus + span, input:not(:placeholder-shown) + span {
 .footer {
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 .footer button {
-  width: 250px;
+  width: 94%;
+  max-width: 350px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   color: #faffff;
   border: 1px solid #e0e0e0;
   border-radius: 24px;
-  font-weight: 700;
   font-size: 2.4rem;
   cursor: pointer;
 }
 
+.footer button svg {
+  margin-right: 20px;
+}
+
 #cancelBtn {
-  background-color: crimson;
+  background-color: transparent;
+  color: var(--color-red);
+  border: 2px solid var(--color-red);
+  font-weight: 400;
   padding: .8rem 1.6rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  margin-right: 2rem;
+  margin-bottom: 1.2rem;
 }
 
 #confirmBtn {
-  background-color: #04a771;
+  background-color: var(--color-light-green);
   color: #faffff;
+  font-weight: 700;
   padding: .8rem 1.6rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-
 }
 
-@media (max-width: 375px)  {
-  #cancelBtn {
-    display: none;
+@media (min-width: 700px)  {
+  .footer button {
+    width: 70%;
   }
 }

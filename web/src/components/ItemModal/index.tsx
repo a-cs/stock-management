@@ -55,7 +55,7 @@ const ItemModal: React.FC<ModalProps> = ({
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
       <div className="modalContainer" ref={modalRef}>
-        <div className="CloseBtn">
+        {/* <div className="CloseBtn">
           <button
             type="button"
             onClick={() => {
@@ -64,7 +64,7 @@ const ItemModal: React.FC<ModalProps> = ({
           >
             <FiX />
           </button>
-        </div>
+        </div> */}
         <div className="title">
           <h1>Criar novo item</h1>
         </div>

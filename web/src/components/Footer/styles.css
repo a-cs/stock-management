@@ -1,0 +1,27 @@
+
+.footerContainer {
+  width: 100%;
+  padding: 2.4rem 0;
+  display: flex;
+  background-color: var(--color-lighter-gray);
+}
+
+.footerText {
+  margin: auto;
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--color-dark-gray);
+}
+
+.footerText a {
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+}
+
+
+
+.footerText a:hover{
+  color: var(--color-light-green);
+  text-decoration-color: var(--color-light-green);
+}

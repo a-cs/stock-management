@@ -1,0 +1,52 @@
+
+.headerContainer {
+  width: 100%;
+  padding: 2.4rem 0;
+  background-color: var(--color-lighter-gray);
+
+}
+
+img{
+  margin: 0 1.6rem;
+  height: 60px;
+}
+
+.headerContent{
+  display: flex;
+  margin: auto;
+  max-width: 1110px;
+}
+
+
+
+.menu {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.menu ul{
+  display: flex;
+  list-style-type: none;
+}
+
+.menu ul li {
+  margin-right: 2.4rem;
+  font-size: 3.2rem;
+  font-weight: 700;
+}
+
+.menu ul li a:hover {
+  color: var(--color-light-green);
+}
+
+
+
+
+@media (max-width: 699px)  {
+
+  .menu {
+    display: none;
+  }
+}
