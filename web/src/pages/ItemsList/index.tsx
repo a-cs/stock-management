@@ -31,7 +31,7 @@ const ItemsList: React.FC = () => {
 
   return (
     <div className="container">
-      <Header />
+      <Header selectedMenu="Items" />
       <ItemModal
         isOpen={modalOpen}
         setIsOpen={toggleModal}
@@ -51,6 +51,13 @@ const ItemsList: React.FC = () => {
               >
                 <FiPlus /> Criar novo item
               </button>
+              <button
+                type="button"
+                className="createItemBtnMobile"
+                onClick={toggleModal}
+              >
+                <FiPlus size="40px" />
+              </button>
             </div>
           </div>
           <table>
@@ -63,6 +70,98 @@ const ItemsList: React.FC = () => {
               </tr>
             </thead>
             <tbody>
+              {items
+                .sort((a, b) => Number(a.id) - Number(b.id))
+                .map((item: Item) => (
+                  <tr key={item.id}>
+                    <td data-label="Id">
+                      {Number(item.id).toLocaleString('pt-BR')}
+                    </td>
+                    <td data-label="Nome">{item.name}</td>
+                    <td data-label="Estoque mínimo">
+                      {Number(item.minimal_stock_alarm).toLocaleString(
+                        'pt-BR',
+                        {
+                          minimumFractionDigits: 3,
+                        },
+                      )}
+                    </td>
+                    <td data-label="Estoque total">
+                      {Number(item.total_stock).toLocaleString('pt-BR', {
+                        minimumFractionDigits: 3,
+                      })}
+                    </td>
+                  </tr>
+                ))}
+              {items
+                .sort((a, b) => Number(a.id) - Number(b.id))
+                .map((item: Item) => (
+                  <tr key={item.id}>
+                    <td data-label="Id">
+                      {Number(item.id).toLocaleString('pt-BR')}
+                    </td>
+                    <td data-label="Nome">{item.name}</td>
+                    <td data-label="Estoque mínimo">
+                      {Number(item.minimal_stock_alarm).toLocaleString(
+                        'pt-BR',
+                        {
+                          minimumFractionDigits: 3,
+                        },
+                      )}
+                    </td>
+                    <td data-label="Estoque total">
+                      {Number(item.total_stock).toLocaleString('pt-BR', {
+                        minimumFractionDigits: 3,
+                      })}
+                    </td>
+                  </tr>
+                ))}
+              {items
+                .sort((a, b) => Number(a.id) - Number(b.id))
+                .map((item: Item) => (
+                  <tr key={item.id}>
+                    <td data-label="Id">
+                      {Number(item.id).toLocaleString('pt-BR')}
+                    </td>
+                    <td data-label="Nome">{item.name}</td>
+                    <td data-label="Estoque mínimo">
+                      {Number(item.minimal_stock_alarm).toLocaleString(
+                        'pt-BR',
+                        {
+                          minimumFractionDigits: 3,
+                        },
+                      )}
+                    </td>
+                    <td data-label="Estoque total">
+                      {Number(item.total_stock).toLocaleString('pt-BR', {
+                        minimumFractionDigits: 3,
+                      })}
+                    </td>
+                  </tr>
+                ))}
+              {items
+                .sort((a, b) => Number(a.id) - Number(b.id))
+                .map((item: Item) => (
+                  <tr key={item.id}>
+                    <td data-label="Id">
+                      {Number(item.id).toLocaleString('pt-BR')}
+                    </td>
+                    <td data-label="Nome">{item.name}</td>
+                    <td data-label="Estoque mínimo">
+                      {Number(item.minimal_stock_alarm).toLocaleString(
+                        'pt-BR',
+                        {
+                          minimumFractionDigits: 3,
+                        },
+                      )}
+                    </td>
+                    <td data-label="Estoque total">
+                      {Number(item.total_stock).toLocaleString('pt-BR', {
+                        minimumFractionDigits: 3,
+                      })}
+                    </td>
+                  </tr>
+                ))}
               {items
                 .sort((a, b) => Number(a.id) - Number(b.id))
                 .map((item: Item) => (

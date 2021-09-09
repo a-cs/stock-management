@@ -44,14 +44,26 @@
 .createItemBtn {
   background-color: var(--color-light-green);
   color: var(--color-white-text);
-  border-radius: 24px;
   border: 1px solid #e0e0e0;
+  border-radius: 24px;
   padding: .8rem 1.6rem;
+  display: none;
+  align-items: center;
+  font-weight: 700;
+  font-size: 2.4rem;
+}
+
+.createItemBtnMobile {
+  background-color: var(--color-light-green);
+  color: var(--color-white-text);
+  border: 1px solid #e0e0e0;
+  border-radius: 50%;
+  padding: 1.4rem 2.0rem;
   display: flex;
   align-items: center;
   font-weight: 700;
   font-size: 2.4rem;
-  display: flex;
+  position: fixed;
 }
 
 .createItemBtn:hover{
@@ -129,6 +141,10 @@ tbody td {
 
   .createItemBtn{
     display: flex;
+  }
+
+  .createItemBtnMobile{
+    display: none;
   }
 
   th {
