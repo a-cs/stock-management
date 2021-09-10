@@ -6,6 +6,7 @@ import Item from '../models/Item';
 import Transaction from '../models/Transaction';
 
 interface Request {
+    id: number;
     item_id: number;
     item_quantity: number;
     type: 'in' | 'out';
@@ -18,8 +19,9 @@ interface QueryResult {
     total_stock: number;
 }
 
-class CreateTransactionService {
+class UpdateTransactionService {
     public async execute({
+        id,
         item_id,
         item_quantity,
         type,
@@ -27,12 +29,20 @@ class CreateTransactionService {
         const itemsRepository = getRepository(Item);
         const transactionsRepository = getRepository(Transaction);
 
-        const checkItemExists = await itemsRepository.findOne({
-            where: { id:item_id },
-        }); //*
+        const transaction = await transactionsRepository.findOne({
+            where: {
+                id: id,
+            },
+        })
 
-        // precisa
-        // *//
+        if (!transaction) {
+            throw new AppError('Transaction not found');
+        }
+
+
+        const checkItemExists = await itemsRepository.findOne({
+            where: { id: item_id },
+        }); //*
 
 
         if (!checkItemExists) {
@@ -43,32 +53,43 @@ class CreateTransactionService {
             throw new AppError('Invalid Item quantity');
         }
 
-        if (type !== 'in' && type !== 'out' ) {
+        if (type !== 'in' && type !== 'out') {
             throw new AppError('Invalid Type');
         }
 
-        if(type === 'out'){
+        console.log(`OLD => item_id: ${transaction.item.id} type: ${transaction.type} total_stock: ${transaction.item.total_stock}, qty: ${transaction.item_quantity}`);
+
+        transaction.item.total_stock = +transaction.item.total_stock
+        transaction.item.total_stock -= transaction.item_quantity
+
+        console.log(`OLD NEW => item_id: ${transaction.item.id} type: ${transaction.type} total_stock: ${transaction.item.total_stock}, qty: ${transaction.item_quantity}`);
+        await itemsRepository.update({ id: transaction.item.id }, { total_stock: transaction.item.total_stock });
+
+        let total_stock
+        if (transaction.item.id != item_id) {
+            let query: QueryResult = await transactionsRepository
+                .createQueryBuilder()
+                .select('sum(item_quantity) as total_stock')
+                .where('item_id= :item_id', { item_id })
+                .groupBy('item_id')
+                .orderBy('item_id')
+                .getRawOne();
+
+
+            if (!query) {
+                query = { total_stock: 0 }
+            }
+            total_stock = query.total_stock
+        } else {
+            total_stock = transaction.item.total_stock
+        }
+
+        if (type === 'out') {
             item_quantity *= -1
         }
-
-        let query:QueryResult = await transactionsRepository
-            .createQueryBuilder()
-            .select('sum(item_quantity) as total_stock')
-            .where('item_id= :item_id', { item_id })
-            .groupBy('item_id')
-            .orderBy('item_id')
-            .getRawOne();
-
-
-        if(!query){
-            query = {total_stock:0}
-        }
-
-        let {total_stock} = query
-
-        console.log(`item_id: ${item_id} total_stock: ${total_stock}, qty: ${item_quantity}`);
         total_stock = +total_stock;
         total_stock += item_quantity;
+        console.log(`NEW => item_id: ${item_id} type: ${type} total_stock: ${total_stock}, qty: ${item_quantity}`);
 
         await itemsRepository.update({ id: item_id }, { total_stock });
 
@@ -77,20 +98,28 @@ class CreateTransactionService {
                 id: item_id,
             },
         });
+        // erro ao trocar qtd entre dois items diferentes
 
 
-
-        const transaction = transactionsRepository.create({
+        await transactionsRepository.update(id, {
             item,
             item_quantity,
             type,
         });
 
-        await transactionsRepository.save(transaction);
 
+        const newTransaction = await transactionsRepository.findOne({
+            where: {
+                id: id,
+            },
+        })
 
-        return transaction;
+        if (!newTransaction) {
+            throw new AppError('Transaction not found');
+        }
+
+        return newTransaction;
     }
 }
 
-export default CreateTransactionService;
+export default UpdateTransactionService;
