@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { getRepository } from 'typeorm';
 
 import CreateItemService from '../services/CreateItemService';
+import UpdateItemService from '../services/UpdateItemService';
 
 import Item from '../models/Item';
 
@@ -19,9 +20,28 @@ itemsRouter.post('/', async (request, response) => {
     return response.json(item);
 });
 
+itemsRouter.patch('/:id', async (request, response) => {
+    const { id } = request.params;
+    const { name, minimal_stock_alarm } = request.body;
+
+    const updateItem = new UpdateItemService();
+
+    const item = await updateItem.execute({
+        id,
+        name,
+        minimal_stock_alarm
+    });
+
+    return response.json(item);
+});
+
 itemsRouter.get('/', async (request, response) => {
     const itemsRepository = getRepository(Item);
-    const items = await itemsRepository.find();
+    const items = await itemsRepository.find({
+        order: {
+            id: "ASC",
+        },
+    });
 
     return response.json(items);
 });

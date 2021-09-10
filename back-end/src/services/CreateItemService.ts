@@ -6,16 +6,15 @@ import Item from '../models/Item';
 
 interface Request {
     name: string;
-    minimal_stock_alarm?: string;
-    total_stock?: string;
 }
 
 class CreateItemService {
     public async execute({
         name,
-        minimal_stock_alarm = '0',
-        total_stock = '0',
     }: Request): Promise<Item> {
+        const minimal_stock_alarm = 0
+        const total_stock = 0
+
         const itemsRepository = getRepository(Item);
 
         const checkItemExists = await itemsRepository.findOne({
