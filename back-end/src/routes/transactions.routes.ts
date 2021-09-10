@@ -52,7 +52,11 @@ transactionsRouter.delete('/:id', async (request, response) => {
 
 transactionsRouter.get('/', async (request, response) => {
     const transactionsRepository = getRepository(Transaction);
-    const transactions = await transactionsRepository.find();
+    const transactions = await transactionsRepository.find({
+        order: {
+            id: "ASC",
+        },
+    });
 
     return response.json(transactions);
 });

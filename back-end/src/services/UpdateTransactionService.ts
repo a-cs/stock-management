@@ -39,11 +39,9 @@ class UpdateTransactionService {
             throw new AppError('Transaction not found');
         }
 
-
         const checkItemExists = await itemsRepository.findOne({
             where: { id: item_id },
-        }); //*
-
+        });
 
         if (!checkItemExists) {
             throw new AppError('Item not found');
@@ -57,12 +55,12 @@ class UpdateTransactionService {
             throw new AppError('Invalid Type');
         }
 
-        console.log(`OLD => item_id: ${transaction.item.id} type: ${transaction.type} total_stock: ${transaction.item.total_stock}, qty: ${transaction.item_quantity}`);
+        // console.log(`OLD => item_id: ${transaction.item.id} type: ${transaction.type} total_stock: ${transaction.item.total_stock}, qty: ${transaction.item_quantity}`);
 
         transaction.item.total_stock = +transaction.item.total_stock
         transaction.item.total_stock -= transaction.item_quantity
 
-        console.log(`OLD NEW => item_id: ${transaction.item.id} type: ${transaction.type} total_stock: ${transaction.item.total_stock}, qty: ${transaction.item_quantity}`);
+        // console.log(`OLD NEW => item_id: ${transaction.item.id} type: ${transaction.type} total_stock: ${transaction.item.total_stock}, qty: ${transaction.item_quantity}`);
         await itemsRepository.update({ id: transaction.item.id }, { total_stock: transaction.item.total_stock });
 
         let total_stock
@@ -89,7 +87,7 @@ class UpdateTransactionService {
         }
         total_stock = +total_stock;
         total_stock += item_quantity;
-        console.log(`NEW => item_id: ${item_id} type: ${type} total_stock: ${total_stock}, qty: ${item_quantity}`);
+        // console.log(`NEW => item_id: ${item_id} type: ${type} total_stock: ${total_stock}, qty: ${item_quantity}`);
 
         await itemsRepository.update({ id: item_id }, { total_stock });
 
@@ -98,8 +96,6 @@ class UpdateTransactionService {
                 id: item_id,
             },
         });
-        // erro ao trocar qtd entre dois items diferentes
-
 
         await transactionsRepository.update(id, {
             item,
