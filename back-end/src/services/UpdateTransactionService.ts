@@ -51,6 +51,10 @@ class UpdateTransactionService {
             throw new AppError('Invalid Item quantity');
         }
 
+        if (item_quantity <= 0){
+            throw new AppError('Item quantity can not be less than 1');
+        }
+
         if (type !== 'in' && type !== 'out') {
             throw new AppError('Invalid Type');
         }
