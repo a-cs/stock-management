@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { FiPlus } from 'react-icons/fi';
+import { FiPlus, FiEdit } from 'react-icons/fi';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
-import ItemModal from '../../components/ItemModal';
+import CreateItemModal from '../../components/CreateItemModal';
 
 import api from '../../services/api';
 
@@ -17,10 +17,10 @@ interface Item {
 
 const ItemsList: React.FC = () => {
   const [items, setItems] = useState<Item[]>([]);
-  const [modalOpen, setModalOpen] = useState(false);
+  const [modalOpenCreateItem, setModalOpenCreateItem] = useState(false);
 
-  function toggleModal(): void {
-    setModalOpen(!modalOpen);
+  function toggleCreateItemModal(): void {
+    setModalOpenCreateItem(!modalOpenCreateItem);
   }
 
   useEffect(() => {
@@ -32,9 +32,9 @@ const ItemsList: React.FC = () => {
   return (
     <div className="container">
       <Header selectedMenu="Items" />
-      <ItemModal
-        isOpen={modalOpen}
-        setIsOpen={toggleModal}
+      <CreateItemModal
+        isOpen={modalOpenCreateItem}
+        setIsOpen={toggleCreateItemModal}
         items={items}
         setItems={setItems}
       />
@@ -47,14 +47,14 @@ const ItemsList: React.FC = () => {
               <button
                 type="button"
                 className="createItemBtn"
-                onClick={toggleModal}
+                onClick={toggleCreateItemModal}
               >
                 <FiPlus /> Criar novo item
               </button>
               <button
                 type="button"
                 className="createItemBtnMobile"
-                onClick={toggleModal}
+                onClick={toggleCreateItemModal}
               >
                 <FiPlus size="40px" />
               </button>
@@ -67,6 +67,7 @@ const ItemsList: React.FC = () => {
                 <th>Nome</th>
                 <th>Estoque mínimo</th>
                 <th>Estoque total</th>
+                <th>Editar</th>
               </tr>
             </thead>
             <tbody>
@@ -91,97 +92,10 @@ const ItemsList: React.FC = () => {
                         minimumFractionDigits: 3,
                       })}
                     </td>
-                  </tr>
-                ))}
-              {items
-                .sort((a, b) => Number(a.id) - Number(b.id))
-                .map((item: Item) => (
-                  <tr key={item.id}>
-                    <td data-label="Id">
-                      {Number(item.id).toLocaleString('pt-BR')}
-                    </td>
-                    <td data-label="Nome">{item.name}</td>
-                    <td data-label="Estoque mínimo">
-                      {Number(item.minimal_stock_alarm).toLocaleString(
-                        'pt-BR',
-                        {
-                          minimumFractionDigits: 3,
-                        },
-                      )}
-                    </td>
-                    <td data-label="Estoque total">
-                      {Number(item.total_stock).toLocaleString('pt-BR', {
-                        minimumFractionDigits: 3,
-                      })}
-                    </td>
-                  </tr>
-                ))}
-              {items
-                .sort((a, b) => Number(a.id) - Number(b.id))
-                .map((item: Item) => (
-                  <tr key={item.id}>
-                    <td data-label="Id">
-                      {Number(item.id).toLocaleString('pt-BR')}
-                    </td>
-                    <td data-label="Nome">{item.name}</td>
-                    <td data-label="Estoque mínimo">
-                      {Number(item.minimal_stock_alarm).toLocaleString(
-                        'pt-BR',
-                        {
-                          minimumFractionDigits: 3,
-                        },
-                      )}
-                    </td>
-                    <td data-label="Estoque total">
-                      {Number(item.total_stock).toLocaleString('pt-BR', {
-                        minimumFractionDigits: 3,
-                      })}
-                    </td>
-                  </tr>
-                ))}
-              {items
-                .sort((a, b) => Number(a.id) - Number(b.id))
-                .map((item: Item) => (
-                  <tr key={item.id}>
-                    <td data-label="Id">
-                      {Number(item.id).toLocaleString('pt-BR')}
-                    </td>
-                    <td data-label="Nome">{item.name}</td>
-                    <td data-label="Estoque mínimo">
-                      {Number(item.minimal_stock_alarm).toLocaleString(
-                        'pt-BR',
-                        {
-                          minimumFractionDigits: 3,
-                        },
-                      )}
-                    </td>
-                    <td data-label="Estoque total">
-                      {Number(item.total_stock).toLocaleString('pt-BR', {
-                        minimumFractionDigits: 3,
-                      })}
-                    </td>
-                  </tr>
-                ))}
-              {items
-                .sort((a, b) => Number(a.id) - Number(b.id))
-                .map((item: Item) => (
-                  <tr key={item.id}>
-                    <td data-label="Id">
-                      {Number(item.id).toLocaleString('pt-BR')}
-                    </td>
-                    <td data-label="Nome">{item.name}</td>
-                    <td data-label="Estoque mínimo">
-                      {Number(item.minimal_stock_alarm).toLocaleString(
-                        'pt-BR',
-                        {
-                          minimumFractionDigits: 3,
-                        },
-                      )}
-                    </td>
-                    <td data-label="Estoque total">
-                      {Number(item.total_stock).toLocaleString('pt-BR', {
-                        minimumFractionDigits: 3,
-                      })}
+                    <td data-label="Editar" className="editItem">
+                      <button className="editButton" type="button">
+                        <FiEdit size="20px" stroke-width="2" />
+                      </button>
                     </td>
                   </tr>
                 ))}

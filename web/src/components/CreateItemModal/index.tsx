@@ -21,7 +21,7 @@ interface ModalProps {
   setItems: React.Dispatch<React.SetStateAction<Item[]>>;
 }
 
-const ItemModal: React.FC<ModalProps> = ({
+const CreateItemModal: React.FC<ModalProps> = ({
   isOpen,
   setIsOpen,
   items,
@@ -55,16 +55,6 @@ const ItemModal: React.FC<ModalProps> = ({
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
       <div className="modalContainer" ref={modalRef}>
-        {/* <div className="CloseBtn">
-          <button
-            type="button"
-            onClick={() => {
-              setIsOpen();
-            }}
-          >
-            <FiX />
-          </button>
-        </div> */}
         <div className="title">
           <h1>Criar novo item</h1>
         </div>
@@ -82,15 +72,15 @@ const ItemModal: React.FC<ModalProps> = ({
           </label>
           <p>{message}</p>
           <div className="footer">
+            <button type="submit" id="confirmBtn">
+              <FiCheck /> <div className="space" />
+              <div>Confirmar</div>
+              <div className="space" />
+            </button>
             <button type="button" onClick={handleOnClose} id="cancelBtn">
               <FiX />
               <div className="space" />
               <div>Cancelar</div>
-              <div className="space" />
-            </button>
-            <button type="submit" id="confirmBtn">
-              <FiCheck /> <div className="space" />
-              <div>Confirmar</div>
               <div className="space" />
             </button>
           </div>
@@ -100,4 +90,4 @@ const ItemModal: React.FC<ModalProps> = ({
   );
 };
 
-export default ItemModal;
+export default CreateItemModal;

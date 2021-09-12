@@ -13,28 +13,6 @@
   font-size: 1.6rem;
 }
 
-.CloseBtn {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.CloseBtn button svg{
-  color: var(--color-red);
-}
-
-.CloseBtn button {
-  /* background-color: transparent; */
-  border-radius: 50%;
-  border: none;
-  display: flex;
-  align-items: center;
-  padding: 1.2rem 1.2rem;
-  color: #faffff;
-  font-weight: 700;
-  font-size: 2.4rem;
-  cursor: pointer;
-}
-
 .form {
   height: 100%;
   display: flex;
@@ -67,8 +45,6 @@
   opacity:0.5;
 }
 
-
-
 .form input {
   width: 100%;
   padding: 1.2rem;
@@ -92,8 +68,6 @@ input:focus + span, input:not(:placeholder-shown) + span {
   top:-20px;
   font-size: 1.6rem;
 }
-
-
 
 .footer {
   width: 100%;
@@ -126,20 +100,20 @@ input:focus + span, input:not(:placeholder-shown) + span {
   align-self: center;
 }
 
-#cancelBtn {
-  background-color: transparent;
-  color: var(--color-red);
-  border: 2px solid var(--color-red);
-  font-weight: 400;
-  padding: .8rem 1.6rem;
-  margin-bottom: 1.2rem;
-}
-
 #confirmBtn {
   background-color: var(--color-light-green);
   border: 2px solid var(--color-light-green);
   color: #faffff;
   font-weight: 700;
+  padding: .8rem 1.6rem;
+  margin-bottom: 1.2rem;
+}
+
+#cancelBtn {
+  background-color: transparent;
+  color: var(--color-red);
+  border: 2px solid var(--color-red);
+  font-weight: 400;
   padding: .8rem 1.6rem;
 }
 
