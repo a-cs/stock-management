@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { FiCheck, FiX } from 'react-icons/fi';
 import api from '../../services/api';
 
@@ -39,7 +39,7 @@ const CreateItemModal: React.FC<ModalProps> = ({
       setItems([...items, data]);
       setMessage(`O item ${name} foi criado com sucesso!`);
       setName('');
-    } catch (error) {
+    } catch (error: any) {
       setMessage(error.response.data.message);
     }
   };

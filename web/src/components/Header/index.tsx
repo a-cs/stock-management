@@ -57,7 +57,7 @@ const Header: React.FC<HeaderProps> = ({ selectedMenu }) => {
     <header className="headerContainer">
       <div className="headerContent">
         <picture>
-          <source src={logoIFCEMobile} media="(max-width: 700px)" />
+          <source srcSet={logoIFCEMobile} media="(max-width: 700px)" />
           <img src={src} alt="Logo IFCE" />
         </picture>
 

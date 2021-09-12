@@ -94,7 +94,7 @@ const ItemsList: React.FC = () => {
                     </td>
                     <td data-label="Editar" className="editItem">
                       <button className="editButton" type="button">
-                        <FiEdit size="20px" stroke-width="2" />
+                        <FiEdit size="20px" strokeWidth="2" />
                       </button>
                     </td>
                   </tr>
