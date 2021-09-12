@@ -59,7 +59,7 @@
 
   pointer-events: none;
   position:absolute;
-  left:8px;
+  left:12px;
   top:4px;
   transition: 0.2s;
   transition-timing-function: ease;
@@ -77,7 +77,7 @@
   height: 3.6rem;
   display: inline-block;
   border: 2px solid var(--color-light-gray);
-  border-radius: 8px;
+  border-radius: 16px;
   box-shadow: none;
 }
 
@@ -86,13 +86,9 @@
   border-color: var(--color-dark-blue);
 }
 
-.form label{
-  /* width: 100%; */
-}
-
 input:focus + span, input:not(:placeholder-shown) + span {
   opacity:.75;
-  /* left:8px; */
+  left: 12px;
   top:-20px;
   font-size: 1.6rem;
 }
@@ -112,7 +108,7 @@ input:focus + span, input:not(:placeholder-shown) + span {
   max-width: 350px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  /* justify-content: space-around; */
   color: #faffff;
   border: 1px solid #e0e0e0;
   border-radius: 24px;
@@ -120,8 +116,14 @@ input:focus + span, input:not(:placeholder-shown) + span {
   cursor: pointer;
 }
 
+.footer .space {
+  flex-grow: 1;
+}
+
+
 .footer button svg {
-  margin-right: 20px;
+  margin-left: 20px;
+  align-self: center;
 }
 
 #cancelBtn {
@@ -135,6 +137,7 @@ input:focus + span, input:not(:placeholder-shown) + span {
 
 #confirmBtn {
   background-color: var(--color-light-green);
+  border: 2px solid var(--color-light-green);
   color: #faffff;
   font-weight: 700;
   padding: .8rem 1.6rem;

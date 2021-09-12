@@ -61,6 +61,7 @@ img{
 
 .menuMobile{
   position: absolute;
+  z-index: 2;
   background-color: var(--color-lighter-gray);
   right: 0;
   top: 100px;

@@ -83,10 +83,15 @@ const ItemModal: React.FC<ModalProps> = ({
           <p>{message}</p>
           <div className="footer">
             <button type="button" onClick={handleOnClose} id="cancelBtn">
-              <FiX /> Cancelar
+              <FiX />
+              <div className="space" />
+              <div>Cancelar</div>
+              <div className="space" />
             </button>
             <button type="submit" id="confirmBtn">
-              <FiCheck /> <div>Confirmar</div>
+              <FiCheck /> <div className="space" />
+              <div>Confirmar</div>
+              <div className="space" />
             </button>
           </div>
         </form>
