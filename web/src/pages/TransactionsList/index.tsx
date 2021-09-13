@@ -18,7 +18,7 @@ interface Item {
   total_stock: string;
 }
 
-const ItemsList: React.FC = () => {
+const TransactionsList: React.FC = () => {
   const [items, setItems] = useState<Item[]>([]);
   const [editItemId, setEditItemId] = useState('0');
   const [modalOpenCreateItem, setModalOpenCreateItem] = useState(false);
@@ -50,7 +50,7 @@ const ItemsList: React.FC = () => {
 
   return (
     <div className="container">
-      <Header selectedMenu="Itens" />
+      <Header selectedMenu="Transações" />
       <CreateItemModal
         isOpen={modalOpenCreateItem}
         setIsOpen={toggleCreateItemModal}
@@ -68,14 +68,14 @@ const ItemsList: React.FC = () => {
       <div className="wrapper">
         <div className="content">
           <div className="upper">
-            <h2>Estoque</h2>
+            <h2>Transações</h2>
             <div className="createItem">
               <button
                 type="button"
                 className="createItemBtn"
                 onClick={toggleCreateItemModal}
               >
-                <FiPlus /> Criar novo item
+                <FiPlus /> Criar nova transação
               </button>
               <button
                 type="button"
@@ -167,4 +167,4 @@ const ItemsList: React.FC = () => {
   );
 };
 
-export default ItemsList;
+export default TransactionsList;

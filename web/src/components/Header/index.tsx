@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { FiMenu, FiX } from 'react-icons/fi';
 
 import logoIFCE from '../../assets/REITORIA a.png';
@@ -19,7 +20,7 @@ const Header: React.FC<HeaderProps> = ({ selectedMenu }) => {
     src = logoIFCE;
   }
 
-  const menuItems = ['Items', 'Transações'];
+  const menuItems = ['Itens', 'Transações'];
 
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -69,7 +70,7 @@ const Header: React.FC<HeaderProps> = ({ selectedMenu }) => {
                   key={menuItem}
                   className={menuItem === selectedMenu ? 'selectedMenu' : ''}
                 >
-                  <a href="/">{menuItem}</a>
+                  <Link to={`/${menuItem}`}>{menuItem}</Link>
                 </li>
               ))}
             </ul>
@@ -90,7 +91,7 @@ const Header: React.FC<HeaderProps> = ({ selectedMenu }) => {
                     key={menuItem}
                     className={menuItem === selectedMenu ? 'selectedMenu' : ''}
                   >
-                    <a href="/">{menuItem}</a>
+                    <Link to={`/${menuItem}`}>{menuItem}</Link>
                   </li>
                 ))}
               </ul>
