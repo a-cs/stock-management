@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { FiPlus, FiEdit } from 'react-icons/fi';
+import { FiPlus, FiEdit, FiAlertCircle } from 'react-icons/fi';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import CreateItemModal from '../../components/CreateItemModal';
 
 import api from '../../services/api';
+
+import loadingImg from '../../assets/loading1.gif';
 
 import './styles.css';
 
@@ -18,15 +20,28 @@ interface Item {
 const ItemsList: React.FC = () => {
   const [items, setItems] = useState<Item[]>([]);
   const [modalOpenCreateItem, setModalOpenCreateItem] = useState(false);
+  const [errorMsg, setErrorMsg] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   function toggleCreateItemModal(): void {
     setModalOpenCreateItem(!modalOpenCreateItem);
   }
 
   useEffect(() => {
-    api.get('/items').then(response => {
-      setItems(response.data);
-    });
+    setLoading(true);
+    console.log();
+    api
+      .get('/items')
+      .then(response => {
+        console.log(response.data);
+        // setItems(response.data);
+        setErrorMsg(false);
+      })
+      .catch(err => {
+        console.log(err);
+        setLoading(false);
+        setErrorMsg(true);
+      });
   }, []);
 
   return (
@@ -72,7 +87,7 @@ const ItemsList: React.FC = () => {
             </thead>
             <tbody>
               {items
-                .sort((a, b) => Number(a.id) - Number(b.id))
+                // .sort((a, b) => Number(a.id) - Number(b.id))
                 .map((item: Item) => (
                   <tr key={item.id}>
                     <td data-label="Id">
@@ -101,7 +116,32 @@ const ItemsList: React.FC = () => {
                 ))}
             </tbody>
           </table>
-          {items.length === 0 ? <p>Nenhum item cadastrado</p> : <div />}
+          <div className="errorMsg">
+            {loading ? (
+              <>
+                <img src={loadingImg} alt="Loading" />
+                <h4>Loading ...</h4>
+              </>
+            ) : (
+              <div />
+            )}
+            {errorMsg ? (
+              <button type="button" onClick={() => window.location.reload()}>
+                <FiAlertCircle size="40px" />{' '}
+                <h4>
+                  Não foi possivel conectar ao servidor, clique aqui para tentar
+                  novamente
+                </h4>
+              </button>
+            ) : (
+              <div />
+            )}
+            {items.length === 0 && !errorMsg && !loading ? (
+              <h4>Nenhum item cadastrado</h4>
+            ) : (
+              <div />
+            )}
+          </div>
         </div>
       </div>
       <Footer />
