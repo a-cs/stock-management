@@ -3,6 +3,7 @@ import { FiPlus, FiEdit, FiAlertCircle } from 'react-icons/fi';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import CreateItemModal from '../../components/CreateItemModal';
+import EditItemModal from '../../components/EditItemModal';
 
 import api from '../../services/api';
 
@@ -19,12 +20,17 @@ interface Item {
 
 const ItemsList: React.FC = () => {
   const [items, setItems] = useState<Item[]>([]);
+  const [editItemId, setEditItemId] = useState('0');
   const [modalOpenCreateItem, setModalOpenCreateItem] = useState(false);
+  const [modalOpenEditItem, setModalOpenEditItem] = useState(false);
   const [errorMsg, setErrorMsg] = useState(false);
   const [loading, setLoading] = useState(false);
 
   function toggleCreateItemModal(): void {
     setModalOpenCreateItem(!modalOpenCreateItem);
+  }
+  function toggleEditItemModal(): void {
+    setModalOpenEditItem(!modalOpenEditItem);
   }
 
   useEffect(() => {
@@ -50,6 +56,13 @@ const ItemsList: React.FC = () => {
         setIsOpen={toggleCreateItemModal}
         items={items}
         setItems={setItems}
+      />
+      <EditItemModal
+        isOpen={modalOpenEditItem}
+        setIsOpen={toggleEditItemModal}
+        items={items}
+        setItems={setItems}
+        editItemId={editItemId}
       />
 
       <div className="wrapper">
@@ -106,7 +119,14 @@ const ItemsList: React.FC = () => {
                       })}
                     </td>
                     <td data-label="Editar" className="editItem">
-                      <button className="editButton" type="button">
+                      <button
+                        className="editButton"
+                        type="button"
+                        onClick={() => {
+                          setEditItemId(item.id);
+                          toggleEditItemModal();
+                        }}
+                      >
                         <FiEdit size="20px" strokeWidth="2" />
                       </button>
                     </td>
