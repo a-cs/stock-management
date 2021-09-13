@@ -39,7 +39,8 @@ img{
 }
 
 .menu ul li a:hover {
-  color: var(--color-light-green);
+  color: var(--color-lighter-green);
+  transition: 0.2s;
 }
 
 .selectedMenu {

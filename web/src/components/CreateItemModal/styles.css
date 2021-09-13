@@ -109,12 +109,24 @@ input:focus + span, input:not(:placeholder-shown) + span {
   margin-bottom: 1.2rem;
 }
 
+#confirmBtn:hover {
+  background-color: var(--color-lighter-green);
+  border-color: var(--color-lighter-green);
+  transition: 0.2s;
+}
+
 #cancelBtn {
   background-color: transparent;
   color: var(--color-red);
   border: 2px solid var(--color-red);
   font-weight: 400;
   padding: .8rem 1.6rem;
+}
+
+#cancelBtn:hover {
+  background-color: var(--color-red);
+  color: var(--color-white-text);
+  transition: 0.2s;
 }
 
 @media (min-width: 700px)  {

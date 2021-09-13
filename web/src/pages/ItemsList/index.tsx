@@ -29,16 +29,14 @@ const ItemsList: React.FC = () => {
 
   useEffect(() => {
     setLoading(true);
-    console.log();
     api
       .get('/items')
       .then(response => {
-        console.log(response.data);
-        // setItems(response.data);
         setErrorMsg(false);
+        setLoading(false);
+        setItems(response.data);
       })
-      .catch(err => {
-        console.log(err);
+      .catch(() => {
         setLoading(false);
         setErrorMsg(true);
       });

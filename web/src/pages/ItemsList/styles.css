@@ -72,11 +72,9 @@
 
 .createItemBtn:hover{
   cursor: pointer;
-  background-color: var(--color-light-green);
+  background-color: var(--color-lighter-green);
   transition: 0.2s;
 }
-
-
 
 table {
   width: 100%;
@@ -139,8 +137,6 @@ tbody td {
 
 .editItem {
   padding: 0;
-  /* display: block; */
-  /* box-sizing: border-box; */
   height: 3.6rem;
 }
 
@@ -154,7 +150,7 @@ tbody td {
 
 .editButton:hover {
   cursor: pointer;
-  background-color: rgba(70, 161, 81, 0.8);
+  background-color: var(--color-lighter-green);
   transition: 0.2s;
 }
 
