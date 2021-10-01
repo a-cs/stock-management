@@ -18,8 +18,15 @@ interface Item {
   total_stock: string;
 }
 
+interface Transaction {
+  id: string;
+  item_quantity: string;
+  type: string;
+  item: Item;
+}
+
 const TransactionsList: React.FC = () => {
-  const [items, setItems] = useState<Item[]>([]);
+  const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [editItemId, setEditItemId] = useState('0');
   const [modalOpenCreateItem, setModalOpenCreateItem] = useState(false);
   const [modalOpenEditItem, setModalOpenEditItem] = useState(false);
@@ -36,11 +43,11 @@ const TransactionsList: React.FC = () => {
   useEffect(() => {
     setLoading(true);
     api
-      .get('/items')
+      .get('/transactions')
       .then(response => {
         setErrorMsg(false);
         setLoading(false);
-        setItems(response.data);
+        setTransactions(response.data);
       })
       .catch(() => {
         setLoading(false);
@@ -51,24 +58,24 @@ const TransactionsList: React.FC = () => {
   return (
     <div className="container">
       <Header selectedMenu="Transações" />
-      <CreateItemModal
+      {/* <CreateItemModal
         isOpen={modalOpenCreateItem}
         setIsOpen={toggleCreateItemModal}
-        items={items}
-        setItems={setItems}
+        items={transactions}
+        setItems={setTransactions}
       />
       <EditItemModal
         isOpen={modalOpenEditItem}
         setIsOpen={toggleEditItemModal}
-        items={items}
-        setItems={setItems}
+        items={transactions}
+        setItems={setTransactions}
         editItemId={editItemId}
-      />
+      /> */}
 
       <div className="wrapper">
         <div className="content">
           <div className="upper">
-            <h2>Transações</h2>
+            <h2>Movimentações</h2>
             <div className="createItem">
               <button
                 type="button"
@@ -91,39 +98,38 @@ const TransactionsList: React.FC = () => {
               <tr>
                 <th>Id</th>
                 <th>Nome</th>
-                <th>Estoque mínimo</th>
-                <th>Estoque total</th>
+                <th>Tipo</th>
+                <th>Quantidade</th>
                 <th>Editar</th>
               </tr>
             </thead>
             <tbody>
-              {items
+              {transactions
                 // .sort((a, b) => Number(a.id) - Number(b.id))
-                .map((item: Item) => (
-                  <tr key={item.id}>
+                .map((transaction: Transaction) => (
+                  <tr key={transaction.id}>
                     <td data-label="Id">
-                      {Number(item.id).toLocaleString('pt-BR')}
+                      {Number(transaction.id).toLocaleString('pt-BR')}
                     </td>
-                    <td data-label="Nome">{item.name}</td>
-                    <td data-label="Estoque mínimo">
-                      {Number(item.minimal_stock_alarm).toLocaleString(
+                    <td data-label="Nome">{transaction.item.name}</td>
+                    <td data-label="Tipo">
+                      {transaction.type === 'in' ? 'Entrada' : 'Saída'}
+                    </td>
+                    <td data-label="Quantidade">
+                      {Number(transaction.item_quantity).toLocaleString(
                         'pt-BR',
                         {
                           minimumFractionDigits: 3,
                         },
                       )}
                     </td>
-                    <td data-label="Estoque total">
-                      {Number(item.total_stock).toLocaleString('pt-BR', {
-                        minimumFractionDigits: 3,
-                      })}
-                    </td>
+
                     <td data-label="Editar" className="editItem">
                       <button
                         className="editButton"
                         type="button"
                         onClick={() => {
-                          setEditItemId(item.id);
+                          setEditItemId(transaction.id);
                           toggleEditItemModal();
                         }}
                       >
@@ -154,8 +160,8 @@ const TransactionsList: React.FC = () => {
             ) : (
               <div />
             )}
-            {items.length === 0 && !errorMsg && !loading ? (
-              <h4>Nenhum item cadastrado</h4>
+            {transactions.length === 0 && !errorMsg && !loading ? (
+              <h4>Nenhum transaction cadastrado</h4>
             ) : (
               <div />
             )}
