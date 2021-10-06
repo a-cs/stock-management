@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { FiPlus, FiEdit, FiAlertCircle } from 'react-icons/fi';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
-import CreateItemModal from '../../components/CreateItemModal';
-import EditItemModal from '../../components/EditItemModal';
+import CreateTransactionModal from '../../components/CreateTransactionModal';
 
 import api from '../../services/api';
 
@@ -28,13 +27,14 @@ interface Transaction {
 const TransactionsList: React.FC = () => {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [editItemId, setEditItemId] = useState('0');
-  const [modalOpenCreateItem, setModalOpenCreateItem] = useState(false);
+  const [modalOpenCreateTransaction, setModalOpenCreateTransaction] =
+    useState(false);
   const [modalOpenEditItem, setModalOpenEditItem] = useState(false);
   const [errorMsg, setErrorMsg] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  function toggleCreateItemModal(): void {
-    setModalOpenCreateItem(!modalOpenCreateItem);
+  function toggleCreateTransactionModal(): void {
+    setModalOpenCreateTransaction(!modalOpenCreateTransaction);
   }
   function toggleEditItemModal(): void {
     setModalOpenEditItem(!modalOpenEditItem);
@@ -58,13 +58,13 @@ const TransactionsList: React.FC = () => {
   return (
     <div className="container">
       <Header selectedMenu="Transações" />
-      {/* <CreateItemModal
-        isOpen={modalOpenCreateItem}
-        setIsOpen={toggleCreateItemModal}
-        items={transactions}
-        setItems={setTransactions}
+      <CreateTransactionModal
+        isOpen={modalOpenCreateTransaction}
+        setIsOpen={toggleCreateTransactionModal}
+        transactions={transactions}
+        setTransactions={setTransactions}
       />
-      <EditItemModal
+      {/* <EditItemModal
         isOpen={modalOpenEditItem}
         setIsOpen={toggleEditItemModal}
         items={transactions}
@@ -80,14 +80,14 @@ const TransactionsList: React.FC = () => {
               <button
                 type="button"
                 className="createItemBtn"
-                onClick={toggleCreateItemModal}
+                onClick={toggleCreateTransactionModal}
               >
                 <FiPlus /> Criar nova transação
               </button>
               <button
                 type="button"
                 className="createItemBtnMobile"
-                onClick={toggleCreateItemModal}
+                onClick={toggleCreateTransactionModal}
               >
                 <FiPlus size="40px" />
               </button>

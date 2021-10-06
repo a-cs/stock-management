@@ -34,13 +34,10 @@
   position: absolute;
   font-weight: 400;
   font-size: 2.4rem;
-
   pointer-events: none;
-  position:absolute;
   left:12px;
   top:4px;
   transition: 0.2s;
-  transition-timing-function: ease;
   transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
   opacity:0.5;
 }

@@ -7,9 +7,9 @@
 }
 
 .modalTitle {
+  margin: 0 0 2.8rem 0;
   display: inline-block;
   text-align: center;
-  margin: 0 0 2.8rem 0;
   font-size: 1.6rem;
 }
 
@@ -28,6 +28,10 @@
   max-width: 350px;
   position:relative;
   display:inline-block;
+}
+
+label + label {
+  margin-top: 2.4rem;
 }
 
 .form span {
@@ -66,7 +70,45 @@ input:focus + span, input:not(:placeholder-shown) + span {
   font-size: 1.6rem;
 }
 
+.form select{
+  width: 100%;
+  padding: 0 1.2rem;
+  font-weight: 400;
+  font-size: 2.4rem;
+  height: 3.6rem;
+  display: inline-block;
+  border: 2px solid var(--color-light-gray);
+  border-radius: 16px;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+.form select:focus,
+.form select:hover{
+  outline: none;
+  border-color: var(--color-dark-blue);
+  transition: 0.2s;
+}
+
+.selectTitle{
+  position: absolute;
+  font-weight: 400;
+  pointer-events: none;
+  left:12px;
+  top:4px;
+  opacity:.75;
+  left: 12px;
+  top:-20px !important;
+  font-size: 1.6rem;
+}
+
+.form p {
+  color: red;
+  font-size: 2.4rem;
+}
+
 .footer {
+  margin: 2.8rem 0;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -127,6 +169,12 @@ input:focus + span, input:not(:placeholder-shown) + span {
 }
 
 @media (min-width: 700px)  {
+  label + label {
+    margin-top: 0;
+  }
+  .footer {
+    margin: 0;
+  }
   .footer button {
     width: 70%;
   }
