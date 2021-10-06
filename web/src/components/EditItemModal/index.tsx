@@ -77,7 +77,7 @@ const EditItemModal: React.FC<EditItemModalProps> = ({
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
       <div className="modalContainer" ref={modalRef}>
-        <div className="title">
+        <div className="modalTitle">
           <h1>Editar item</h1>
         </div>
         <form className="form" onSubmit={handleSubmit}>

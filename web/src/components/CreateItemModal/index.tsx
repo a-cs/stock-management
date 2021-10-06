@@ -55,7 +55,7 @@ const CreateItemModal: React.FC<ModalProps> = ({
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
       <div className="modalContainer" ref={modalRef}>
-        <div className="title">
+        <div className="modalTitle">
           <h1>Criar novo item</h1>
         </div>
         <form className="form" onSubmit={handleSubmit}>

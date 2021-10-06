@@ -30,7 +30,7 @@ const Modal: React.FC<ModalProps> = ({ children, isOpen, setIsOpen }) => {
         borderRadius: '12px',
         width: '96%',
         maxWidth: '500px',
-        height: 'clamp(350px, 50vh, 400px)',
+        height: 'clamp(350px, 50vh, 600px)',
         border: 'none',
       },
       overlay: {
@@ -50,7 +50,7 @@ const Modal: React.FC<ModalProps> = ({ children, isOpen, setIsOpen }) => {
         color: '#000000',
         borderRadius: '12px',
         width: '500px',
-        height: '400px',
+        height: '600px',
         border: 'none',
       },
       overlay: {
