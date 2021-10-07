@@ -20,7 +20,7 @@ const Header: React.FC<HeaderProps> = ({ selectedMenu }) => {
     src = logoIFCE;
   }
 
-  const menuItems = ['Itens', 'Transações'];
+  const menuItems = ['Estoque', 'Movimentações'];
 
   const [menuOpen, setMenuOpen] = useState(false);
 

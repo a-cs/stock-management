@@ -26,18 +26,19 @@ interface Transaction {
 
 const TransactionsList: React.FC = () => {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
-  const [editItemId, setEditItemId] = useState('0');
+  const [editTransactionId, setEditTransactionId] = useState('0');
   const [modalOpenCreateTransaction, setModalOpenCreateTransaction] =
     useState(false);
-  const [modalOpenEditItem, setModalOpenEditItem] = useState(false);
+  const [modalOpenEditTransaction, setModalOpenEditTransaction] =
+    useState(false);
   const [errorMsg, setErrorMsg] = useState(false);
   const [loading, setLoading] = useState(false);
 
   function toggleCreateTransactionModal(): void {
     setModalOpenCreateTransaction(!modalOpenCreateTransaction);
   }
-  function toggleEditItemModal(): void {
-    setModalOpenEditItem(!modalOpenEditItem);
+  function toggleEditTransactionModal(): void {
+    setModalOpenEditTransaction(!modalOpenEditTransaction);
   }
 
   useEffect(() => {
@@ -57,19 +58,19 @@ const TransactionsList: React.FC = () => {
 
   return (
     <div className="container">
-      <Header selectedMenu="Transações" />
+      <Header selectedMenu="Movimentações" />
       <CreateTransactionModal
         isOpen={modalOpenCreateTransaction}
         setIsOpen={toggleCreateTransactionModal}
         transactions={transactions}
         setTransactions={setTransactions}
       />
-      {/* <EditItemModal
-        isOpen={modalOpenEditItem}
-        setIsOpen={toggleEditItemModal}
+      {/* <EditTransactionModal
+        isOpen={modalOpenEditTransaction}
+        setIsOpen={toggleEditTransactionModal}
         items={transactions}
         setItems={setTransactions}
-        editItemId={editItemId}
+        editTransactionId={editTransactionId}
       /> */}
 
       <div className="wrapper">
@@ -124,13 +125,13 @@ const TransactionsList: React.FC = () => {
                       )}
                     </td>
 
-                    <td data-label="Editar" className="editItem">
+                    <td data-label="Editar" className="editTransaction">
                       <button
                         className="editButton"
                         type="button"
                         onClick={() => {
-                          setEditItemId(transaction.id);
-                          toggleEditItemModal();
+                          setEditTransactionId(transaction.id);
+                          toggleEditTransactionModal();
                         }}
                       >
                         <FiEdit size="20px" strokeWidth="2" />

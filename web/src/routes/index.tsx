@@ -7,8 +7,8 @@ import TransactionsList from '../pages/TransactionsList';
 const Routes: React.FC = () => (
   <Switch>
     <Route exact path="/" component={ItemsList} />
-    <Route path="/Itens" component={ItemsList} />
-    <Route path="/Transações" component={TransactionsList} />
+    <Route path="/Estoque" component={ItemsList} />
+    <Route path="/Movimentações" component={TransactionsList} />
   </Switch>
 );
 

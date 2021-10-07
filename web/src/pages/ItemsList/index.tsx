@@ -50,7 +50,7 @@ const ItemsList: React.FC = () => {
 
   return (
     <div className="container">
-      <Header selectedMenu="Itens" />
+      <Header selectedMenu="Estoque" />
       <CreateItemModal
         isOpen={modalOpenCreateItem}
         setIsOpen={toggleCreateItemModal}
