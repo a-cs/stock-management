@@ -56,7 +56,7 @@ const CreateTransactionModal: React.FC<ModalProps> = ({
           setId(response.data[0].id);
           setLoading(false);
         })
-        .catch(error => {
+        .catch(() => {
           setErrorMsg(true);
           setLoading(false);
         });

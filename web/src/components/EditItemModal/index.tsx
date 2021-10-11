@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { FiCheck, FiX } from 'react-icons/fi';
 import api from '../../services/api';
 
@@ -38,7 +38,6 @@ const EditItemModal: React.FC<EditItemModalProps> = ({
       const editItem = items.filter(item => item.id === editItemId)[0];
       setName(editItem.name);
       setMinimalStock(editItem.minimal_stock_alarm);
-      console.log(editItemId);
     }
     return () => {
       setMessage('');
@@ -78,7 +77,7 @@ const EditItemModal: React.FC<EditItemModalProps> = ({
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
       <div className="modalContainer" ref={modalRef}>
         <div className="modalTitle">
-          <h4>Editar item</h4>
+          <h4>Editar item com Id {editItemId}</h4>
         </div>
         <form className="form" onSubmit={handleSubmit}>
           <label htmlFor="name">

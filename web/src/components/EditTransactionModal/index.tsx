@@ -54,7 +54,6 @@ const EditTransactionModal: React.FC<ModalProps> = ({
       const editTransaction = transactions.filter(
         transaction => transaction.id === editTransactionId,
       )[0];
-      console.log(editTransaction);
       api
         .get('/items')
         .then(response => {
@@ -68,12 +67,12 @@ const EditTransactionModal: React.FC<ModalProps> = ({
           setType(editTransaction.type);
           setLoading(false);
         })
-        .catch(error => {
+        .catch(() => {
           setErrorMsg(true);
           setLoading(false);
         });
     }
-  }, [isOpen]);
+  }, [isOpen, editTransactionId, transactions]);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -115,7 +114,7 @@ const EditTransactionModal: React.FC<ModalProps> = ({
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
       <div className="modalContainer" ref={modalRef}>
         <div className="modalTitle">
-          <h4>Criar nova transação</h4>
+          <h4>Editar transação com Id {editTransactionId}</h4>
         </div>
         {loading ? (
           <div className="loading">
