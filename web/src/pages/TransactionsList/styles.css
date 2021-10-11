@@ -135,12 +135,12 @@ tbody td {
   hyphens: auto;
 }
 
-.editItem {
+.editTransaction {
   padding: 0;
   height: 3.6rem;
 }
 
-.editButton {
+.editTransactionButton {
   display: block;
   width: 100%;
   height: 100%;
@@ -148,13 +148,15 @@ tbody td {
   background: none;
 }
 
-.editButton:hover {
+
+
+.editTransactionButton:hover {
   cursor: pointer;
   background-color: var(--color-lighter-green);
   transition: 0.2s;
 }
 
-.editButton:hover svg {
+.editTransactionButton:hover svg {
   color: var(--color-white-text);
   transition: 0.2s;
 }
@@ -222,7 +224,7 @@ tbody td {
     border-bottom: none;
   }
 
-  tr:last-child .editItem .editButton {
+  tr:last-child .editItem .editTransactionButton {
     border-radius: 0 0 12px 0;
   }
 
@@ -314,11 +316,11 @@ tbody td {
     border-radius: 0 0 0 12px;
   }
 
-  tr:last-child .editItem .editButton {
+  tr:last-child .editItem .editTransactionButton {
     border-radius: 0 0 12px 12px;
   }
 
-  .editButton svg {
+  .editTransactionButton svg{
     margin-left: 50%
   }
 }

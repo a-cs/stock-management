@@ -3,6 +3,7 @@ import { FiPlus, FiEdit, FiAlertCircle } from 'react-icons/fi';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import CreateTransactionModal from '../../components/CreateTransactionModal';
+import EditTransactionModal from '../../components/EditTransactionModal';
 
 import api from '../../services/api';
 
@@ -65,13 +66,13 @@ const TransactionsList: React.FC = () => {
         transactions={transactions}
         setTransactions={setTransactions}
       />
-      {/* <EditTransactionModal
+      <EditTransactionModal
         isOpen={modalOpenEditTransaction}
         setIsOpen={toggleEditTransactionModal}
-        items={transactions}
-        setItems={setTransactions}
+        transactions={transactions}
+        setTransactions={setTransactions}
         editTransactionId={editTransactionId}
-      /> */}
+      />
 
       <div className="wrapper">
         <div className="content">
@@ -127,7 +128,7 @@ const TransactionsList: React.FC = () => {
 
                     <td data-label="Editar" className="editTransaction">
                       <button
-                        className="editButton"
+                        className="editTransactionButton"
                         type="button"
                         onClick={() => {
                           setEditTransactionId(transaction.id);
