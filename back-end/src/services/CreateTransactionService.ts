@@ -9,9 +9,6 @@ interface Request {
     item_id: number;
     item_quantity: number;
     type: 'in' | 'out';
-    // user_id: string;
-    // user_name: string;
-    // res: object;
 }
 
 interface QueryResult {
@@ -29,11 +26,7 @@ class CreateTransactionService {
 
         const checkItemExists = await itemsRepository.findOne({
             where: { id:item_id },
-        }); //*
-
-        // precisa
-        // *//
-
+        });
 
         if (!checkItemExists) {
             throw new AppError('Item not found');
@@ -83,8 +76,6 @@ class CreateTransactionService {
             },
         });
 
-
-
         const transaction = transactionsRepository.create({
             item,
             item_quantity,
@@ -92,7 +83,6 @@ class CreateTransactionService {
         });
 
         await transactionsRepository.save(transaction);
-
 
         return transaction;
     }
