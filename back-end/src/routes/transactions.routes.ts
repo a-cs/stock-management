@@ -2,12 +2,15 @@ import { Router } from 'express';
 import { getRepository } from 'typeorm';
 
 import CreateTransactionService from '../services/CreateTransactionService';
-
-import Transaction from '../models/Transaction';
 import DeleteTransactionService from '../services/DeleteTransactionService';
 import UpdateTransactionService from '../services/UpdateTransactionService';
 
+import ensureAuthenticated from '../middlewares/ensureAuthenticated';
+
+import Transaction from '../models/Transaction';
+
 const transactionsRouter = Router();
+transactionsRouter.use(ensureAuthenticated)
 
 transactionsRouter.post('/', async (request, response) => {
     const { item_id, item_quantity, type } = request.body;

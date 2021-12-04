@@ -6,7 +6,7 @@ import Item from '../models/Item';
 import Transaction from '../models/Transaction';
 
 interface Request {
-    id: number;
+    id: string;
     item_id: number;
     item_quantity: number;
     type: 'in' | 'out';

@@ -4,9 +4,12 @@ import { getRepository } from 'typeorm';
 import CreateItemService from '../services/CreateItemService';
 import UpdateItemService from '../services/UpdateItemService';
 
+import ensureAuthenticated from '../middlewares/ensureAuthenticated';
+
 import Item from '../models/Item';
 
 const itemsRouter = Router();
+itemsRouter.use(ensureAuthenticated)
 
 itemsRouter.post('/', async (request, response) => {
     const { name } = request.body;

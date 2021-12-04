@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { getRepository } from 'typeorm';
 
 import CreateUserService from '../services/CreateUserService';
+import ensureAuthenticated from '../middlewares/ensureAuthenticated';
 
 import User from '../models/User';
 
@@ -29,7 +30,7 @@ usersRouter.post('/', async (request, response) => {
     return response.json(tmpUser);
 });
 
-usersRouter.get('/', async (request, response) => {
+usersRouter.get('/',ensureAuthenticated, async (request, response) => {
     const usersRepository = getRepository(User);
     const users = await usersRepository.find({
         select: [

@@ -5,7 +5,7 @@ import AppError from '../errors/AppError';
 import Item from '../models/Item';
 
 interface Request {
-    id: number;
+    id: string;
     name: string;
     minimal_stock_alarm: number;
 }
