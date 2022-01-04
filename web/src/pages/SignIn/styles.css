@@ -1,0 +1,101 @@
+.containerSignIn{
+  background-color: #f6f5f8;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.contentSignIn {
+  width: 94%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 10% 0;
+}
+.titleSignIn {
+  margin: 0 0 2.8rem 0;
+  display: inline-block;
+  text-align: center;
+  font-size: 3.2rem;
+}
+
+.formSignIn {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+.formSignIn label {
+  width: 100%;
+  max-width: 350px;
+  position:relative;
+  display:inline-block;
+  margin-bottom: 2.2rem;
+}
+
+.formSignIn span {
+  position: absolute;
+  font-weight: 400;
+  font-size: 2.4rem;
+  pointer-events: none;
+  left:12px;
+  top:4px;
+  transition: 0.2s;
+  transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+  opacity:0.5;
+}
+
+.formSignIn input {
+  width: 100%;
+  padding: 1.2rem;
+  font-weight: 400;
+  font-size: 2.4rem;
+  height: 3.6rem;
+  display: inline-block;
+  border: 2px solid var(--color-light-gray);
+  border-radius: 16px;
+  box-shadow: none;
+}
+
+.formSignIn input:focus-visible{
+  outline: none;
+  border-color: var(--color-dark-blue);
+}
+
+input:focus + span, input:not(:placeholder-shown) + span {
+  opacity:.75;
+  left: 12px;
+  top:-20px;
+  font-size: 1.6rem;
+}
+
+#loginBtn {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: #faffff;
+  border-radius: 24px;
+  font-size: 2.4rem;
+  cursor: pointer;
+  background-color: var(--color-light-green);
+  border: 2px solid var(--color-light-green);
+  width: 100%;
+  max-width: 350px;
+  font-weight: 700;
+  padding: .8rem 1.6rem;
+  margin-bottom: 1.2rem;
+}
+
+#loginBtn:hover {
+  background-color: var(--color-lighter-green);
+  border-color: var(--color-lighter-green);
+  transition: 0.2s;
+}

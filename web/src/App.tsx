@@ -1,16 +1,17 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
+import Routes from './routes';
+
+import { AuthProvider } from './hocks/auth';
 
 import './styles/global.css';
-
-// import AppProvider from './hooks';
-
-import Routes from './routes';
 
 const App: React.FC = () => (
   <>
     <Router>
-      <Routes />
+      <AuthProvider>
+        <Routes />
+      </AuthProvider>
     </Router>
   </>
 );

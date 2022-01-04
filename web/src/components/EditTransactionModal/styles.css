@@ -85,7 +85,7 @@
   display:inline-block;
 }
 
-label + label {
+.form label + label {
   margin-top: 2.4rem;
 }
 
