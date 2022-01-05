@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { FiCheck, FiX, FiEdit, FiAlertCircle } from 'react-icons/fi';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
@@ -8,6 +9,7 @@ import api from '../../services/api';
 import loadingImg from '../../assets/loading1.gif';
 
 import './styles.css';
+import { useAuth } from '../../hocks/auth';
 
 interface User {
   id: string;
@@ -19,17 +21,16 @@ interface User {
 const UsersList: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [editUserId, setEditUserId] = useState('0');
-  const [modalOpenCreateUser, setModalOpenCreateUser] = useState(false);
   const [modalOpenEditUser, setModalOpenEditUser] = useState(false);
   const [errorMsg, setErrorMsg] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  function toggleCreateUserModal(): void {
-    setModalOpenCreateUser(!modalOpenCreateUser);
-  }
+  const { user: myUser } = useAuth();
   function toggleEditUserModal(): void {
     setModalOpenEditUser(!modalOpenEditUser);
   }
+
+  const history = useHistory();
 
   useEffect(() => {
     setLoading(true);
@@ -48,14 +49,9 @@ const UsersList: React.FC = () => {
 
   return (
     <div className="container">
-      <Header selectedMenu="Estoque" />
-      {/* <CreateUserModal
-        isOpen={modalOpenCreateUser}
-        setIsOpen={toggleCreateUserModal}
-        items={users}
-        setUsers={setUsers}
-      />
-      <EditUserModal
+      <Header selectedMenu="Admin" />
+
+      {/* <EditUserModal
         isOpen={modalOpenEditUser}
         setIsOpen={toggleEditUserModal}
         items={users}
@@ -68,20 +64,19 @@ const UsersList: React.FC = () => {
           <div className="upper">
             <h2>Usuarios</h2>
           </div>
-          <table>
-            <thead>
-              <tr>
-                <th>Id</th>
-                <th>Nome</th>
-                <th>Admin</th>
-                <th>Permitido</th>
-                <th>Editar</th>
-              </tr>
-            </thead>
-            <tbody>
-              {users
-                // .sort((a, b) => Number(a.id) - Number(b.id))
-                .map((user: User) => (
+          {myUser.is_admin ? (
+            <table>
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Nome</th>
+                  <th>Admin</th>
+                  <th>Permitido</th>
+                  <th>Editar</th>
+                </tr>
+              </thead>
+              <tbody>
+                {users.map((user: User) => (
                   <tr key={user.id}>
                     <td data-label="Id">
                       {Number(user.id).toLocaleString('pt-BR')}
@@ -139,8 +134,20 @@ const UsersList: React.FC = () => {
                     </td>
                   </tr>
                 ))}
-            </tbody>
-          </table>
+              </tbody>
+            </table>
+          ) : (
+            <div className="errorMsg">
+              <button type="button" onClick={() => history.goBack()}>
+                <FiAlertCircle size="40px" />{' '}
+                <h4>
+                  Você não tem permissão de acessar essa página, entre em
+                  contato com um administrador
+                </h4>
+              </button>
+            </div>
+          )}
+
           <div className="errorMsg">
             {loading ? (
               <>
