@@ -5,6 +5,8 @@ import api from '../services/api';
 interface User {
   name: string;
   email: string;
+  is_admin: boolean;
+  is_allowed: boolean;
 }
 
 interface AuthState {

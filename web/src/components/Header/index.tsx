@@ -1,7 +1,9 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FiMenu, FiX } from 'react-icons/fi';
+import { FiMenu, FiUser, FiX } from 'react-icons/fi';
+
+import { useAuth } from '../../hocks/auth';
 
 import logoIFCE from '../../assets/REITORIA a.png';
 import logoIFCEMobile from '../../assets/REITORIA a mobile.png';
@@ -20,7 +22,13 @@ const Header: React.FC<HeaderProps> = ({ selectedMenu }) => {
     src = logoIFCE;
   }
 
+  const { user, signOut } = useAuth();
+
   const menuItems = ['Estoque', 'Movimentações'];
+
+  if (user.is_admin) {
+    menuItems.push('Admin');
+  }
 
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -63,6 +71,10 @@ const Header: React.FC<HeaderProps> = ({ selectedMenu }) => {
         </picture>
 
         <div className="menu">
+          <button type="button" className="userInfo" onClick={() => signOut()}>
+            <FiUser size="20px" strokeWidth="3" />
+            <h3>{user.name}</h3>
+          </button>
           <nav>
             <ul>
               {menuItems.map(menuItem => (
@@ -84,6 +96,10 @@ const Header: React.FC<HeaderProps> = ({ selectedMenu }) => {
         </div>
         {menuOpen && (
           <div className="menuMobile" ref={menuMobile}>
+            <div className="userInfo">
+              <FiUser size="20px" strokeWidth="3" />
+              <h3>{user.name}</h3>
+            </div>
             <nav>
               <ul>
                 {menuItems.map(menuItem => (
