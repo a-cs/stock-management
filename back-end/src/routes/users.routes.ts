@@ -2,7 +2,11 @@ import { Router } from 'express';
 import { getRepository } from 'typeorm';
 
 import CreateUserService from '../services/CreateUserService';
+import UpdateUserPrivilegesService from '../services/UpdateUserPrivilegesService';
+
 import ensureAuthenticated from '../middlewares/ensureAuthenticated';
+import ensureIsAllowed from '../middlewares/ensureIsAllowed';
+import ensureIsAdmin from '../middlewares/ensureIsAdmin';
 
 import User from '../models/User';
 
@@ -30,7 +34,24 @@ usersRouter.post('/', async (request, response) => {
     return response.json(tmpUser);
 });
 
-usersRouter.get('/',ensureAuthenticated, async (request, response) => {
+usersRouter.patch('/:id',ensureAuthenticated, ensureIsAllowed, ensureIsAdmin, async (request, response) => {
+    const { id } = request.params;
+    const { is_admin, is_allowed } = request.body;
+
+    console.log(request)
+
+    const updateItem = new UpdateUserPrivilegesService();
+
+    const user = await updateItem.execute({
+        id,
+        is_admin,
+        is_allowed,
+    })
+
+    return response.json(user);
+});
+
+usersRouter.get('/',ensureAuthenticated, ensureIsAllowed, ensureIsAdmin, async (request, response) => {
     const usersRepository = getRepository(User);
     const users = await usersRepository.find({
         select: [

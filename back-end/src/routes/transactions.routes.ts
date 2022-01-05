@@ -6,11 +6,13 @@ import DeleteTransactionService from '../services/DeleteTransactionService';
 import UpdateTransactionService from '../services/UpdateTransactionService';
 
 import ensureAuthenticated from '../middlewares/ensureAuthenticated';
+import ensureIsAllowed from '../middlewares/ensureIsAllowed';
 
 import Transaction from '../models/Transaction';
 
 const transactionsRouter = Router();
 transactionsRouter.use(ensureAuthenticated)
+transactionsRouter.use(ensureIsAllowed)
 
 transactionsRouter.post('/', async (request, response) => {
     const { item_id, item_quantity, type } = request.body;

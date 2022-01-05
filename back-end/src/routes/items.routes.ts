@@ -5,11 +5,13 @@ import CreateItemService from '../services/CreateItemService';
 import UpdateItemService from '../services/UpdateItemService';
 
 import ensureAuthenticated from '../middlewares/ensureAuthenticated';
+import ensureIsAllowed from '../middlewares/ensureIsAllowed';
 
 import Item from '../models/Item';
 
 const itemsRouter = Router();
 itemsRouter.use(ensureAuthenticated)
+itemsRouter.use(ensureIsAllowed)
 
 itemsRouter.post('/', async (request, response) => {
     const { name } = request.body;
