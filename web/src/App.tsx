@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Routes from './routes';
 
-import { AuthProvider } from './hocks/auth';
+import { AuthProvider } from './hooks/auth';
 
 import './styles/global.css';
 

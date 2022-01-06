@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiMenu, FiUser, FiX } from 'react-icons/fi';
 
-import { useAuth } from '../../hocks/auth';
+import { useAuth } from '../../hooks/auth';
 
 import logoIFCE from '../../assets/REITORIA a.png';
 import logoIFCEMobile from '../../assets/REITORIA a mobile.png';
@@ -24,9 +24,14 @@ const Header: React.FC<HeaderProps> = ({ selectedMenu }) => {
 
   const { user, signOut } = useAuth();
 
-  const menuItems = ['Estoque', 'Movimentações'];
+  const menuItems = [];
 
-  if (user.is_admin) {
+  if (user.is_allowed) {
+    menuItems.push('Estoque');
+    menuItems.push('Movimentações');
+  }
+
+  if (user.is_allowed && user.is_admin) {
     menuItems.push('Admin');
   }
 
@@ -85,6 +90,11 @@ const Header: React.FC<HeaderProps> = ({ selectedMenu }) => {
                   <Link to={`/${menuItem}`}>{menuItem}</Link>
                 </li>
               ))}
+              <li key="sair" className="">
+                <Link to="/" onClick={() => signOut()}>
+                  Sair{' '}
+                </Link>
+              </li>
             </ul>
           </nav>
         </div>
@@ -110,6 +120,11 @@ const Header: React.FC<HeaderProps> = ({ selectedMenu }) => {
                     <Link to={`/${menuItem}`}>{menuItem}</Link>
                   </li>
                 ))}
+                <li key="sair" className="">
+                  <Link to="/" onClick={() => signOut()}>
+                    Sair{' '}
+                  </Link>
+                </li>
               </ul>
             </nav>
           </div>

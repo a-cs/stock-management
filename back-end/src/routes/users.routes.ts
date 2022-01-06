@@ -38,8 +38,6 @@ usersRouter.patch('/:id',ensureAuthenticated, ensureIsAllowed, ensureIsAdmin, as
     const { id } = request.params;
     const { is_admin, is_allowed } = request.body;
 
-    console.log(request)
-
     const updateItem = new UpdateUserPrivilegesService();
 
     const user = await updateItem.execute({

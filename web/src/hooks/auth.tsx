@@ -1,4 +1,4 @@
-import React, { createContext, useCallback, useState, useContext } from 'react';
+import React, { createContext, useState, useContext } from 'react';
 
 import api from '../services/api';
 
@@ -42,7 +42,7 @@ export const AuthProvider: React.FC = ({ children }) => {
     return {} as AuthState;
   });
 
-  const signIn = useCallback(async ({ email, password }) => {
+  const signIn = async ({ email, password }: SignInCredentials) => {
     const response = await api.post('sessions', {
       email,
       password,
@@ -56,14 +56,14 @@ export const AuthProvider: React.FC = ({ children }) => {
     api.defaults.headers.authorization = `Bearer ${token}`;
 
     setData({ token, user });
-  }, []);
+  };
 
-  const signOut = useCallback(() => {
+  const signOut = () => {
     localStorage.removeItem('@EstoqueLEM:token');
     localStorage.removeItem('@EstoqueLEM:user');
 
     setData({} as AuthState);
-  }, []);
+  };
 
   return (
     <AuthContext.Provider value={{ user: data.user, signIn, signOut }}>

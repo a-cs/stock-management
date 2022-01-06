@@ -1,0 +1,69 @@
+.inputContainer{
+  max-width: 350px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  height: 3rem;
+}
+
+.inputContainer + .inputContainer{
+  margin-top: 1.6rem;
+}
+
+.inputWrapper{
+  display: flex;
+}
+
+.inputWrapper button{
+  background-color: transparent;
+  padding: 0 .4rem;
+  border: 0;
+}
+.inputWrapper button:hover, .inputWrapper button:active{
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.inputWrapper button svg{
+  display: flex;
+  align-items: center;
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 80px !important;
+  cursor: pointer;
+}
+.toggle-switch input[type="checkbox"] {
+  display: none;
+}
+.toggle-switch .switch {
+  position: absolute;
+  cursor: pointer;
+  background-color: var(--color-red);
+  border-radius: 16px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transition: background-color 0.2s ease;
+}
+.toggle-switch .switch::before {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  width: 30px;
+  height: 30px;
+  background-color: darkred;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+.toggle-switch input[type="checkbox"]:checked + .switch::before {
+  transform: translateX(50px);
+  background-color: var(--color-dark-green);
+}
+.toggle-switch input[type="checkbox"]:checked + .switch {
+  background-color: var(--color-light-green);
+}

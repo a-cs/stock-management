@@ -5,11 +5,12 @@ import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 
 import api from '../../services/api';
+import { useAuth } from '../../hooks/auth';
+import EditUserPrivilegesModal from '../../components/EditUserPrivilegesModal';
 
 import loadingImg from '../../assets/loading1.gif';
 
 import './styles.css';
-import { useAuth } from '../../hocks/auth';
 
 interface User {
   id: string;
@@ -51,13 +52,13 @@ const UsersList: React.FC = () => {
     <div className="container">
       <Header selectedMenu="Admin" />
 
-      {/* <EditUserModal
+      <EditUserPrivilegesModal
         isOpen={modalOpenEditUser}
         setIsOpen={toggleEditUserModal}
-        items={users}
+        users={users}
         setUsers={setUsers}
         editUserId={editUserId}
-      /> */}
+      />
 
       <div className="wrapper">
         <div className="content">
