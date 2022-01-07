@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { FiCheck } from 'react-icons/fi';
 import Footer from '../../components/Footer';
 
@@ -11,6 +11,7 @@ const SignIn: React.FC = () => {
   const { signIn } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [message, setMessage] = useState('');
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -20,8 +21,8 @@ const SignIn: React.FC = () => {
         password,
       });
       history.push('/Estoque');
-    } catch (error) {
-      console.error(error);
+    } catch (error: any) {
+      setMessage(error.response.data.message);
     }
   };
 
@@ -55,11 +56,13 @@ const SignIn: React.FC = () => {
               />
               <span>Senha</span>
             </label>
+            <h4>{message}</h4>
             <button type="submit" id="loginBtn">
               <FiCheck /> <div className="space" />
               <div>Fazer login</div>
               <div className="space" />
             </button>
+            <Link to="/Criar-conta">Criar uma nova conta</Link>
           </form>
         </div>
       </div>

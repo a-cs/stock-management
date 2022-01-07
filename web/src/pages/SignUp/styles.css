@@ -1,4 +1,4 @@
-.containerSignIn{
+.containerSignUp{
   background-color: #f6f5f8;
   min-height: 86vh;
   display: flex;
@@ -7,21 +7,21 @@
   justify-content: center;
 }
 
-.contentSignIn {
+.contentSignUp {
   width: 94%;
   height: 100%;
   display: flex;
   flex-direction: column;
   padding: 10% 0;
 }
-.titleSignIn {
+.titleSignUp {
   margin: 0 0 2.8rem 0;
   display: inline-block;
   text-align: center;
   font-size: 3.2rem;
 }
 
-.formSignIn {
+.formSignUp {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -31,7 +31,7 @@
   text-align: center;
 }
 
-.formSignIn label {
+.formSignUp label {
   width: 100%;
   max-width: 350px;
   position:relative;
@@ -39,7 +39,7 @@
   margin-bottom: 2.2rem;
 }
 
-.formSignIn span {
+.formSignUp span {
   position: absolute;
   font-weight: 400;
   font-size: 2.4rem;
@@ -51,7 +51,7 @@
   opacity:0.5;
 }
 
-.formSignIn input {
+.formSignUp input {
   width: 100%;
   padding: 1.2rem;
   font-weight: 400;
@@ -63,7 +63,7 @@
   box-shadow: none;
 }
 
-.formSignIn input:focus-visible{
+.formSignUp input:focus-visible{
   outline: none;
   border-color: var(--color-dark-blue);
 }
@@ -75,7 +75,7 @@ input:focus + span, input:not(:placeholder-shown) + span {
   font-size: 1.6rem;
 }
 
-#loginBtn {
+#confirmBtn {
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -92,7 +92,7 @@ input:focus + span, input:not(:placeholder-shown) + span {
   margin-bottom: 1.2rem;
 }
 
-#loginBtn:hover {
+#confirmBtn:hover {
   background-color: var(--color-lighter-green);
   border-color: var(--color-lighter-green);
   transition: 0.2s;

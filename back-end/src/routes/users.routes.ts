@@ -60,7 +60,7 @@ usersRouter.get('/',ensureAuthenticated, ensureIsAllowed, ensureIsAdmin, async (
         "is_allowed"
         ],
         order: {
-            name: "ASC",
+            id: "ASC",
         },
     });
 
