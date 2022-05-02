@@ -5,9 +5,13 @@ import {
     CreateDateColumn,
     UpdateDateColumn,
     OneToMany,
+    ManyToOne,
+    JoinColumn,
 } from 'typeorm';
 
 import Transaction from './Transaction';
+import Category from './Catergory';
+
 
 @Entity('items')
 class Item {
@@ -23,8 +27,13 @@ class Item {
     @Column('decimal',{ precision: 6, scale: 3 })
     total_stock: number;
 
+    @ManyToOne(() => Category, category => category.item, { eager: true })
+    @JoinColumn({ name: 'category_id' })
+    category: Category;
+
     @OneToMany(() => Transaction, transaction => transaction.item)
     transaction: Transaction;
+
 
     @CreateDateColumn()
     created_at: Date;
