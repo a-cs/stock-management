@@ -10,7 +10,7 @@ import {
 } from 'typeorm';
 
 import Transaction from './Transaction';
-import Category from './Catergory';
+import Category from './Category';
 
 
 @Entity('items')
