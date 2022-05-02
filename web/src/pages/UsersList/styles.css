@@ -1,4 +1,4 @@
-.container{
+.containerUsersList {
   background-color: #f6f5f8;
   width: 100%;
   height: 100%;
@@ -7,38 +7,38 @@
   flex-direction: column;
 }
 
-.wrapper {
+.wrapperUsersList {
   width: 100%;
   flex: 1;
 }
 
-.content {
+.contentUsersList {
   margin: auto;
   max-width: 1110px;
   padding: 1.6rem 1.6rem;
   height: 100%;
 }
 
-.upper{
+.upperUsersList {
   display: flex;
   flex-direction: row;
   margin-bottom: 1.6rem ;
 }
 
-.upper h2{
+.upperUsersList h2{
   align-self: center;
   font-size: 4rem;
   font-weight: 900;
   color: var(--color-light-green);
 }
 
-.createItem{
+.createItemUsersList {
   flex: 1;
   display: flex;
   justify-content: flex-end;
 }
 
-.createItemBtn {
+.createItemBtnUsersList {
   background-color: var(--color-light-green);
   color: var(--color-white-text);
   border: 1px solid #e0e0e0;
@@ -50,11 +50,11 @@
   font-size: 2.4rem;
 }
 
-.createItemBtn svg {
+.createItemBtnUsersList svg {
   margin-right: .8rem;
 }
 
-.createItemBtnMobile {
+.createItemBtnMobileUsersList {
   background-color: var(--color-light-green);
   color: var(--color-white-text);
   border: none;
@@ -70,7 +70,7 @@
   right: 2rem;
 }
 
-.createItemBtn:hover{
+.createItemBtnUsersList:hover{
   cursor: pointer;
   background-color: var(--color-lighter-green);
   transition: 0.2s;
@@ -140,7 +140,7 @@ tbody td {
   height: 3.6rem;
 }
 
-.editButton {
+.editUserButton {
   display: block;
   width: 100%;
   height: 100%;
@@ -148,18 +148,18 @@ tbody td {
   background: none;
 }
 
-.editButton:hover {
+.editUserButton:hover {
   cursor: pointer;
   background-color: var(--color-lighter-green);
   transition: 0.2s;
 }
 
-.editButton:hover svg {
+.editUserButton:hover svg {
   color: var(--color-white-text);
   transition: 0.2s;
 }
 
-.errorMsg {
+.errorMsgUsersList {
   margin-top: 2rem;
   font-weight: 900;
   font-size: 2.4rem;
@@ -169,11 +169,11 @@ tbody td {
   align-items: center;
 }
 
-.errorMsg img {
+.errorMsgUsersList img {
   margin-bottom: 2rem;
 }
 
-.errorMsg button {
+.errorMsgUsersList button {
   width: 100%;
   border: none;
   background-color: transparent;
@@ -187,30 +187,30 @@ tbody td {
   border-radius: 24px;
 }
 
-.errorMsg button:hover{
+.errorMsgUsersList button:hover{
   background-color: var(--color-lighter-gray);
   transition: 0.2s;
 }
 
-.errorMsg button svg {
+.errorMsgUsersList button svg {
   stroke: var(--color-red);
   margin-bottom: 2rem;
 }
 
 @media (min-width: 700px){
-  .content {
+  .contentUsersList {
     padding: 3.2rem 1.6rem;
   }
 
-  .upper{
+  .upperUsersList{
     margin-bottom: 3.2rem;
   }
 
-  .createItemBtn{
+  .createItemBtnUsersList{
     display: flex;
   }
 
-  .createItemBtnMobile{
+  .createItemBtnMobileUsersList{
     display: none;
   }
 
@@ -222,26 +222,26 @@ tbody td {
     border-bottom: none;
   }
 
-  tr:last-child .editItem .editButton {
+  tr:last-child .editItem .editUserButton {
     border-radius: 0 0 12px 0;
   }
 
-  .errorMsg {
+  .errorMsgUsersList {
     flex-direction: row;
     justify-content: space-evenly;
     min-height: 60vh;
   }
 
-  .errorMsg img{
+  .errorMsgUsersList img{
     display: block;
     margin: auto 0;
   }
 
-  .errorMsg button {
+  .errorMsgUsersList button {
     flex-direction: row;
     min-height: 60vh;
   }
-  .errorMsg button svg {
+  .errorMsgUsersList button svg {
     display: block;
     margin: auto 0;
     flex-basis: 10%;
@@ -314,11 +314,11 @@ tbody td {
     border-radius: 0 0 0 12px;
   }
 
-  tr:last-child .editItem .editButton {
+  tr:last-child .editItem .editUserButton {
     border-radius: 0 0 12px 12px;
   }
 
-  .editButton svg {
+  .editUserButton svg {
     margin-left: 50%
   }
 }

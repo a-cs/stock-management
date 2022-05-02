@@ -49,7 +49,7 @@ const ItemsList: React.FC = () => {
   }, []);
 
   return (
-    <div className="container">
+    <div className="containerItemsList">
       <Header selectedMenu="Estoque" />
       <CreateItemModal
         isOpen={modalOpenCreateItem}
@@ -65,21 +65,21 @@ const ItemsList: React.FC = () => {
         editItemId={editItemId}
       />
 
-      <div className="wrapper">
-        <div className="content">
-          <div className="upper">
+      <div className="wrapperItemsList">
+        <div className="contentItemsList">
+          <div className="upperItemsList">
             <h2>Estoque</h2>
-            <div className="createItem">
+            <div className="createItemItemsList">
               <button
                 type="button"
-                className="createItemBtn"
+                className="createItemBtnItemsList"
                 onClick={toggleCreateItemModal}
               >
                 <FiPlus /> Criar novo item
               </button>
               <button
                 type="button"
-                className="createItemBtnMobile"
+                className="createItemBtnMobileItemsList"
                 onClick={toggleCreateItemModal}
               >
                 <FiPlus size="40px" />
@@ -118,9 +118,9 @@ const ItemsList: React.FC = () => {
                         minimumFractionDigits: 3,
                       })}
                     </td>
-                    <td data-label="Editar" className="editItem">
+                    <td data-label="Editar" className="editItemItemsList">
                       <button
-                        className="editButton"
+                        className="editButtonItemsList"
                         type="button"
                         onClick={() => {
                           setEditItemId(item.id);
@@ -134,7 +134,7 @@ const ItemsList: React.FC = () => {
                 ))}
             </tbody>
           </table>
-          <div className="errorMsg">
+          <div className="errorMsgItemsList">
             {loading ? (
               <>
                 <img src={loadingImg} alt="Loading" />

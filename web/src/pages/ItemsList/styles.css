@@ -1,4 +1,4 @@
-.container{
+.containerItemsList {
   background-color: #f6f5f8;
   width: 100%;
   height: 100%;
@@ -7,38 +7,38 @@
   flex-direction: column;
 }
 
-.wrapper {
+.wrapperItemsList {
   width: 100%;
   flex: 1;
 }
 
-.content {
+.contentItemsList {
   margin: auto;
   max-width: 1110px;
   padding: 1.6rem 1.6rem;
   height: 100%;
 }
 
-.upper{
+.upperItemsList {
   display: flex;
   flex-direction: row;
   margin-bottom: 1.6rem ;
 }
 
-.upper h2{
+.upperItemsList h2 {
   align-self: center;
   font-size: 4rem;
   font-weight: 900;
   color: var(--color-light-green);
 }
 
-.createItem{
+.createItemItemsList {
   flex: 1;
   display: flex;
   justify-content: flex-end;
 }
 
-.createItemBtn {
+.createItemBtnItemsList {
   background-color: var(--color-light-green);
   color: var(--color-white-text);
   border: 1px solid #e0e0e0;
@@ -50,11 +50,11 @@
   font-size: 2.4rem;
 }
 
-.createItemBtn svg {
+.createItemBtnItemsList svg {
   margin-right: .8rem;
 }
 
-.createItemBtnMobile {
+.createItemBtnMobileItemsList {
   background-color: var(--color-light-green);
   color: var(--color-white-text);
   border: none;
@@ -70,7 +70,7 @@
   right: 2rem;
 }
 
-.createItemBtn:hover{
+.createItemBtnItemsList:hover {
   cursor: pointer;
   background-color: var(--color-lighter-green);
   transition: 0.2s;
@@ -83,16 +83,16 @@ table {
   border-radius: 16px;
 }
 
-thead th:first-child{
+thead th:first-child {
   border-radius: 12px 0 0 0;
   /* padding: 0 .8rem; */
 }
-thead th:last-child{
+thead th:last-child {
   border-radius: 0 12px 0 0;
   /* padding: 0 1.6rem; */
 }
 
-thead th{
+thead th {
   font-weight: 700;
   background-color: var(--color-light-green);
   color: var(--color-white-text);
@@ -135,12 +135,12 @@ tbody td {
   hyphens: auto;
 }
 
-.editItem {
+.editItemItemsList {
   padding: 0;
   height: 3.6rem;
 }
 
-.editButton {
+.editButtonItemsList {
   display: block;
   width: 100%;
   height: 100%;
@@ -148,18 +148,18 @@ tbody td {
   background: none;
 }
 
-.editButton:hover {
+.editButtonItemsList:hover {
   cursor: pointer;
   background-color: var(--color-lighter-green);
   transition: 0.2s;
 }
 
-.editButton:hover svg {
+.editButtonItemsList:hover svg {
   color: var(--color-white-text);
   transition: 0.2s;
 }
 
-.errorMsg {
+.errorMsgItemsList {
   margin-top: 2rem;
   font-weight: 900;
   font-size: 2.4rem;
@@ -169,11 +169,11 @@ tbody td {
   align-items: center;
 }
 
-.errorMsg img {
+.errorMsgItemsList img {
   margin-bottom: 2rem;
 }
 
-.errorMsg button {
+.errorMsgItemsList button {
   width: 100%;
   border: none;
   background-color: transparent;
@@ -187,30 +187,30 @@ tbody td {
   border-radius: 24px;
 }
 
-.errorMsg button:hover{
+.errorMsgItemsList button:hover{
   background-color: var(--color-lighter-gray);
   transition: 0.2s;
 }
 
-.errorMsg button svg {
+.errorMsgItemsList button svg {
   stroke: var(--color-red);
   margin-bottom: 2rem;
 }
 
 @media (min-width: 700px){
-  .content {
+  .contentItemsList {
     padding: 3.2rem 1.6rem;
   }
 
-  .upper{
+  .upperItemsList{
     margin-bottom: 3.2rem;
   }
 
-  .createItemBtn{
+  .createItemBtnItemsList{
     display: flex;
   }
 
-  .createItemBtnMobile{
+  .createItemBtnMobileItemsList{
     display: none;
   }
 
@@ -222,26 +222,26 @@ tbody td {
     border-bottom: none;
   }
 
-  tr:last-child .editItem .editButton {
+  tr:last-child .editItem .editButtonItemsList {
     border-radius: 0 0 12px 0;
   }
 
-  .errorMsg {
+  .errorMsgItemsList {
     flex-direction: row;
     justify-content: space-evenly;
     min-height: 60vh;
   }
 
-  .errorMsg img{
+  .errorMsgItemsList img{
     display: block;
     margin: auto 0;
   }
 
-  .errorMsg button {
+  .errorMsgItemsList button {
     flex-direction: row;
     min-height: 60vh;
   }
-  .errorMsg button svg {
+  .errorMsgItemsList button svg {
     display: block;
     margin: auto 0;
     flex-basis: 10%;
@@ -314,11 +314,11 @@ tbody td {
     border-radius: 0 0 0 12px;
   }
 
-  tr:last-child .editItem .editButton {
+  tr:last-child .editItem .editButtonItemsList {
     border-radius: 0 0 12px 12px;
   }
 
-  .editButton svg {
+  .editButtonItemsList svg {
     margin-left: 50%
   }
 }

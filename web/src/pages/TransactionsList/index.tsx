@@ -58,7 +58,7 @@ const TransactionsList: React.FC = () => {
   }, []);
 
   return (
-    <div className="container">
+    <div className="containerTransactionsList">
       <Header selectedMenu="Movimentações" />
       <CreateTransactionModal
         isOpen={modalOpenCreateTransaction}
@@ -74,21 +74,21 @@ const TransactionsList: React.FC = () => {
         editTransactionId={editTransactionId}
       />
 
-      <div className="wrapper">
-        <div className="content">
-          <div className="upper">
+      <div className="wrapperTransactionsList">
+        <div className="contentTransactionsList">
+          <div className="upperTransactionsList">
             <h2>Movimentações</h2>
-            <div className="createItem">
+            <div className="createItemTransactionsList">
               <button
                 type="button"
-                className="createItemBtn"
+                className="createItemBtnTransactionsList"
                 onClick={toggleCreateTransactionModal}
               >
                 <FiPlus /> Criar nova transação
               </button>
               <button
                 type="button"
-                className="createItemBtnMobile"
+                className="createItemBtnMobileTransactionsList"
                 onClick={toggleCreateTransactionModal}
               >
                 <FiPlus size="40px" />
@@ -142,7 +142,7 @@ const TransactionsList: React.FC = () => {
                 ))}
             </tbody>
           </table>
-          <div className="errorMsg">
+          <div className="errorMsgTransactionsList">
             {loading ? (
               <>
                 <img src={loadingImg} alt="Loading" />

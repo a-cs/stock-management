@@ -49,7 +49,7 @@ const UsersList: React.FC = () => {
   }, []);
 
   return (
-    <div className="container">
+    <div className="containerUsersList">
       <Header selectedMenu="Admin" />
 
       <EditUserPrivilegesModal
@@ -60,9 +60,9 @@ const UsersList: React.FC = () => {
         editUserId={editUserId}
       />
 
-      <div className="wrapper">
-        <div className="content">
-          <div className="upper">
+      <div className="wrapperUsersList">
+        <div className="contentUsersList">
+          <div className="upperUsersList">
             <h2>Usuarios</h2>
           </div>
           {myUser.is_admin ? (
@@ -102,7 +102,7 @@ const UsersList: React.FC = () => {
                         </div>
                       )}
                     </td>
-                    <td data-label="Permitidon">
+                    <td data-label="Permitido">
                       {user.is_allowed ? (
                         <div>
                           <FiCheck
@@ -123,7 +123,7 @@ const UsersList: React.FC = () => {
                     </td>
                     <td data-label="Editar" className="editUser">
                       <button
-                        className="editButton"
+                        className="editUserButton"
                         type="button"
                         onClick={() => {
                           setEditUserId(user.id);
@@ -138,7 +138,7 @@ const UsersList: React.FC = () => {
               </tbody>
             </table>
           ) : (
-            <div className="errorMsg">
+            <div className="errorMsgUsersList">
               <button type="button" onClick={() => history.goBack()}>
                 <FiAlertCircle size="40px" />{' '}
                 <h4>
@@ -149,7 +149,7 @@ const UsersList: React.FC = () => {
             </div>
           )}
 
-          <div className="errorMsg">
+          <div className="errorMsgUsersList">
             {loading ? (
               <>
                 <img src={loadingImg} alt="Loading" />

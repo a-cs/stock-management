@@ -1,4 +1,4 @@
-.container{
+.containerTransactionsList {
   background-color: #f6f5f8;
   width: 100%;
   height: 100%;
@@ -7,38 +7,38 @@
   flex-direction: column;
 }
 
-.wrapper {
+.wrapperTransactionsList {
   width: 100%;
   flex: 1;
 }
 
-.content {
+.contentTransactionsList {
   margin: auto;
   max-width: 1110px;
   padding: 1.6rem 1.6rem;
   height: 100%;
 }
 
-.upper{
+.upperTransactionsList {
   display: flex;
   flex-direction: row;
   margin-bottom: 1.6rem ;
 }
 
-.upper h2{
+.upperTransactionsList h2{
   align-self: center;
   font-size: 4rem;
   font-weight: 900;
   color: var(--color-light-green);
 }
 
-.createItem{
+.createItemTransactionsList {
   flex: 1;
   display: flex;
   justify-content: flex-end;
 }
 
-.createItemBtn {
+.createItemBtnTransactionsList {
   background-color: var(--color-light-green);
   color: var(--color-white-text);
   border: 1px solid #e0e0e0;
@@ -50,11 +50,11 @@
   font-size: 2.4rem;
 }
 
-.createItemBtn svg {
+.createItemBtnTransactionsList svg {
   margin-right: .8rem;
 }
 
-.createItemBtnMobile {
+.createItemBtnMobileTransactionsList {
   background-color: var(--color-light-green);
   color: var(--color-white-text);
   border: none;
@@ -70,7 +70,7 @@
   right: 2rem;
 }
 
-.createItemBtn:hover{
+.createItemBtnTransactionsList:hover{
   cursor: pointer;
   background-color: var(--color-lighter-green);
   transition: 0.2s;
@@ -161,7 +161,7 @@ tbody td {
   transition: 0.2s;
 }
 
-.errorMsg {
+.errorMsgTransactionsList {
   margin-top: 2rem;
   font-weight: 900;
   font-size: 2.4rem;
@@ -171,11 +171,11 @@ tbody td {
   align-items: center;
 }
 
-.errorMsg img {
+.errorMsgTransactionsList img {
   margin-bottom: 2rem;
 }
 
-.errorMsg button {
+.errorMsgTransactionsList button {
   width: 100%;
   border: none;
   background-color: transparent;
@@ -189,30 +189,30 @@ tbody td {
   border-radius: 24px;
 }
 
-.errorMsg button:hover{
+.errorMsgTransactionsList button:hover{
   background-color: var(--color-lighter-gray);
   transition: 0.2s;
 }
 
-.errorMsg button svg {
+.errorMsgTransactionsList button svg {
   stroke: var(--color-red);
   margin-bottom: 2rem;
 }
 
 @media (min-width: 700px){
-  .content {
+  .contentTransactionsList {
     padding: 3.2rem 1.6rem;
   }
 
-  .upper{
+  .upperTransactionsList{
     margin-bottom: 3.2rem;
   }
 
-  .createItemBtn{
+  .createItemBtnTransactionsList{
     display: flex;
   }
 
-  .createItemBtnMobile{
+  .createItemBtnMobileTransactionsList{
     display: none;
   }
 
@@ -228,22 +228,22 @@ tbody td {
     border-radius: 0 0 12px 0;
   }
 
-  .errorMsg {
+  .errorMsgTransactionsList {
     flex-direction: row;
     justify-content: space-evenly;
     min-height: 60vh;
   }
 
-  .errorMsg img{
+  .errorMsgTransactionsList img{
     display: block;
     margin: auto 0;
   }
 
-  .errorMsg button {
+  .errorMsgTransactionsList button {
     flex-direction: row;
     min-height: 60vh;
   }
-  .errorMsg button svg {
+  .errorMsgTransactionsList button svg {
     display: block;
     margin: auto 0;
     flex-basis: 10%;
