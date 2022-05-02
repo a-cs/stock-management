@@ -7,6 +7,8 @@ import { useAuth } from '../../hooks/auth';
 
 import logoIFCE from '../../assets/REITORIA a.png';
 import logoIFCEMobile from '../../assets/REITORIA a mobile.png';
+// import logoLEM from '../../assets/LEM.png';
+// import logoLEM from '../../assets/Logo_LEM2.png';
 
 import './styles.css';
 
@@ -16,7 +18,7 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ selectedMenu }) => {
   let src;
-  if (window.innerWidth < 700) {
+  if (window.innerWidth < 1000) {
     src = logoIFCEMobile;
   } else {
     src = logoIFCE;
@@ -113,18 +115,19 @@ const Header: React.FC<HeaderProps> = ({ selectedMenu }) => {
             <nav>
               <ul>
                 {menuItems.map(menuItem => (
-                  <li
-                    key={menuItem}
-                    className={menuItem === selectedMenu ? 'selectedMenu' : ''}
-                  >
-                    <Link to={`/${menuItem}`}>{menuItem}</Link>
-                  </li>
-                ))}
-                <li key="sair" className="">
-                  <Link to="/" onClick={() => signOut()}>
-                    Sair{' '}
+                  <Link to={`/${menuItem}`} key={menuItem}>
+                    <li
+                      className={
+                        menuItem === selectedMenu ? 'selectedMenu' : ''
+                      }
+                    >
+                      {menuItem}
+                    </li>
                   </Link>
-                </li>
+                ))}
+                <Link to="/" onClick={() => signOut()} key="sair">
+                  <li className="">Sair </li>
+                </Link>
               </ul>
             </nav>
           </div>

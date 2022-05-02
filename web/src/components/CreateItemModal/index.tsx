@@ -54,11 +54,11 @@ const CreateItemModal: React.FC<ModalProps> = ({
 
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
-      <div className="modalContainer" ref={modalRef}>
-        <div className="modalTitle">
+      <div className="modalContainerCreateItemModal" ref={modalRef}>
+        <div className="modalTitleCreateItemModal">
           <h4>Criar novo item</h4>
         </div>
-        <form className="form" onSubmit={handleSubmit}>
+        <form className="formCreateItemModal" onSubmit={handleSubmit}>
           <label htmlFor="name">
             <input
               id="name"
@@ -71,13 +71,17 @@ const CreateItemModal: React.FC<ModalProps> = ({
             <span>Nome</span>
           </label>
           <p>{message}</p>
-          <div className="footer">
-            <button type="submit" id="confirmBtn">
+          <div className="footerCreateItemModal">
+            <button type="submit" id="confirmBtnCreateItemModal">
               <FiCheck /> <div className="space" />
               <div>Confirmar</div>
               <div className="space" />
             </button>
-            <button type="button" onClick={handleOnClose} id="cancelBtn">
+            <button
+              type="button"
+              onClick={handleOnClose}
+              id="cancelBtnCreateItemModal"
+            >
               <FiX />
               <div className="space" />
               <div>Cancelar</div>

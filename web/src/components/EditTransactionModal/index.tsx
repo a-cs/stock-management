@@ -112,19 +112,19 @@ const EditTransactionModal: React.FC<ModalProps> = ({
 
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
-      <div className="modalContainer" ref={modalRef}>
-        <div className="modalTitle">
+      <div className="modalContainerEditTransactionModal" ref={modalRef}>
+        <div className="modalTitleEditTransactionModal">
           <h4>Editar transação com Id {editTransactionId}</h4>
         </div>
         {loading ? (
-          <div className="loading">
+          <div className="loadingEditTransactionModal">
             <img src={loadingImg} alt="Loading" />
             <h4>Loading ...</h4>
           </div>
         ) : (
-          <div className="modalContent">
+          <div className="modalContentEditTransactionModal">
             {errorMsg ? (
-              <div className="modalErrorMsg">
+              <div className="modalErrorMsgEditTransactionModal">
                 <button type="button" onClick={() => window.location.reload()}>
                   <FiAlertCircle size="40px" />{' '}
                   <h4>
@@ -134,9 +134,12 @@ const EditTransactionModal: React.FC<ModalProps> = ({
                 </button>
               </div>
             ) : (
-              <form className="form" onSubmit={handleSubmit}>
+              <form
+                className="formEditTransactionModal"
+                onSubmit={handleSubmit}
+              >
                 <label htmlFor="id">
-                  <h6 className="selectTitle">Nome</h6>
+                  <h6 className="selectTitleEditTransactionModal">Nome</h6>
                   <select
                     id="id"
                     required
@@ -163,7 +166,7 @@ const EditTransactionModal: React.FC<ModalProps> = ({
                   <span>Quantidade</span>
                 </label>
                 <label htmlFor="type">
-                  <h6 className="selectTitle">Tipo</h6>
+                  <h6 className="selectTitleEditTransactionModal">Tipo</h6>
                   <select
                     id="type"
                     required
@@ -175,13 +178,17 @@ const EditTransactionModal: React.FC<ModalProps> = ({
                   </select>
                 </label>
                 <p className={msgSucess ? 'msgSucess' : 'msgFail'}>{message}</p>
-                <div className="footer">
-                  <button type="submit" id="confirmBtn">
+                <div className="footerEditTransactionModal">
+                  <button type="submit" id="confirmBtnEditTransactionModal">
                     <FiCheck /> <div className="space" />
                     <div>Confirmar</div>
                     <div className="space" />
                   </button>
-                  <button type="button" onClick={handleOnClose} id="cancelBtn">
+                  <button
+                    type="button"
+                    onClick={handleOnClose}
+                    id="cancelBtnEditTransactionModal"
+                  >
                     <FiX />
                     <div className="space" />
                     <div>Cancelar</div>

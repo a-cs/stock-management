@@ -1,19 +1,19 @@
 
-.modalContainer {
+.modalContainerCreateItemModal {
   height: 100%;
   display: flex;
   flex-direction: column;
   padding: 10% 0;
 }
 
-.modalTitle {
+.modalTitleCreateItemModal {
   margin: 0 0 2.8rem 0;
   display: inline-block;
   text-align: center;
   font-size: 3.2rem;
 }
 
-.form {
+.formCreateItemModal {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -23,14 +23,14 @@
   text-align: center;
 }
 
-.form label {
+.formCreateItemModal label {
   width: 100%;
   max-width: 350px;
   position:relative;
   display:inline-block;
 }
 
-.form span {
+.formCreateItemModal span {
   position: absolute;
   font-weight: 400;
   font-size: 2.4rem;
@@ -42,7 +42,7 @@
   opacity:0.5;
 }
 
-.form input {
+.formCreateItemModal input {
   width: 100%;
   padding: 1.2rem;
   font-weight: 400;
@@ -54,7 +54,7 @@
   box-shadow: none;
 }
 
-.form input:focus-visible{
+.formCreateItemModal input:focus-visible{
   outline: none;
   border-color: var(--color-dark-blue);
 }
@@ -66,12 +66,12 @@ input:focus + span, input:not(:placeholder-shown) + span {
   font-size: 1.6rem;
 }
 
-.form p {
+.formCreateItemModal p {
   color: red;
   font-size: 2.4rem;
 }
 
-.footer {
+.footerCreateItemModal {
   margin-top: 2.8rem;
   width: 100%;
   display: flex;
@@ -80,7 +80,7 @@ input:focus + span, input:not(:placeholder-shown) + span {
   align-items: center;
 }
 
-.footer button {
+.footerCreateItemModal button {
   width: 94%;
   max-width: 350px;
   display: flex;
@@ -93,17 +93,17 @@ input:focus + span, input:not(:placeholder-shown) + span {
   cursor: pointer;
 }
 
-.footer .space {
+.footerCreateItemModal .space {
   flex-grow: 1;
 }
 
 
-.footer button svg {
+.footerCreateItemModal button svg {
   margin-left: 20px;
   align-self: center;
 }
 
-#confirmBtn {
+#confirmBtnCreateItemModal {
   background-color: var(--color-light-green);
   border: 2px solid var(--color-light-green);
   color: #faffff;
@@ -112,13 +112,13 @@ input:focus + span, input:not(:placeholder-shown) + span {
   margin-bottom: 1.2rem;
 }
 
-#confirmBtn:hover {
+#confirmBtnCreateItemModal:hover {
   background-color: var(--color-lighter-green);
   border-color: var(--color-lighter-green);
   transition: 0.2s;
 }
 
-#cancelBtn {
+#cancelBtnCreateItemModal {
   background-color: transparent;
   color: var(--color-red);
   border: 2px solid var(--color-red);
@@ -126,14 +126,14 @@ input:focus + span, input:not(:placeholder-shown) + span {
   padding: .8rem 1.6rem;
 }
 
-#cancelBtn:hover {
+#cancelBtnCreateItemModal:hover {
   background-color: var(--color-red);
   color: var(--color-white-text);
   transition: 0.2s;
 }
 
 @media (min-width: 700px)  {
-  .footer button {
+  .footerCreateItemModal button {
     width: 70%;
   }
 }

@@ -75,11 +75,11 @@ const EditItemModal: React.FC<EditItemModalProps> = ({
 
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
-      <div className="modalContainer" ref={modalRef}>
-        <div className="modalTitle">
+      <div className="modalContainerEditItemModal" ref={modalRef}>
+        <div className="modalTitleEditItemModal">
           <h4>Editar item com Id {editItemId}</h4>
         </div>
-        <form className="form" onSubmit={handleSubmit}>
+        <form className="formEditItemModal" onSubmit={handleSubmit}>
           <label htmlFor="name">
             <input
               id="name"
@@ -94,7 +94,7 @@ const EditItemModal: React.FC<EditItemModalProps> = ({
           <label htmlFor="minimalStock">
             <input
               id="minimalStock"
-              type="text"
+              type="number"
               placeholder=" "
               required
               value={minimalStock}
@@ -103,13 +103,17 @@ const EditItemModal: React.FC<EditItemModalProps> = ({
             <span>Estoque minimo</span>
           </label>
           <p>{message}</p>
-          <div className="footer">
-            <button type="submit" id="confirmBtn">
+          <div className="footerEditItemModal">
+            <button type="submit" id="confirmBtnEditItemModal">
               <FiCheck /> <div className="space" />
               <div>Confirmar</div>
               <div className="space" />
             </button>
-            <button type="button" onClick={handleOnClose} id="cancelBtn">
+            <button
+              type="button"
+              onClick={handleOnClose}
+              id="cancelBtnEditItemModal"
+            >
               <FiX />
               <div className="space" />
               <div>Cancelar</div>

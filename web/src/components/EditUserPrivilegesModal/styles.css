@@ -1,19 +1,19 @@
 
-.modalContainer {
+.modalContainerEditUserPrivilegesModal {
   height: 100%;
   display: flex;
   flex-direction: column;
   padding: 10% 0;
 }
 
-.modalTitle {
+.modalTitleEditUserPrivilegesModal {
   display: inline-block;
   text-align: center;
   margin: 0 0 2.8rem 0;
   font-size: 3.2rem;
 }
 
-.form {
+.formEditUserPrivilegesModal {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -23,7 +23,7 @@
   text-align: center;
 }
 
-.form label {
+.formEditUserPrivilegesModal label {
   width: 100%;
   max-width: 350px;
   position:relative;
@@ -31,7 +31,7 @@
 }
 
 
-.footer {
+.footerEditUserPrivilegesModal {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -39,7 +39,7 @@
   align-items: center;
 }
 
-.footer button {
+.footerEditUserPrivilegesModal button {
   width: 94%;
   max-width: 350px;
   display: flex;
@@ -52,17 +52,17 @@
   cursor: pointer;
 }
 
-.footer .space {
+.footerEditUserPrivilegesModal .space {
   flex-grow: 1;
 }
 
 
-.footer button svg {
+.footerEditUserPrivilegesModal button svg {
   margin-left: 20px;
   align-self: center;
 }
 
-#confirmBtn {
+#confirmBtnEditUserPrivilegesModal {
   background-color: var(--color-light-green);
   border: 2px solid var(--color-light-green);
   color: #faffff;
@@ -71,13 +71,13 @@
   margin-bottom: 1.2rem;
 }
 
-#confirmBtn:hover {
+#confirmBtnEditUserPrivilegesModal:hover {
   background-color: var(--color-lighter-green);
   border-color: var(--color-lighter-green);
   transition: 0.2s;
 }
 
-#cancelBtn {
+#cancelBtnEditUserPrivilegesModal {
   background-color: transparent;
   color: var(--color-red);
   border: 2px solid var(--color-red);
@@ -85,14 +85,14 @@
   padding: .8rem 1.6rem;
 }
 
-#cancelBtn:hover {
+#cancelBtnEditUserPrivilegesModal:hover {
   background-color: var(--color-red);
   color: var(--color-white-text);
   transition: 0.2s;
 }
 
 @media (min-width: 700px)  {
-  .footer button {
+  .footerEditUserPrivilegesModal button {
     width: 70%;
   }
 }

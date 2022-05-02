@@ -84,11 +84,14 @@ const EditUserPrivilegesModal: React.FC<EditUserPrivilegesModalProps> = ({
 
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
-      <div className="modalContainer" ref={modalRef}>
-        <div className="modalTitle">
-          <h4>Editar privilégios do usuário: {name}</h4>
+      <div className="modalContainerEditUserPrivilegesModal" ref={modalRef}>
+        <div className="modalTitleEditUserPrivilegesModal">
+          <h4>
+            Editar privilégios de:
+            <br /> {name}
+          </h4>
         </div>
-        <form className="form" onSubmit={handleSubmit}>
+        <form className="formEditUserPrivilegesModal" onSubmit={handleSubmit}>
           <ToggleSwitch
             inputName="Admin"
             value={isAdmin}
@@ -100,13 +103,17 @@ const EditUserPrivilegesModal: React.FC<EditUserPrivilegesModalProps> = ({
             setValue={setIsAllowed}
           />
           <p>{message}</p>
-          <div className="footer">
-            <button type="submit" id="confirmBtn">
+          <div className="footerEditUserPrivilegesModal">
+            <button type="submit" id="confirmBtnEditUserPrivilegesModal">
               <FiCheck /> <div className="space" />
               <div>Confirmar</div>
               <div className="space" />
             </button>
-            <button type="button" onClick={handleOnClose} id="cancelBtn">
+            <button
+              type="button"
+              onClick={handleOnClose}
+              id="cancelBtnEditUserPrivilegesModal"
+            >
               <FiX />
               <div className="space" />
               <div>Cancelar</div>

@@ -1,19 +1,19 @@
 
-.modalContainer {
+.modalContainerEditItemModal {
   height: 100%;
   display: flex;
   flex-direction: column;
   padding: 10% 0;
 }
 
-.modalTitle {
+.modalTitleEditItemModal {
   display: inline-block;
   text-align: center;
   margin: 0 0 2.8rem 0;
   font-size: 3.2rem;
 }
 
-.form {
+.formEditItemModal {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -23,14 +23,14 @@
   text-align: center;
 }
 
-.form label {
+.formEditItemModal label {
   width: 100%;
   max-width: 350px;
   position:relative;
   display:inline-block;
 }
 
-.form span {
+.formEditItemModal span {
   position: absolute;
   font-weight: 400;
   font-size: 2.4rem;
@@ -42,7 +42,7 @@
   opacity:0.5;
 }
 
-.form input {
+.formEditItemModal input {
   width: 100%;
   padding: 1.2rem;
   font-weight: 400;
@@ -54,7 +54,7 @@
   box-shadow: none;
 }
 
-.form input:focus-visible{
+.formEditItemModal input:focus-visible{
   outline: none;
   border-color: var(--color-dark-blue);
 }
@@ -66,7 +66,7 @@ input:focus + span, input:not(:placeholder-shown) + span {
   font-size: 1.6rem;
 }
 
-.footer {
+.footerEditItemModal {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -74,7 +74,7 @@ input:focus + span, input:not(:placeholder-shown) + span {
   align-items: center;
 }
 
-.footer button {
+.footerEditItemModal button {
   width: 94%;
   max-width: 350px;
   display: flex;
@@ -87,17 +87,17 @@ input:focus + span, input:not(:placeholder-shown) + span {
   cursor: pointer;
 }
 
-.footer .space {
+.footerEditItemModal .space {
   flex-grow: 1;
 }
 
 
-.footer button svg {
+.footerEditItemModal button svg {
   margin-left: 20px;
   align-self: center;
 }
 
-#confirmBtn {
+#confirmBtnEditItemModal {
   background-color: var(--color-light-green);
   border: 2px solid var(--color-light-green);
   color: #faffff;
@@ -106,13 +106,13 @@ input:focus + span, input:not(:placeholder-shown) + span {
   margin-bottom: 1.2rem;
 }
 
-#confirmBtn:hover {
+#confirmBtnEditItemModal:hover {
   background-color: var(--color-lighter-green);
   border-color: var(--color-lighter-green);
   transition: 0.2s;
 }
 
-#cancelBtn {
+#cancelBtnEditItemModal {
   background-color: transparent;
   color: var(--color-red);
   border: 2px solid var(--color-red);
@@ -120,14 +120,14 @@ input:focus + span, input:not(:placeholder-shown) + span {
   padding: .8rem 1.6rem;
 }
 
-#cancelBtn:hover {
+#cancelBtnEditItemModal:hover {
   background-color: var(--color-red);
   color: var(--color-white-text);
   transition: 0.2s;
 }
 
 @media (min-width: 700px)  {
-  .footer button {
+  .footerEditItemModal button {
     width: 70%;
   }
 }
