@@ -11,9 +11,15 @@ import loadingImg from '../../assets/loading1.gif';
 
 import './styles.css';
 
+interface Category {
+  id: string;
+  name: string;
+}
+
 interface Item {
   id: string;
   name: string;
+  category: Category;
   minimal_stock_alarm: string;
   total_stock: string;
 }
@@ -91,6 +97,7 @@ const ItemsList: React.FC = () => {
               <tr>
                 <th>Id</th>
                 <th>Nome</th>
+                <th>Categoria</th>
                 <th>Estoque mínimo</th>
                 <th>Estoque total</th>
                 <th>Editar</th>
@@ -105,6 +112,7 @@ const ItemsList: React.FC = () => {
                       {Number(item.id).toLocaleString('pt-BR')}
                     </td>
                     <td data-label="Nome">{item.name}</td>
+                    <td data-label="Categoria">{item.category.name}</td>
                     <td data-label="Estoque mínimo">
                       {Number(item.minimal_stock_alarm).toLocaleString(
                         'pt-BR',

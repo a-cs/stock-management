@@ -7,9 +7,15 @@ import Modal from '../Modal';
 
 import './styles.css';
 
+interface Category {
+  id: string;
+  name: string;
+}
+
 interface Item {
   id: string;
   name: string;
+  category: Category;
   minimal_stock_alarm: string;
   total_stock: string;
 }
