@@ -31,6 +31,7 @@ const Header: React.FC<HeaderProps> = ({ selectedMenu }) => {
   if (user.is_allowed) {
     menuItems.push('Estoque');
     menuItems.push('Movimentações');
+    menuItems.push('Categorias');
   }
 
   if (user.is_allowed && user.is_admin) {
