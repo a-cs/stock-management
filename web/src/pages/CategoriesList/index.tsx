@@ -3,7 +3,7 @@ import { FiPlus, FiEdit, FiAlertCircle } from 'react-icons/fi';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import CreateCategoryModal from '../../components/CreateCategoryModal';
-// import EditCategoryModal from '../../components/EditCategoryModal';
+import EditCategoryModal from '../../components/EditCategoryModal';
 
 import api from '../../services/api';
 
@@ -55,13 +55,13 @@ const CategoriesList: React.FC = () => {
         categories={categories}
         setCategories={setCategories}
       />
-      {/* <EditCategoryModal
+      <EditCategoryModal
         isOpen={modalOpenEditCategory}
         setIsOpen={toggleEditCategoryModal}
         categories={categories}
         setCategories={setCategories}
         editCategoryId={editCategoryId}
-      /> */}
+      />
 
       <div className="wrapperCategoriesList">
         <div className="contentCategoriesList">
@@ -101,10 +101,7 @@ const CategoriesList: React.FC = () => {
                       {Number(category.id).toLocaleString('pt-BR')}
                     </td>
                     <td data-label="Nome">{category.name}</td>
-                    <td
-                      data-label="Editar"
-                      className="editCategoryCategoriesList"
-                    >
+                    <td data-label="Editar" className="editCategoriesList">
                       <button
                         className="editButtonCategoriesList"
                         type="button"

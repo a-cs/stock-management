@@ -197,6 +197,11 @@ tbody td {
   margin-bottom: 2rem;
 }
 
+.LowStock {
+  background-color: var(--color-red) !important;
+  color: #fff !important;
+}
+
 @media (min-width: 700px){
   .contentItemsList {
     padding: 3.2rem 1.6rem;

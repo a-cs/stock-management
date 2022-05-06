@@ -107,7 +107,14 @@ const ItemsList: React.FC = () => {
               {items
                 // .sort((a, b) => Number(a.id) - Number(b.id))
                 .map((item: Item) => (
-                  <tr key={item.id}>
+                  <tr
+                    key={item.id}
+                    className={
+                      item.total_stock < item.minimal_stock_alarm
+                        ? 'LowStock'
+                        : ''
+                    }
+                  >
                     <td data-label="Id">
                       {Number(item.id).toLocaleString('pt-BR')}
                     </td>

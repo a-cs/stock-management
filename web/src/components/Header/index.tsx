@@ -30,8 +30,8 @@ const Header: React.FC<HeaderProps> = ({ selectedMenu }) => {
 
   if (user.is_allowed) {
     menuItems.push('Estoque');
-    menuItems.push('Movimentações');
     menuItems.push('Categorias');
+    menuItems.push('Movimentações');
   }
 
   if (user.is_allowed && user.is_admin) {
@@ -77,7 +77,6 @@ const Header: React.FC<HeaderProps> = ({ selectedMenu }) => {
           <source srcSet={logoIFCEMobile} media="(max-width: 700px)" />
           <img src={src} alt="Logo IFCE" />
         </picture>
-
         <div className="menu">
           <button type="button" className="userInfo" onClick={() => signOut()}>
             <FiUser size="20px" strokeWidth="3" />
