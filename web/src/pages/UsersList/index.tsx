@@ -66,7 +66,7 @@ const UsersList: React.FC = () => {
             <h2>Usuarios</h2>
           </div>
           {myUser.is_admin ? (
-            <table>
+            <table className="tableUsersList">
               <thead>
                 <tr>
                   <th>Id</th>

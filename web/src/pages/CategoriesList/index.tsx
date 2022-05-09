@@ -84,7 +84,7 @@ const CategoriesList: React.FC = () => {
               </button>
             </div>
           </div>
-          <table>
+          <table className="tableCategoriesList">
             <thead>
               <tr>
                 <th>Id</th>

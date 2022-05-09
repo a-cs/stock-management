@@ -92,7 +92,7 @@ const ItemsList: React.FC = () => {
               </button>
             </div>
           </div>
-          <table>
+          <table className="tableItemsList">
             <thead>
               <tr>
                 <th>Id</th>

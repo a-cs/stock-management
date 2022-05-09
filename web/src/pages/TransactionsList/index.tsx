@@ -95,7 +95,7 @@ const TransactionsList: React.FC = () => {
               </button>
             </div>
           </div>
-          <table>
+          <table className="tableTransactionsList">
             <thead>
               <tr>
                 <th>Id</th>
