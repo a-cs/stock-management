@@ -9,25 +9,41 @@
   display: flex;
   margin: auto;
   max-width: 1110px;
+  height: 10.5rem;
 }
-.headerContent picture{
-  margin: auto;
+.logo {
+  margin: auto 1.6rem;
 }
 
-.headerContent img{
-  margin: 0 1.6rem;
+.logo img{
+  margin-bottom: 0.4rem;
   height: 60px;
+}
+
+.logo h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-align: center;
 }
 
 .menu {
   width: 100%;
+  height: 100%;
   display: none;
   justify-content: flex-end;
   align-items: flex-end;
 }
 
+.menuContent{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-end;
+}
+
 .userInfo {
-  font-size: 2.0rem;
+  font-size: 2.8rem;
   font-weight: 700;
   color: var(--color-text);
   background-color: transparent;
@@ -74,7 +90,7 @@
 .menuIconBtn {
   position: absolute;
   right: 3rem;
-  top: 30px;
+  top: 50px;
   cursor: pointer;
   border: none;
   background-color: var(--color-lighter-gray);
@@ -85,7 +101,7 @@
   z-index: 2;
   background-color: var(--color-lighter-gray);
   right: 0;
-  top: 100px;
+  top: 150px;
   padding: 1.2rem 1.6rem;
   border-radius: 0 0 0 12px;
   height: 100%;
@@ -101,18 +117,28 @@
 .menuMobile ul li {
   font-size: 3.2rem;
   font-weight: 700;
-  padding: 2rem 0;
+  padding-top: 3.2rem;
   text-align: center;
 }
 
 
 
 
-@media (min-width: 700px)  {
+@media (min-width: 1000px)  {
 
   .menu {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .logo img{
+    margin-bottom: 0.4rem;
+    height: 80px;
+  }
+
+  .logo h2 {
+    font-size: 1.6rem;
   }
 
   .userInfo{

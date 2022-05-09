@@ -5,10 +5,7 @@ import { FiMenu, FiUser, FiX } from 'react-icons/fi';
 
 import { useAuth } from '../../hooks/auth';
 
-import logoIFCE from '../../assets/REITORIA a.png';
-import logoIFCEMobile from '../../assets/REITORIA a mobile.png';
-// import logoLEM from '../../assets/LEM.png';
-// import logoLEM from '../../assets/Logo_LEM2.png';
+import logoIFCE from '../../assets/logo_ifce_fortaleza.png';
 
 import './styles.css';
 
@@ -17,13 +14,6 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ selectedMenu }) => {
-  let src;
-  if (window.innerWidth < 1000) {
-    src = logoIFCEMobile;
-  } else {
-    src = logoIFCE;
-  }
-
   const { user, signOut } = useAuth();
 
   const menuItems = [];
@@ -73,13 +63,13 @@ const Header: React.FC<HeaderProps> = ({ selectedMenu }) => {
   return (
     <header className="headerContainer">
       <div className="headerContent">
-        <picture>
-          <source srcSet={logoIFCEMobile} media="(max-width: 700px)" />
-          <img src={src} alt="Logo IFCE" />
-        </picture>
+        <div className="logo">
+          <img src={logoIFCE} alt="Logo IFCE" />
+          <h2>Laboratório de Ensaios Mecânicos</h2>
+        </div>
         <div className="menu">
           <button type="button" className="userInfo" onClick={() => signOut()}>
-            <FiUser size="20px" strokeWidth="3" />
+            <FiUser size="28px" strokeWidth="3" />
             <h3>{user.name}</h3>
           </button>
           <nav>
@@ -109,7 +99,7 @@ const Header: React.FC<HeaderProps> = ({ selectedMenu }) => {
         {menuOpen && (
           <div className="menuMobile" ref={menuMobile}>
             <div className="userInfo">
-              <FiUser size="20px" strokeWidth="3" />
+              <FiUser size="28px" strokeWidth="3" />
               <h3>{user.name}</h3>
             </div>
             <nav>
