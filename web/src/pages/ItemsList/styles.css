@@ -131,18 +131,20 @@
 }
 
 .LowStock td {
-  color: #fff !important;
+  color: #fff;
 }
 
 .LowStock .editButtonItemsList{
-  color: #fff !important;
+  color: #fff;
 }
 
 .LowStock .editButtonItemsList:hover{
-  background-color: red;
+  background-color: rgb(240, 240, 245);
 }
 
-
+.LowStock .editButtonItemsList:hover svg{
+  color: var(--color-red);
+}
 
 .tableItemsList tbody .tableItemsList td {
   overflow-wrap: break-word;
