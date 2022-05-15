@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import {celebrate, Segments, Joi} from 'celebrate';
 
 import AuthenticateUserService from '../services/AuthenticateUserService';
 
@@ -10,7 +11,12 @@ interface TmpUser {
 
 const sessionsRouter = Router();
 
-sessionsRouter.post('/', async (request, response) => {
+sessionsRouter.post('/',celebrate({
+    [Segments.BODY]: {
+      email: Joi.string().email().required(),
+      password: Joi.string().required(),
+    },
+  }), async (request, response) => {
     const { email, password } = request.body;
 
     const authenticateUserService = new AuthenticateUserService()

@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import {celebrate, Segments, Joi} from 'celebrate';
 import { getRepository } from 'typeorm';
 
 import CreateUserService from '../services/CreateUserService';
@@ -18,7 +19,13 @@ interface TmpUser {
 
 const usersRouter = Router();
 
-usersRouter.post('/', async (request, response) => {
+usersRouter.post('/', celebrate({
+    [Segments.BODY]: {
+        name: Joi.string().required(),
+        email: Joi.string().email().required(),
+        password: Joi.string().min(6).required(),
+    }
+}), async (request, response) => {
     const { name, email, password } = request.body;
 
     const createUser = new CreateUserService();
