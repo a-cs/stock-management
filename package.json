@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "bcryptjs": "^2.4.3",
     "celebrate": "^15.0.1"
   },
   "devDependencies": {
