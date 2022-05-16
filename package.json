@@ -1,5 +1,7 @@
 {
   "scripts": {
-    "start": "node backend/dist/server.js"
+    "start": "node backend/dist/server.js",
+	"heroku-prebuild": "cd backend",
+	"build": "tsc"
   }
 }
