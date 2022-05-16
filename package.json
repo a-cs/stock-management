@@ -1,7 +1,7 @@
 {
   "scripts": {
     "start": "node backend/dist/server.js",
-	"heroku-prebuild": "cd backend && npm typeorm migration:run",
-	"build": "cd backend && npm build"
+	"heroku-prebuild": "cd backend && npm run typeorm migration:run",
+	"build": "cd backend && npm run build"
   }
 }
