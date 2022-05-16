@@ -1,2 +1,2 @@
-release: cd backend && npx build && npx typeorm migration:run
-web: cd backend && npx start
+release: cd backend && npm build && npm typeorm migration:run
+web: npm start
