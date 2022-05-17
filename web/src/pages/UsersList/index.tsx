@@ -21,12 +21,15 @@ interface User {
 
 const UsersList: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
+  // const [myUser, setMyUser] = useState<User>();
   const [editUserId, setEditUserId] = useState('0');
   const [modalOpenEditUser, setModalOpenEditUser] = useState(false);
   const [errorMsg, setErrorMsg] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const { user: myUser } = useAuth();
+  const {
+    user: { id },
+  } = useAuth();
   function toggleEditUserModal(): void {
     setModalOpenEditUser(!modalOpenEditUser);
   }
@@ -48,6 +51,8 @@ const UsersList: React.FC = () => {
       });
   }, []);
 
+  const myUser = users.filter(userItem => userItem.id === id)[0];
+
   return (
     <div className="containerUsersList">
       <Header selectedMenu="Admin" />
@@ -65,91 +70,7 @@ const UsersList: React.FC = () => {
           <div className="upperUsersList">
             <h2>Usuarios</h2>
           </div>
-          {myUser.is_admin ? (
-            <table className="tableUsersList">
-              <thead>
-                <tr>
-                  <th>Id</th>
-                  <th>Nome</th>
-                  <th>Admin</th>
-                  <th>Permitido</th>
-                  <th>Editar</th>
-                </tr>
-              </thead>
-              <tbody>
-                {users.map((user: User) => (
-                  <tr key={user.id}>
-                    <td data-label="Id">
-                      {Number(user.id).toLocaleString('pt-BR')}
-                    </td>
-                    <td data-label="Nome">{user.name}</td>
-                    <td data-label="Admin">
-                      {user.is_admin ? (
-                        <div>
-                          <FiCheck
-                            size="20px"
-                            strokeWidth="5"
-                            color="var(--color-light-green)"
-                          />
-                        </div>
-                      ) : (
-                        <div>
-                          <FiX
-                            size="20px"
-                            strokeWidth="5"
-                            color="var(--color-red)"
-                          />
-                        </div>
-                      )}
-                    </td>
-                    <td data-label="Permitido">
-                      {user.is_allowed ? (
-                        <div>
-                          <FiCheck
-                            size="20px"
-                            strokeWidth="5"
-                            color="var(--color-light-green)"
-                          />
-                        </div>
-                      ) : (
-                        <div>
-                          <FiX
-                            size="20px"
-                            strokeWidth="5"
-                            color="var(--color-red)"
-                          />
-                        </div>
-                      )}
-                    </td>
-                    <td data-label="Editar" className="editUser">
-                      <button
-                        className="editUserButton"
-                        type="button"
-                        onClick={() => {
-                          setEditUserId(user.id);
-                          toggleEditUserModal();
-                        }}
-                      >
-                        <FiEdit size="20px" strokeWidth="2" />
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          ) : (
-            <div className="errorMsgUsersList">
-              <button type="button" onClick={() => history.goBack()}>
-                <FiAlertCircle size="40px" />{' '}
-                <h4>
-                  Você não tem permissão de acessar essa página, entre em
-                  contato com um administrador
-                </h4>
-              </button>
-            </div>
-          )}
-
-          <div className="errorMsgUsersList">
+          <div className="errorMsgUsersList" id={!loading ? 'notVisible' : ''}>
             {loading ? (
               <>
                 <img src={loadingImg} alt="Loading" />
@@ -170,6 +91,95 @@ const UsersList: React.FC = () => {
               <div />
             )}
           </div>
+          {!loading ? (
+            <div id={loading ? 'notVisible' : ''}>
+              {myUser?.is_admin ? (
+                <table className="tableUsersList">
+                  <thead>
+                    <tr>
+                      <th>Id</th>
+                      <th>Nome</th>
+                      <th>Admin</th>
+                      <th>Permitido</th>
+                      <th>Editar</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {users.map((user: User) => (
+                      <tr key={user.id}>
+                        <td data-label="Id">
+                          {Number(user.id).toLocaleString('pt-BR')}
+                        </td>
+                        <td data-label="Nome">{user.name}</td>
+                        <td data-label="Admin">
+                          {user.is_admin ? (
+                            <div>
+                              <FiCheck
+                                size="20px"
+                                strokeWidth="5"
+                                color="var(--color-light-green)"
+                              />
+                            </div>
+                          ) : (
+                            <div>
+                              <FiX
+                                size="20px"
+                                strokeWidth="5"
+                                color="var(--color-red)"
+                              />
+                            </div>
+                          )}
+                        </td>
+                        <td data-label="Permitido">
+                          {user.is_allowed ? (
+                            <div>
+                              <FiCheck
+                                size="20px"
+                                strokeWidth="5"
+                                color="var(--color-light-green)"
+                              />
+                            </div>
+                          ) : (
+                            <div>
+                              <FiX
+                                size="20px"
+                                strokeWidth="5"
+                                color="var(--color-red)"
+                              />
+                            </div>
+                          )}
+                        </td>
+                        <td data-label="Editar" className="editUser">
+                          <button
+                            className="editUserButton"
+                            type="button"
+                            onClick={() => {
+                              setEditUserId(user.id);
+                              toggleEditUserModal();
+                            }}
+                          >
+                            <FiEdit size="20px" strokeWidth="2" />
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              ) : (
+                <div className="errorMsgUsersList">
+                  <button type="button" onClick={() => history.goBack()}>
+                    <FiAlertCircle size="40px" />{' '}
+                    <h4>
+                      Você não tem permissão de acessar essa página, entre em
+                      contato com um administrador
+                    </h4>
+                  </button>
+                </div>
+              )}
+            </div>
+          ) : (
+            <div />
+          )}
         </div>
       </div>
       <Footer />

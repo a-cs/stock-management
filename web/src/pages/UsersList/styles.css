@@ -169,6 +169,10 @@
   align-items: center;
 }
 
+#notVisible {
+  display: none;
+}
+
 .errorMsgUsersList img {
   margin-bottom: 2rem;
 }

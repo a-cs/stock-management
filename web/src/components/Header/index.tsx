@@ -2,29 +2,56 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiMenu, FiUser, FiX } from 'react-icons/fi';
+import { isEqual } from 'lodash';
 
 import { useAuth } from '../../hooks/auth';
 
 import logoIFCE from '../../assets/logo_ifce_fortaleza.png';
 
 import './styles.css';
+import api from '../../services/api';
+
+interface User {
+  id: string;
+  name: string;
+  email: string;
+  is_admin: boolean;
+  is_allowed: boolean;
+}
 
 interface HeaderProps {
   selectedMenu: string;
 }
 
 const Header: React.FC<HeaderProps> = ({ selectedMenu }) => {
-  const { user, signOut } = useAuth();
+  const { signOut } = useAuth();
+  const user = JSON.parse(localStorage.getItem('@EstoqueLEM:user') as any);
+  const [newUser, setNewUser] = useState<User>();
+  const menuItems = [''];
 
-  const menuItems = [];
+  useEffect(() => {
+    api.get('/users/me').then(response => {
+      setNewUser(response.data[0]);
+    });
+  }, []);
 
-  if (user.is_allowed) {
+  if (newUser && user && !isEqual(newUser, user)) {
+    localStorage.setItem('@EstoqueLEM:user', JSON.stringify(newUser));
+  }
+
+  useEffect(() => {
+    api.get('/users/me').then(response => {
+      setNewUser(response.data[0]);
+    });
+  }, []);
+
+  if (user?.is_allowed) {
     menuItems.push('Estoque');
     menuItems.push('Categorias');
     menuItems.push('Movimentações');
   }
 
-  if (user.is_allowed && user.is_admin) {
+  if (user?.is_allowed && user?.is_admin) {
     menuItems.push('Admin');
   }
 
@@ -70,7 +97,7 @@ const Header: React.FC<HeaderProps> = ({ selectedMenu }) => {
         <div className="menu">
           <button type="button" className="userInfo" onClick={() => signOut()}>
             <FiUser size="28px" strokeWidth="3" />
-            <h3>{user.name}</h3>
+            <h3>{user?.name}</h3>
           </button>
           <nav>
             <ul>
@@ -100,7 +127,7 @@ const Header: React.FC<HeaderProps> = ({ selectedMenu }) => {
           <div className="menuMobile" ref={menuMobile}>
             <div className="userInfo">
               <FiUser size="28px" strokeWidth="3" />
-              <h3>{user.name}</h3>
+              <h3>{user?.name}</h3>
             </div>
             <nav>
               <ul>

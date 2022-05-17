@@ -3,10 +3,13 @@ import React, { createContext, useState, useContext } from 'react';
 import api from '../services/api';
 
 interface User {
+  id: string;
   name: string;
   email: string;
   is_admin: boolean;
   is_allowed: boolean;
+  created_at?: Date;
+  updated_at?: Date;
 }
 
 interface AuthState {
@@ -48,7 +51,10 @@ export const AuthProvider: React.FC = ({ children }) => {
       password,
     });
 
-    const { token, user } = response.data;
+    const { token, user }: { token: string; user: User } = response.data;
+
+    delete user.created_at;
+    delete user.updated_at;
 
     localStorage.setItem('@EstoqueLEM:token', token);
     localStorage.setItem('@EstoqueLEM:user', JSON.stringify(user));
