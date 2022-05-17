@@ -74,4 +74,24 @@ usersRouter.get('/',ensureAuthenticated, ensureIsAllowed, ensureIsAdmin, async (
     return response.json(users);
 });
 
+usersRouter.get('/me',ensureAuthenticated, ensureIsAllowed, async (request, response) => {
+    const { id } = request.user;
+    const usersRepository = getRepository(User);
+    const user = await usersRepository.find({
+        select: [
+        "id",
+        "name",
+        "email",
+        "is_admin",
+        "is_allowed"
+        ],
+        where: {
+            id: id,
+        },
+    });
+    console.log(user)
+
+    return response.json(user);
+});
+
 export default usersRouter;
