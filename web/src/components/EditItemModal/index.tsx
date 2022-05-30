@@ -47,30 +47,32 @@ const EditItemModal: React.FC<EditItemModalProps> = ({
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (editItemId !== '0') {
-      setLoading(true);
-      setErrorMsg(false);
-      api
-        .get('/categories')
-        .then(response => {
-          setCategories(response.data);
-          setLoading(false);
-        })
-        .catch(() => {
-          setErrorMsg(true);
-          setLoading(false);
-        });
-      const editItem = items.filter(item => item.id === editItemId)[0];
-      setName(editItem.name);
-      setMinimalStock(editItem.minimal_stock_alarm);
-      setCategoryId(editItem.category.id);
+    if (isOpen === true) {
+      if (editItemId !== '0') {
+        setLoading(true);
+        setErrorMsg(false);
+        api
+          .get('/categories')
+          .then(response => {
+            setCategories(response.data);
+            setLoading(false);
+          })
+          .catch(() => {
+            setErrorMsg(true);
+            setLoading(false);
+          });
+        const editItem = items.filter(item => item.id === editItemId)[0];
+        setName(editItem.name);
+        setMinimalStock(editItem.minimal_stock_alarm);
+        setCategoryId(editItem.category.id);
+      }
     }
     return () => {
       setMessage('');
       setName('');
       setMinimalStock('');
     };
-  }, [items, editItemId]);
+  }, [items, editItemId, isOpen]);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();

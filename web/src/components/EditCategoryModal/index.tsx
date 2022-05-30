@@ -31,17 +31,19 @@ const EditCategoryModal: React.FC<EditCategoryModalProps> = ({
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    if (editCategoryId !== '0') {
-      const editCategory = categories.filter(
-        category => category.id === editCategoryId,
-      )[0];
-      setName(editCategory.name);
+    if (isOpen === true) {
+      if (editCategoryId !== '0') {
+        const editCategory = categories.filter(
+          category => category.id === editCategoryId,
+        )[0];
+        setName(editCategory.name);
+      }
     }
     return () => {
       setMessage('');
       setName('');
     };
-  }, [categories, editCategoryId]);
+  }, [categories, editCategoryId, isOpen]);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();

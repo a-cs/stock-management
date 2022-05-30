@@ -36,11 +36,13 @@ const EditUserPrivilegesModal: React.FC<EditUserPrivilegesModalProps> = ({
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    if (editUserId !== '0') {
-      const editUser = users.filter(user => user.id === editUserId)[0];
-      setName(editUser.name);
-      setIsAllowed(editUser.is_allowed);
-      setIsAdmin(editUser.is_admin);
+    if (isOpen === true) {
+      if (editUserId !== '0') {
+        const editUser = users.filter(user => user.id === editUserId)[0];
+        setName(editUser.name);
+        setIsAllowed(editUser.is_allowed);
+        setIsAdmin(editUser.is_admin);
+      }
     }
     return () => {
       setMessage('');
@@ -48,7 +50,7 @@ const EditUserPrivilegesModal: React.FC<EditUserPrivilegesModalProps> = ({
       setIsAllowed(false);
       setIsAdmin(false);
     };
-  }, [users, editUserId]);
+  }, [users, editUserId, isOpen]);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
