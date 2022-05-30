@@ -129,7 +129,10 @@ const Header: React.FC<HeaderProps> = ({ selectedMenu }) => {
             <nav>
               <ul>
                 {menuItems.map(menuItem => (
-                  <Link to={`/${menuItem}`} key={menuItem}>
+                  <Link
+                    to={`/${menuItem.replace(/ç/g, 'c').replace(/õ/g, 'o')}`}
+                    key={menuItem}
+                  >
                     <li
                       className={
                         menuItem === selectedMenu ? 'selectedMenu' : ''
