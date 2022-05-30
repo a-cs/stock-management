@@ -89,7 +89,6 @@ usersRouter.get('/me',ensureAuthenticated, ensureIsAllowed, async (request, resp
             id: id,
         },
     });
-    console.log(user)
 
     return response.json(user);
 });
