@@ -38,13 +38,6 @@ const Header: React.FC<HeaderProps> = ({ selectedMenu }) => {
   if (newUser && user && !isEqual(newUser, user)) {
     localStorage.setItem('@EstoqueLEM:user', JSON.stringify(newUser));
   }
-
-  useEffect(() => {
-    api.get('/users/me').then(response => {
-      setNewUser(response.data[0]);
-    });
-  }, []);
-
   if (user?.is_allowed) {
     menuItems.push('Estoque');
     menuItems.push('Categorias');
@@ -97,7 +90,7 @@ const Header: React.FC<HeaderProps> = ({ selectedMenu }) => {
         <div className="menu">
           <button type="button" className="userInfo" onClick={() => signOut()}>
             <FiUser size="28px" strokeWidth="3" />
-            <h3>{user?.name}</h3>
+            <h3>{user?.name || 'Usuário'}</h3>
           </button>
           <nav>
             <ul>
@@ -106,12 +99,16 @@ const Header: React.FC<HeaderProps> = ({ selectedMenu }) => {
                   key={menuItem}
                   className={menuItem === selectedMenu ? 'selectedMenu' : ''}
                 >
-                  <Link to={`/${menuItem}`}>{menuItem}</Link>
+                  <Link
+                    to={`/${menuItem.replace(/ç/g, 'c').replace(/õ/g, 'o')}`}
+                  >
+                    {menuItem}
+                  </Link>
                 </li>
               ))}
               <li key="sair" className="">
                 <Link to="/" onClick={() => signOut()}>
-                  Sair{' '}
+                  Sair
                 </Link>
               </li>
             </ul>

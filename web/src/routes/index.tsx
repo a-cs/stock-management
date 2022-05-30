@@ -15,7 +15,7 @@ const Routes: React.FC = () => (
     <Route path="/Criar-conta" component={SignUp} />
     <Route path="/Estoque" component={ItemsList} isPrivate />
     <Route path="/Categorias" component={CategoriesList} isPrivate />
-    <Route path="/Movimentações" component={TransactionsList} isPrivate />
+    <Route path="/Movimentacoes" component={TransactionsList} isPrivate />
     <Route path="/Admin" component={UsersList} isPrivate />
   </Switch>
 );
