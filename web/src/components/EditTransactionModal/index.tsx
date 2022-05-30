@@ -158,7 +158,8 @@ const EditTransactionModal: React.FC<ModalProps> = ({
                     id="item_quantity"
                     type="number"
                     placeholder=" "
-                    min="1"
+                    step="0.001"
+                    min="0.001"
                     required
                     value={quantity}
                     onChange={e => setQuantity(e.target.value)}

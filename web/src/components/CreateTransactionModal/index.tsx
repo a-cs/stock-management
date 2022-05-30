@@ -50,6 +50,7 @@ const CreateTransactionModal: React.FC<ModalProps> = ({
       setLoading(true);
       setErrorMsg(false);
       setQuantity('0');
+      setType('in');
       api
         .get('/items')
         .then(response => {
@@ -136,7 +137,8 @@ const CreateTransactionModal: React.FC<ModalProps> = ({
                     id="item_quantity"
                     type="number"
                     placeholder=" "
-                    min="1"
+                    step="0.001"
+                    min="0.001"
                     required
                     value={quantity}
                     onChange={e => setQuantity(e.target.value)}
