@@ -46,6 +46,7 @@ const CreateItemModal: React.FC<ModalProps> = ({
   useEffect(() => {
     if (isOpen === true) {
       setLoading(true);
+      setName('');
       setErrorMsg(false);
       api
         .get('/categories')
@@ -79,7 +80,6 @@ const CreateItemModal: React.FC<ModalProps> = ({
 
   const handleOnClose = () => {
     setMessage('');
-    setName('');
     setIsOpen();
   };
 

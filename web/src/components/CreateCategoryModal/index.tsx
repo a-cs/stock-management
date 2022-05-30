@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { FiCheck, FiX } from 'react-icons/fi';
 import api from '../../services/api';
 
@@ -28,6 +28,12 @@ const CreateCategoryModal: React.FC<ModalProps> = ({
   const [name, setName] = useState('');
   const [message, setMessage] = useState('');
   const [msgSucess, setmsgSucess] = useState(false);
+
+  useEffect(() => {
+    if (isOpen === true) {
+      setName('');
+    }
+  }, [isOpen]);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();

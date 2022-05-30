@@ -49,6 +49,7 @@ const CreateTransactionModal: React.FC<ModalProps> = ({
     if (isOpen === true) {
       setLoading(true);
       setErrorMsg(false);
+      setQuantity('0');
       api
         .get('/items')
         .then(response => {
