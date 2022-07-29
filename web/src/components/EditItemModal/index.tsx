@@ -74,6 +74,15 @@ const EditItemModal: React.FC<EditItemModalProps> = ({
     };
   }, [items, editItemId, isOpen]);
 
+  const handleOnClose = () => {
+    setMessage('');
+    setmsgSucess(false);
+    setName('');
+    setMinimalStock('');
+    setCategoryId('0');
+    setIsOpen();
+  };
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     const updatedItem = {
@@ -88,25 +97,11 @@ const EditItemModal: React.FC<EditItemModalProps> = ({
         item.id === editItemId ? data : item,
       );
       setItems(updatedItems);
-      setmsgSucess(true);
-      setMessage(`O item com Id ${editItemId} foi alterado com sucesso!`);
-      // setName('');
-      // setMinimalStock('');
-      // setCategoryId('0');
-      // setIsOpen();
+      handleOnClose();
     } catch (error: any) {
       setmsgSucess(false);
       setMessage(error.response.data.message);
     }
-  };
-
-  const handleOnClose = () => {
-    setMessage('');
-    setmsgSucess(false);
-    setName('');
-    setMinimalStock('');
-    setCategoryId('0');
-    setIsOpen();
   };
 
   const modalRef = useRef(null);

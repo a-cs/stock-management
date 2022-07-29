@@ -45,6 +45,12 @@ const EditCategoryModal: React.FC<EditCategoryModalProps> = ({
     };
   }, [categories, editCategoryId, isOpen]);
 
+  const handleOnClose = () => {
+    setMessage('');
+    setName('');
+    setIsOpen();
+  };
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     const updatedCategory = { name };
@@ -58,20 +64,10 @@ const EditCategoryModal: React.FC<EditCategoryModalProps> = ({
         category.id === editCategoryId ? data : category,
       );
       setCategories(updatedCategories);
-      setMessage(
-        `O category com Id ${editCategoryId} foi alterado com sucesso!`,
-      );
-      setName('');
-      setIsOpen();
+      handleOnClose();
     } catch (error: any) {
       setMessage(error.response.data.message);
     }
-  };
-
-  const handleOnClose = () => {
-    setMessage('');
-    setName('');
-    setIsOpen();
   };
 
   const modalRef = useRef(null);

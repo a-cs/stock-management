@@ -110,7 +110,8 @@ const ItemsList: React.FC = () => {
                   <tr
                     key={item.id}
                     className={
-                      item.total_stock < item.minimal_stock_alarm
+                      Number(item.total_stock) <
+                      Number(item.minimal_stock_alarm)
                         ? 'LowStock'
                         : ''
                     }

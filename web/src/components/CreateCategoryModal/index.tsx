@@ -35,6 +35,12 @@ const CreateCategoryModal: React.FC<ModalProps> = ({
     }
   }, [isOpen]);
 
+  const handleOnClose = () => {
+    setMessage('');
+    setName('');
+    setIsOpen();
+  };
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     const category = { name };
@@ -42,19 +48,11 @@ const CreateCategoryModal: React.FC<ModalProps> = ({
     try {
       const { data } = await api.post('categories', category);
       setCategories([...categories, data]);
-      setmsgSucess(true);
-      setMessage(`A categoria ${name} foi criada com sucesso!`);
-      setName('');
+      handleOnClose();
     } catch (error: any) {
       setmsgSucess(false);
       setMessage(error.response.data.message);
     }
-  };
-
-  const handleOnClose = () => {
-    setMessage('');
-    setName('');
-    setIsOpen();
   };
 
   const modalRef = useRef(null);

@@ -74,6 +74,12 @@ const EditTransactionModal: React.FC<ModalProps> = ({
     }
   }, [isOpen, editTransactionId, transactions]);
 
+  const handleOnClose = () => {
+    setMessage('');
+    setId('');
+    setIsOpen();
+  };
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     const updatedTransaction = {
@@ -91,21 +97,11 @@ const EditTransactionModal: React.FC<ModalProps> = ({
         transaction.id === editTransactionId ? data : transaction,
       );
       setTransactions(updatedTransactions);
-      setmsgSucess(true);
-      setMessage(
-        `O item com Id ${editTransactionId} foi alterado com sucesso!`,
-      );
-      setIsOpen();
+      handleOnClose();
     } catch (error: any) {
       setmsgSucess(false);
       setMessage(error.response.data.message);
     }
-  };
-
-  const handleOnClose = () => {
-    setMessage('');
-    setId('');
-    setIsOpen();
   };
 
   const modalRef = useRef(null);

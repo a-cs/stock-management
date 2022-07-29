@@ -65,6 +65,12 @@ const CreateTransactionModal: React.FC<ModalProps> = ({
     }
   }, [isOpen]);
 
+  const handleOnClose = () => {
+    setMessage('');
+    setId('');
+    setIsOpen();
+  };
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     const transaction = { item_id: id, item_quantity: Number(quantity), type };
@@ -72,19 +78,11 @@ const CreateTransactionModal: React.FC<ModalProps> = ({
     try {
       const { data } = await api.post('transactions', transaction);
       setTransactions([...transactions, data]);
-      setmsgSucess(true);
-      setMessage(`A transação ${data.id} foi criada com sucesso!`);
-      setQuantity('0');
+      handleOnClose();
     } catch (error: any) {
       setmsgSucess(false);
       setMessage(error.response.data.message);
     }
-  };
-
-  const handleOnClose = () => {
-    setMessage('');
-    setId('');
-    setIsOpen();
   };
 
   const modalRef = useRef(null);

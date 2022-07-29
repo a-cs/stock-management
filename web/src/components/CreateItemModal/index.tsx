@@ -62,6 +62,11 @@ const CreateItemModal: React.FC<ModalProps> = ({
     }
   }, [isOpen]);
 
+  const handleOnClose = () => {
+    setMessage('');
+    setIsOpen();
+  };
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     const item = { name, category_id: categoryId };
@@ -69,18 +74,11 @@ const CreateItemModal: React.FC<ModalProps> = ({
     try {
       const { data } = await api.post('items', item);
       setItems([...items, data]);
-      setmsgSucess(true);
-      setMessage(`O item ${name} foi criado com sucesso!`);
-      setName('');
+      handleOnClose();
     } catch (error: any) {
       setmsgSucess(false);
       setMessage(error.response.data.message);
     }
-  };
-
-  const handleOnClose = () => {
-    setMessage('');
-    setIsOpen();
   };
 
   const modalRef = useRef(null);
