@@ -159,6 +159,8 @@ const EditItemModal: React.FC<EditItemModalProps> = ({
                     id="minimalStock"
                     type="number"
                     placeholder=" "
+                    step="0.001"
+                    min="0.001"
                     required
                     value={minimalStock}
                     onChange={e => setMinimalStock(e.target.value)}
