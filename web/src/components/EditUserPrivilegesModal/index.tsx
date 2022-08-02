@@ -52,6 +52,12 @@ const EditUserPrivilegesModal: React.FC<EditUserPrivilegesModalProps> = ({
     };
   }, [users, editUserId, isOpen]);
 
+  const handleOnClose = () => {
+    setMessage('');
+    setName('');
+    setIsOpen();
+  };
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     const updatedUserPrivileges = { is_allowed: isAllowed, is_admin: isAdmin };
@@ -66,20 +72,10 @@ const EditUserPrivilegesModal: React.FC<EditUserPrivilegesModalProps> = ({
         user.id === editUserId ? data : user,
       );
       setUsers(updatedUsers);
-      setMessage(`O usuário com Id ${editUserId} foi alterado com sucesso!`);
-      setName('');
-      setIsAllowed(false);
-      setIsAdmin(false);
-      setIsOpen();
+      handleOnClose();
     } catch (error: any) {
       setMessage(error.response.data.message);
     }
-  };
-
-  const handleOnClose = () => {
-    setMessage('');
-    setName('');
-    setIsOpen();
   };
 
   const modalRef = useRef(null);
