@@ -21,6 +21,9 @@ class Item {
     @Column()
     name: string;
 
+    @Column()
+    unit: string;
+
     @Column('decimal',{ precision: 6, scale: 3 })
     minimal_stock_alarm: number;
 

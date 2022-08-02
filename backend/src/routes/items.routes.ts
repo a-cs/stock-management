@@ -14,12 +14,13 @@ itemsRouter.use(ensureAuthenticated)
 itemsRouter.use(ensureIsAllowed)
 
 itemsRouter.post('/', async (request, response) => {
-    const { name, category_id } = request.body;
+    const { name, unit, category_id } = request.body;
 
     const createItem = new CreateItemService();
 
     const item = await createItem.execute({
         name,
+        unit,
         category_id,
     });
 
@@ -28,13 +29,14 @@ itemsRouter.post('/', async (request, response) => {
 
 itemsRouter.patch('/:id', async (request, response) => {
     const { id } = request.params;
-    const { name, category_id, minimal_stock_alarm } = request.body;
+    const { name, unit, category_id, minimal_stock_alarm } = request.body;
 
     const updateItem = new UpdateItemService();
 
     const item = await updateItem.execute({
         id,
         name,
+        unit,
         category_id,
         minimal_stock_alarm
     });

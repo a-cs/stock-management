@@ -8,6 +8,7 @@ import Item from '../models/Item';
 interface Request {
     id: string;
     name: string;
+    unit: string;
     category_id: number;
     minimal_stock_alarm: number;
 }
@@ -16,9 +17,14 @@ class UpdateItemService {
     public async execute({
         id,
         name,
+        unit,
         category_id,
         minimal_stock_alarm,
     }: Request): Promise<Item> {
+        if (!id || !name || !unit || !category_id || !minimal_stock_alarm){
+            throw new AppError('Missing parameter');
+        }
+
         const itemsRepository = getRepository(Item);
         const categoriesRepository = getRepository(Category);
 
@@ -51,6 +57,7 @@ class UpdateItemService {
 
         await itemsRepository.update(id, {
             name,
+            unit,
             category,
             minimal_stock_alarm,
         });

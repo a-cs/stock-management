@@ -7,16 +7,22 @@ import Category from '../models/Category';
 
 interface Request {
     name: string;
+    unit: string;
     category_id: number;
 }
 
 class CreateItemService {
     public async execute({
         name,
+        unit,
         category_id,
     }: Request): Promise<Item> {
         const minimal_stock_alarm = 0
         const total_stock = 0
+
+        if (!name || !unit || !category_id){
+            throw new AppError('Missing parameter');
+        }
 
         const itemsRepository = getRepository(Item);
         const categoriesRepository = getRepository(Category);
@@ -40,6 +46,7 @@ class CreateItemService {
         const item = itemsRepository.create({
             name,
             category,
+            unit,
             minimal_stock_alarm,
             total_stock,
         });

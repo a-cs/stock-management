@@ -19,6 +19,10 @@ export default class CreateItems1603746161909 implements MigrationInterface {
                         type: 'varchar',
                     },
                     {
+                        name: 'unit',
+                        type: 'varchar',
+                    },
+                    {
                         name: 'minimal_stock_alarm',
                         type: 'decimal',
                     },
