@@ -9,6 +9,9 @@ import loadingImg from '../../assets/loading1.gif';
 
 import './styles.css';
 
+const units: string[] | undefined =
+  process.env.REACT_APP_ITEMS_UNITS!.split(', ');
+
 interface Category {
   id: string;
   name: string;
@@ -17,6 +20,7 @@ interface Category {
 interface Item {
   id: string;
   name: string;
+  unit: string;
   category: Category;
   minimal_stock_alarm: string;
   total_stock: string;
@@ -36,17 +40,19 @@ const CreateItemModal: React.FC<ModalProps> = ({
   setItems,
 }) => {
   const [name, setName] = useState('');
+  const [unit, setUnit] = useState('');
+  const [categoryId, setCategoryId] = useState('');
+  const [categories, setCategories] = useState<Category[]>([]);
   const [message, setMessage] = useState('');
   const [msgSucess, setmsgSucess] = useState(false);
   const [errorMsg, setErrorMsg] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [categoryId, setCategoryId] = useState('');
-  const [categories, setCategories] = useState<Category[]>([]);
 
   useEffect(() => {
     if (isOpen === true) {
       setLoading(true);
       setName('');
+      setUnit(units[0]);
       setErrorMsg(false);
       api
         .get('/categories')
@@ -69,7 +75,7 @@ const CreateItemModal: React.FC<ModalProps> = ({
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    const item = { name, category_id: categoryId };
+    const item = { name, unit, category_id: categoryId };
 
     try {
       const { data } = await api.post('items', item);
@@ -120,7 +126,7 @@ const CreateItemModal: React.FC<ModalProps> = ({
                   <span>Nome</span>
                 </label>
                 <select
-                  id="id"
+                  id="categoryId"
                   required
                   value={categoryId}
                   onChange={e => setCategoryId(e.target.value)}
@@ -128,6 +134,18 @@ const CreateItemModal: React.FC<ModalProps> = ({
                   {categories.map((category: Category) => (
                     <option value={category.id} key={category.id}>
                       {category.name}
+                    </option>
+                  ))}
+                </select>
+                <select
+                  id="unit"
+                  required
+                  value={unit}
+                  onChange={e => setUnit(e.target.value)}
+                >
+                  {units.map((itemUnit: string) => (
+                    <option value={itemUnit} key={itemUnit}>
+                      {itemUnit}
                     </option>
                   ))}
                 </select>

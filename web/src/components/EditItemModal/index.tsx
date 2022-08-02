@@ -9,6 +9,9 @@ import loadingImg from '../../assets/loading1.gif';
 
 import './styles.css';
 
+const units: string[] | undefined =
+  process.env.REACT_APP_ITEMS_UNITS!.split(', ');
+
 interface Category {
   id: string;
   name: string;
@@ -17,6 +20,7 @@ interface Category {
 interface Item {
   id: string;
   name: string;
+  unit: string;
   category: Category;
   minimal_stock_alarm: string;
   total_stock: string;
@@ -38,6 +42,7 @@ const EditItemModal: React.FC<EditItemModalProps> = ({
   editItemId,
 }) => {
   const [name, setName] = useState('');
+  const [unit, setUnit] = useState('');
   const [minimalStock, setMinimalStock] = useState('');
   const [categoryId, setCategoryId] = useState('');
   const [categories, setCategories] = useState<Category[]>([]);
@@ -63,6 +68,7 @@ const EditItemModal: React.FC<EditItemModalProps> = ({
           });
         const editItem = items.filter(item => item.id === editItemId)[0];
         setName(editItem.name);
+        setUnit(editItem.unit);
         setMinimalStock(editItem.minimal_stock_alarm);
         setCategoryId(editItem.category.id);
       }
@@ -87,6 +93,7 @@ const EditItemModal: React.FC<EditItemModalProps> = ({
     e.preventDefault();
     const updatedItem = {
       name,
+      unit,
       category_id: categoryId,
       minimal_stock_alarm: minimalStock,
     };
@@ -143,7 +150,19 @@ const EditItemModal: React.FC<EditItemModalProps> = ({
                   <span>Nome</span>
                 </label>
                 <select
-                  id="id"
+                  id="unit"
+                  required
+                  value={unit}
+                  onChange={e => setUnit(e.target.value)}
+                >
+                  {units.map((itemUnit: string) => (
+                    <option value={itemUnit} key={itemUnit}>
+                      {itemUnit}
+                    </option>
+                  ))}
+                </select>
+                <select
+                  id="category"
                   required
                   value={categoryId}
                   onChange={e => setCategoryId(e.target.value)}
@@ -160,7 +179,7 @@ const EditItemModal: React.FC<EditItemModalProps> = ({
                     type="number"
                     placeholder=" "
                     step="0.001"
-                    min="0.001"
+                    min="0"
                     required
                     value={minimalStock}
                     onChange={e => setMinimalStock(e.target.value)}
