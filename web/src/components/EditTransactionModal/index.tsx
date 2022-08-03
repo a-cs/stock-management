@@ -12,6 +12,7 @@ import './styles.css';
 interface Item {
   id: string;
   name: string;
+  unit: string;
   minimal_stock_alarm: string;
   total_stock: string;
 }

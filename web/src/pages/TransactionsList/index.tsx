@@ -14,6 +14,7 @@ import './styles.css';
 interface Item {
   id: string;
   name: string;
+  unit: string;
   minimal_stock_alarm: string;
   total_stock: string;
 }
@@ -118,12 +119,12 @@ const TransactionsList: React.FC = () => {
                       {transaction.type === 'in' ? 'Entrada' : 'Saída'}
                     </td>
                     <td data-label="Quantidade">
-                      {Number(transaction.item_quantity).toLocaleString(
+                      {`${Number(transaction.item_quantity).toLocaleString(
                         'pt-BR',
                         {
                           minimumFractionDigits: 3,
                         },
-                      )}
+                      )} ${transaction.item.unit}`}
                     </td>
 
                     <td data-label="Editar" className="editTransaction">
