@@ -98,10 +98,10 @@ const ItemsList: React.FC = () => {
               <tr>
                 <th>Id</th>
                 <th>Nome</th>
-                <th>Unidade</th>
                 <th>Categoria</th>
                 <th>Estoque mínimo</th>
                 <th>Estoque total</th>
+                <th>Unidade</th>
                 <th>Editar</th>
               </tr>
             </thead>
@@ -122,7 +122,7 @@ const ItemsList: React.FC = () => {
                       {Number(item.id).toLocaleString('pt-BR')}
                     </td>
                     <td data-label="Nome">{item.name}</td>
-                    <td data-label="Unidade">{item.unit}</td>
+
                     <td data-label="Categoria">{item.category.name}</td>
                     <td data-label="Estoque mínimo">
                       {Number(item.minimal_stock_alarm).toLocaleString(
@@ -137,6 +137,7 @@ const ItemsList: React.FC = () => {
                         minimumFractionDigits: 3,
                       })}
                     </td>
+                    <td data-label="Unidade">{item.unit}</td>
                     <td data-label="Editar" className="editItemItemsList">
                       <button
                         className="editButtonItemsList"
