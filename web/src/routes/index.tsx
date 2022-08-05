@@ -8,6 +8,7 @@ import ItemsList from '../pages/ItemsList';
 import CategoriesList from '../pages/CategoriesList';
 import TransactionsList from '../pages/TransactionsList';
 import UsersList from '../pages/UsersList';
+import Profile from '../pages/Profile';
 
 const Routes: React.FC = () => (
   <Switch>
@@ -16,6 +17,7 @@ const Routes: React.FC = () => (
     <Route path="/Estoque" component={ItemsList} isPrivate />
     <Route path="/Categorias" component={CategoriesList} isPrivate />
     <Route path="/Movimentacoes" component={TransactionsList} isPrivate />
+    <Route path="/Perfil" component={Profile} isPrivate />
     <Route path="/Admin" component={UsersList} isPrivate />
   </Switch>
 );

@@ -88,10 +88,15 @@ const Header: React.FC<HeaderProps> = ({ selectedMenu }) => {
           <h2>Laboratório de Ensaios Mecânicos</h2>
         </div>
         <div className="menu">
-          <button type="button" className="userInfo" onClick={() => signOut()}>
+          <Link
+            to="/Perfil"
+            className={
+              selectedMenu === 'Perfil' ? 'userInfo selectedMenu' : 'userInfo'
+            }
+          >
             <FiUser size="28px" strokeWidth="3" />
             <h3>{user?.name || 'Usuário'}</h3>
-          </button>
+          </Link>
           <nav>
             <ul>
               {menuItems.map(menuItem => (
