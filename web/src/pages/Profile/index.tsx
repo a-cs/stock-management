@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { FiEdit } from 'react-icons/fi';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import api from '../../services/api';
@@ -7,16 +8,7 @@ import loadingImg from '../../assets/loading1.gif';
 
 import './styles.css';
 
-interface User {
-  id: string;
-  name: string;
-  email: string;
-  is_admin: boolean;
-  is_allowed: boolean;
-}
-
 const Profile: React.FC = () => {
-  const [user, setUser] = useState<User>();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [id, setId] = useState('');
@@ -29,10 +21,7 @@ const Profile: React.FC = () => {
     api
       .get('users/me')
       .then(response => {
-        // setErrorMsg(false);
         setLoading(false);
-        // console.log(response.data);
-        // console.log(response.data[0]);
         setId(response.data[0].id);
         setName(response.data[0].name);
         setEmail(response.data[0].email);
@@ -67,6 +56,9 @@ const Profile: React.FC = () => {
                   defaultValue={name || ''}
                 />
                 <span>Nome</span>
+                <button type="button">
+                  <FiEdit size="20px" strokeWidth="2" />
+                </button>
               </label>
               <label htmlFor="email">
                 <input
@@ -77,6 +69,9 @@ const Profile: React.FC = () => {
                   defaultValue={email || ''}
                 />
                 <span>Email</span>
+                <button type="button">
+                  <FiEdit size="20px" strokeWidth="2" />
+                </button>
               </label>
               <label htmlFor="password">
                 <input
@@ -88,6 +83,9 @@ const Profile: React.FC = () => {
                   onChange={e => setPassword(e.target.value)}
                 />
                 <span>Senha</span>
+                <button type="button">
+                  <FiEdit size="20px" strokeWidth="2" />
+                </button>
               </label>
               <h4>{message}</h4>
             </form>
