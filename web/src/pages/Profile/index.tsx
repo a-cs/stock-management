@@ -5,16 +5,25 @@ import Header from '../../components/Header';
 import api from '../../services/api';
 
 import loadingImg from '../../assets/loading1.gif';
+import ChangeNameModal from '../../components/ChangeNameModal';
 
 import './styles.css';
 
+interface User {
+  name: string;
+  email: string;
+}
+
 const Profile: React.FC = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [id, setId] = useState('');
+  const [user, setUser] = useState<User>();
   const [password, setPassword] = useState('******');
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
+  const [modalOpenChangeName, setModalOpenChangeName] = useState(false);
+
+  function toggleChangeNameModal(): void {
+    setModalOpenChangeName(!modalOpenChangeName);
+  }
 
   useEffect(() => {
     setLoading(true);
@@ -22,9 +31,8 @@ const Profile: React.FC = () => {
       .get('users/me')
       .then(response => {
         setLoading(false);
-        setId(response.data[0].id);
-        setName(response.data[0].name);
-        setEmail(response.data[0].email);
+        const { name, email } = response.data[0];
+        setUser({ name, email });
       })
       .catch((error: any) => {
         setLoading(false);
@@ -35,10 +43,16 @@ const Profile: React.FC = () => {
   return (
     <>
       <Header selectedMenu="Perfil" />
+      <ChangeNameModal
+        isOpen={modalOpenChangeName}
+        setIsOpen={toggleChangeNameModal}
+        user={user as User}
+        setUser={setUser as React.Dispatch<React.SetStateAction<User>>}
+      />
       <div className="containerProfile">
         <div className="contentProfile">
           <div className="titleProfile">
-            <h4>Perfil</h4>
+            <h2>Perfil</h2>
           </div>
           {loading ? (
             <>
@@ -52,12 +66,13 @@ const Profile: React.FC = () => {
                   id="name"
                   type="text"
                   placeholder=""
-                  disabled
-                  defaultValue={name || ''}
+                  readOnly
+                  defaultValue={user?.name || ''}
+                  onClick={toggleChangeNameModal}
                 />
                 <span>Nome</span>
-                <button type="button">
-                  <FiEdit size="20px" strokeWidth="2" />
+                <button type="button" onClick={toggleChangeNameModal}>
+                  <FiEdit size="22px" strokeWidth="2" />
                 </button>
               </label>
               <label htmlFor="email">
@@ -66,11 +81,11 @@ const Profile: React.FC = () => {
                   type="email"
                   placeholder=""
                   disabled
-                  defaultValue={email || ''}
+                  defaultValue={user?.email || ''}
                 />
                 <span>Email</span>
                 <button type="button">
-                  <FiEdit size="20px" strokeWidth="2" />
+                  <FiEdit size="22px" strokeWidth="2" />
                 </button>
               </label>
               <label htmlFor="password">
@@ -84,7 +99,7 @@ const Profile: React.FC = () => {
                 />
                 <span>Senha</span>
                 <button type="button">
-                  <FiEdit size="20px" strokeWidth="2" />
+                  <FiEdit size="22px" strokeWidth="2" />
                 </button>
               </label>
               <h4>{message}</h4>

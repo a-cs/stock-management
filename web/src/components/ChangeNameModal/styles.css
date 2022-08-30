@@ -1,0 +1,160 @@
+
+.modalContainerChangeNameModal {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 10% 0;
+}
+
+.modalTitleChangeNameModal {
+  margin: 0 0 2.8rem 0;
+  display: inline-block;
+  text-align: center;
+  font-size: 3.2rem;
+}
+
+.formChangeNameModal {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+.formChangeNameModal label {
+  width: 100%;
+  max-width: 350px;
+  position:relative;
+  display:inline-block;
+}
+
+.formChangeNameModal span {
+  position: absolute;
+  font-weight: 400;
+  font-size: 2.4rem;
+  pointer-events: none;
+  left:12px;
+  top:4px;
+  transition: 0.2s;
+  transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+  opacity:0.5;
+}
+
+.formChangeNameModal input {
+  width: 100%;
+  padding: 1.2rem;
+  font-weight: 400;
+  font-size: 2.4rem;
+  height: 3.6rem;
+  display: inline-block;
+  border: 2px solid var(--color-light-gray);
+  border-radius: 16px;
+  box-shadow: none;
+}
+
+.formChangeNameModal input:focus-visible{
+  outline: none;
+  border-color: var(--color-dark-blue);
+}
+
+input:focus + span, input:not(:placeholder-shown) + span {
+  opacity:.75;
+  left: 12px;
+  top:-20px;
+  font-size: 1.6rem;
+}
+
+.formChangeNameModal select{
+  width: 100%;
+  max-width: 350px;
+  padding: 0 1.2rem;
+  font-weight: 400;
+  font-size: 2.4rem;
+  height: 3.6rem;
+  display: inline-block;
+  border: 2px solid var(--color-light-gray);
+  border-radius: 16px;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+.formChangeNameModal select:focus,
+.formChangeNameModal select:hover{
+  outline: none;
+  border-color: var(--color-dark-blue);
+  transition: 0.2s;
+}
+
+.formChangeNameModal p {
+  color: red;
+  font-size: 2.4rem;
+}
+
+.footerChangeNameModal {
+  margin-top: 2.8rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.footerChangeNameModal button {
+  width: 94%;
+  max-width: 350px;
+  display: flex;
+  align-items: center;
+  /* justify-content: space-around; */
+  color: #faffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 24px;
+  font-size: 2.4rem;
+  cursor: pointer;
+}
+
+.footerChangeNameModal .space {
+  flex-grow: 1;
+}
+
+
+.footerChangeNameModal button svg {
+  margin-left: 20px;
+  align-self: center;
+}
+
+#confirmBtnChangeNameModal {
+  background-color: var(--color-light-green);
+  border: 2px solid var(--color-light-green);
+  color: #faffff;
+  font-weight: 700;
+  padding: .8rem 1.6rem;
+  margin-bottom: 1.2rem;
+}
+
+#confirmBtnChangeNameModal:hover {
+  background-color: var(--color-lighter-green);
+  border-color: var(--color-lighter-green);
+  transition: 0.2s;
+}
+
+#cancelBtnChangeNameModal {
+  background-color: transparent;
+  color: var(--color-red);
+  border: 2px solid var(--color-red);
+  font-weight: 400;
+  padding: .8rem 1.6rem;
+}
+
+#cancelBtnChangeNameModal:hover {
+  background-color: var(--color-red);
+  color: var(--color-white-text);
+  transition: 0.2s;
+}
+
+@media (min-width: 700px)  {
+  .footerChangeNameModal button {
+    width: 70%;
+  }
+}

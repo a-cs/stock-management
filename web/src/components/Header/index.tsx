@@ -127,10 +127,15 @@ const Header: React.FC<HeaderProps> = ({ selectedMenu }) => {
         </div>
         {menuOpen && (
           <div className="menuMobile" ref={menuMobile}>
-            <div className="userInfo">
+            <Link
+              to="/Perfil"
+              className={
+                selectedMenu === 'Perfil' ? 'userInfo selectedMenu' : 'userInfo'
+              }
+            >
               <FiUser size="28px" strokeWidth="3" />
-              <h3>{user?.name}</h3>
-            </div>
+              <h3>{user?.name || 'Usuário'}</h3>
+            </Link>
             <nav>
               <ul>
                 {menuItems.map(menuItem => (
