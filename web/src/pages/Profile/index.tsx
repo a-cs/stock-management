@@ -6,6 +6,7 @@ import api from '../../services/api';
 
 import loadingImg from '../../assets/loading1.gif';
 import ChangeNameModal from '../../components/ChangeNameModal';
+import ChangeEmailModal from '../../components/ChangeEmailModal';
 
 import './styles.css';
 
@@ -20,9 +21,14 @@ const Profile: React.FC = () => {
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const [modalOpenChangeName, setModalOpenChangeName] = useState(false);
+  const [modalOpenChangeEmail, setModalOpenChangeEmail] = useState(false);
 
   function toggleChangeNameModal(): void {
     setModalOpenChangeName(!modalOpenChangeName);
+  }
+
+  function toggleChangeEmailModal(): void {
+    setModalOpenChangeEmail(!modalOpenChangeEmail);
   }
 
   useEffect(() => {
@@ -46,6 +52,12 @@ const Profile: React.FC = () => {
       <ChangeNameModal
         isOpen={modalOpenChangeName}
         setIsOpen={toggleChangeNameModal}
+        user={user as User}
+        setUser={setUser as React.Dispatch<React.SetStateAction<User>>}
+      />
+      <ChangeEmailModal
+        isOpen={modalOpenChangeEmail}
+        setIsOpen={toggleChangeEmailModal}
         user={user as User}
         setUser={setUser as React.Dispatch<React.SetStateAction<User>>}
       />
@@ -80,11 +92,12 @@ const Profile: React.FC = () => {
                   id="email"
                   type="email"
                   placeholder=""
-                  disabled
+                  readOnly
                   defaultValue={user?.email || ''}
+                  onClick={toggleChangeEmailModal}
                 />
                 <span>Email</span>
-                <button type="button">
+                <button type="button" onClick={toggleChangeEmailModal}>
                   <FiEdit size="22px" strokeWidth="2" />
                 </button>
               </label>
