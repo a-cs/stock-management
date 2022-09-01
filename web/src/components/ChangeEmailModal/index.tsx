@@ -68,7 +68,7 @@ const ChangeEmailModal: React.FC<ModalProps> = ({
           <label htmlFor="newEmail">
             <input
               id="newEmail"
-              type="text"
+              type="email"
               placeholder={newEmail}
               required
               value={newEmail}
