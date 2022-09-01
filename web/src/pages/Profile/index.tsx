@@ -9,6 +9,7 @@ import ChangeNameModal from '../../components/ChangeNameModal';
 import ChangeEmailModal from '../../components/ChangeEmailModal';
 
 import './styles.css';
+import ChangePasswordModal from '../../components/ChangePasswordModal';
 
 interface User {
   name: string;
@@ -16,12 +17,13 @@ interface User {
 }
 
 const Profile: React.FC = () => {
+  const password = '******';
   const [user, setUser] = useState<User>();
-  const [password, setPassword] = useState('******');
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const [modalOpenChangeName, setModalOpenChangeName] = useState(false);
   const [modalOpenChangeEmail, setModalOpenChangeEmail] = useState(false);
+  const [modalOpenChangePassword, setModalOpenChangePassword] = useState(false);
 
   function toggleChangeNameModal(): void {
     setModalOpenChangeName(!modalOpenChangeName);
@@ -29,6 +31,9 @@ const Profile: React.FC = () => {
 
   function toggleChangeEmailModal(): void {
     setModalOpenChangeEmail(!modalOpenChangeEmail);
+  }
+  function toggleChangePasswordModal(): void {
+    setModalOpenChangePassword(!modalOpenChangePassword);
   }
 
   useEffect(() => {
@@ -60,6 +65,11 @@ const Profile: React.FC = () => {
         setIsOpen={toggleChangeEmailModal}
         user={user as User}
         setUser={setUser as React.Dispatch<React.SetStateAction<User>>}
+      />
+      <ChangePasswordModal
+        isOpen={modalOpenChangePassword}
+        setIsOpen={toggleChangePasswordModal}
+        user={user as User}
       />
       <div className="containerProfile">
         <div className="contentProfile">
@@ -106,12 +116,12 @@ const Profile: React.FC = () => {
                   id="password"
                   type="password"
                   placeholder=" "
-                  disabled
+                  readOnly
                   value={password}
-                  onChange={e => setPassword(e.target.value)}
+                  onClick={toggleChangePasswordModal}
                 />
                 <span>Senha</span>
-                <button type="button">
+                <button type="button" onClick={toggleChangePasswordModal}>
                   <FiEdit size="22px" strokeWidth="2" />
                 </button>
               </label>

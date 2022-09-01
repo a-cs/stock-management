@@ -1,0 +1,86 @@
+.inputPassword {
+  width: 100%;
+  max-width: 350px;
+  position:relative;
+  /* display:inline-block; */
+  display:flex;
+  flex-direction: row;
+  margin-bottom: 3.6rem;
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+.inputPassword span {
+  position: absolute;
+  font-weight: 400;
+  font-size: 2.4rem;
+  pointer-events: none;
+  left:12px;
+  top:4px;
+  transition: 0.2s;
+  transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+  opacity:0.5;
+}
+
+.inputPassword input {
+  /* left: 0px; */
+  width: 90%;
+  padding: 1.2rem;
+  font-weight: 500;
+  font-size: 2.4rem;
+  height: 3.6rem;
+  display: inline-block;
+  border: none;
+  /* border: 2px solid var(--color-light-gray); */
+  border-radius: 16px 0 0 16px;
+  box-shadow: none;
+}
+
+.inputPassword input:focus-visible{
+  outline: none;
+  border-color: var(--color-dark-blue);
+}
+
+input:focus + span, input:not(:placeholder-shown) + span {
+  opacity:.75;
+  left: 12px;
+  top:-32px;
+  font-size: 2.4rem;
+}
+
+.inputPassword button {
+  display: flex;
+  padding: .8rem;
+  height: 3.6rem;
+  width: 11%;
+  border: none;
+  border-radius: 0 14px 14px 0;
+  box-shadow: none;
+}
+
+.inputPassword button svg{
+  margin-top: -1px;
+}
+
+.inputPassword {
+  border-radius: 16px;
+  border: 2px solid var(--color-light-gray);
+}
+
+.inputPassword button:hover {
+  cursor: pointer;
+  background-color: var(--color-lighter-green);
+  color: var(--color-white-text);
+  transition: 0.2s;
+}
+
+@media (max-width: 700px){
+
+  .inputPassword input {
+    width: 88%;
+  }
+
+  .inputPassword button {
+    width: 13%;
+  }
+}
