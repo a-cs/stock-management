@@ -39,6 +39,8 @@
       "error"
     ],
     "react/react-in-jsx-scope": "off",
+    "react/jsx-no-bind": "off",
+    "react/require-default-props": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/no-non-null-assertion": "off",
     "prettier/prettier": "error",
