@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useRef, useState } from 'react';
 import { FiCheck, FiX } from 'react-icons/fi';
+import { toast } from 'react-toastify';
 import api from '../../services/api';
 import InputPassword from '../InputPassword';
 
@@ -27,8 +28,6 @@ const ChangePasswordModal: React.FC<ModalProps> = ({
   const [oldPassword, setOldPassword] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
-  const [message, setMessage] = useState('');
-  const [msgSucess, setmsgSucess] = useState(false);
 
   useEffect(() => {
     if (isOpen === true) {
@@ -39,7 +38,6 @@ const ChangePasswordModal: React.FC<ModalProps> = ({
   }, [isOpen, user?.email]);
 
   const handleOnClose = () => {
-    setMessage('');
     setPassword('');
     setIsOpen();
   };
@@ -56,10 +54,10 @@ const ChangePasswordModal: React.FC<ModalProps> = ({
         passwordConfirmation,
       };
       await api.put('profile', updatedUser);
+      toast.success('Senha alterada com sucesso');
       handleOnClose();
     } catch (error: any) {
-      setmsgSucess(false);
-      setMessage(error.response.data.message);
+      toast.error(error.response.data.message);
     }
   };
 
@@ -90,7 +88,6 @@ const ChangePasswordModal: React.FC<ModalProps> = ({
             value={passwordConfirmation}
             setValue={setPasswordConfirmation}
           />
-          <p className={msgSucess ? 'msgSucess' : 'msgFail'}>{message}</p>
           <div className="footerChangePasswordModal">
             <button type="submit" id="confirmBtnChangePasswordModal">
               <FiCheck /> <div className="space" />

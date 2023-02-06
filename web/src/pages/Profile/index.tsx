@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { FiEdit } from 'react-icons/fi';
-import { useHistory } from 'react-router-dom';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import api from '../../services/api';
@@ -8,9 +7,9 @@ import api from '../../services/api';
 import loadingImg from '../../assets/loading1.gif';
 import ChangeNameModal from '../../components/ChangeNameModal';
 import ChangeEmailModal from '../../components/ChangeEmailModal';
+import ChangePasswordModal from '../../components/ChangePasswordModal';
 
 import './styles.css';
-import ChangePasswordModal from '../../components/ChangePasswordModal';
 
 interface User {
   name: string;
@@ -18,7 +17,6 @@ interface User {
 }
 
 const Profile: React.FC = () => {
-  const history = useHistory();
   const password = '******';
   const [user, setUser] = useState<User>();
   const [userCopy, setUserCopy] = useState<User>();

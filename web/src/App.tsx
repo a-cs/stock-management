@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import Routes from './routes';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { AuthProvider } from './hooks/auth';
 
@@ -13,6 +15,7 @@ const App: React.FC = () => (
         <Routes />
       </AuthProvider>
     </Router>
+    <ToastContainer theme="colored" />
   </>
 );
 export default App;

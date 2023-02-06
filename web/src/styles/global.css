@@ -15,6 +15,9 @@
   --color-dark-gray: #212526;
   --color-dark-blue: #2b3a67ff;
   --color-white-text: #faffff;
+
+  --toastify-color-success: var(--color-light-green);
+  --toastify-color-error: var(--color-red)
 }
 
 html,
@@ -33,4 +36,8 @@ a {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.Toastify__toast-container{
+  font-size: 2rem;
 }

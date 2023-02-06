@@ -34,7 +34,7 @@ const InputPassword: React.FC<InputProps> = ({
         onChange={e => setValue(e.target.value)}
       />
       <span>{text}</span>
-      <button type="button" onClick={toggleShowPassword}>
+      <button tabIndex={-1} type="button" onClick={toggleShowPassword}>
         {showPassword ? (
           <BiShow size="22px" strokeWidth="0" />
         ) : (
