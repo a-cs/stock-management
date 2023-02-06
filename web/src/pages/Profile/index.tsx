@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FiEdit } from 'react-icons/fi';
+import { useHistory } from 'react-router-dom';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import api from '../../services/api';
@@ -17,8 +18,10 @@ interface User {
 }
 
 const Profile: React.FC = () => {
+  const history = useHistory();
   const password = '******';
   const [user, setUser] = useState<User>();
+  const [userCopy, setUserCopy] = useState<User>();
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const [modalOpenChangeName, setModalOpenChangeName] = useState(false);
@@ -44,12 +47,21 @@ const Profile: React.FC = () => {
         setLoading(false);
         const { name, email } = response.data[0];
         setUser({ name, email });
+        setUserCopy({ name, email });
       })
       .catch((error: any) => {
         setLoading(false);
         setMessage(error.message);
       });
   }, []);
+
+  useEffect(() => {
+    if (user && userCopy && user?.name !== userCopy?.name) {
+      setUserCopy(user);
+      // eslint-disable-next-line no-restricted-globals
+      location.reload();
+    }
+  }, [user, userCopy]);
 
   return (
     <>
