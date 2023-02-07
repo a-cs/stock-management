@@ -10,6 +10,7 @@ import ensureIsAllowed from '../middlewares/ensureIsAllowed';
 import ensureIsAdmin from '../middlewares/ensureIsAdmin';
 
 import User from '../models/User';
+import ResetPasswordService from '../services/ResetPasswordService';
 
 interface TmpUser {
     name: string;
@@ -91,6 +92,17 @@ usersRouter.get('/me',ensureAuthenticated, ensureIsAllowed, async (request, resp
     });
 
     return response.json(user);
+});
+
+usersRouter.post('/reset-password',ensureAuthenticated, ensureIsAllowed, ensureIsAdmin, async (request, response) => {
+    const { id: adminId } = request.user;
+    const { email, adminPassword } = request.body;
+    const resetPassword = new ResetPasswordService
+
+    const newPassword = await resetPassword.execute({email, adminId, adminPassword})
+
+
+    return response.json({newPassword});
 });
 
 export default usersRouter;
