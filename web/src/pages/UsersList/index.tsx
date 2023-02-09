@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { FiCheck, FiX, FiEdit, FiAlertCircle } from 'react-icons/fi';
+import { GrPowerReset } from 'react-icons/gr';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 
@@ -101,6 +102,7 @@ const UsersList: React.FC = () => {
                       <th>Nome</th>
                       <th>Admin</th>
                       <th>Permitido</th>
+                      <th className="resetPassword">Resetar Senha</th>
                       <th>Editar</th>
                     </tr>
                   </thead>
@@ -149,9 +151,24 @@ const UsersList: React.FC = () => {
                             </div>
                           )}
                         </td>
+                        <td
+                          data-label="Resetar Senha"
+                          className="resetPassword"
+                        >
+                          <button
+                            className="iconButton"
+                            type="button"
+                            onClick={() => {
+                              setEditUserId(user.id);
+                              toggleEditUserModal();
+                            }}
+                          >
+                            <GrPowerReset size="20px" strokeWidth="1" />
+                          </button>
+                        </td>
                         <td data-label="Editar" className="editUser">
                           <button
-                            className="editUserButton"
+                            className="iconButton"
                             type="button"
                             onClick={() => {
                               setEditUserId(user.id);

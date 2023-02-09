@@ -32,50 +32,6 @@
   color: var(--color-light-green);
 }
 
-.createItemUsersList {
-  flex: 1;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.createItemBtnUsersList {
-  background-color: var(--color-light-green);
-  color: var(--color-white-text);
-  border: 1px solid #e0e0e0;
-  border-radius: 24px;
-  padding: .8rem 1.6rem;
-  display: none;
-  align-items: center;
-  font-weight: 700;
-  font-size: 2.4rem;
-}
-
-.createItemBtnUsersList svg {
-  margin-right: .8rem;
-}
-
-.createItemBtnMobileUsersList {
-  background-color: var(--color-light-green);
-  color: var(--color-white-text);
-  border: none;
-  border-radius: 50%;
-  padding: 1.6rem 2.0rem;
-  display: flex;
-  align-items: center;
-  font-weight: 700;
-  font-size: 2.4rem;
-  position: fixed;
-  z-index: 1;
-  bottom: 2rem;
-  right: 2rem;
-}
-
-.createItemBtnUsersList:hover {
-  cursor: pointer;
-  background-color: var(--color-lighter-green);
-  transition: 0.2s;
-}
-
 .tableUsersList {
   width: 100%;
   border-spacing: 0;
@@ -119,6 +75,7 @@
 }
 
 .tableUsersList td {
+  width: 100px;
   text-align: left;
   font-weight: 500;
   font-size: 1.6rem;
@@ -140,7 +97,12 @@
   height: 3.6rem;
 }
 
-.editUserButton {
+.resetPassword {
+  padding: 0;
+  height: 3.6rem;
+}
+
+.iconButton {
   display: block;
   width: 100%;
   height: 100%;
@@ -148,13 +110,13 @@
   background: none;
 }
 
-.editUserButton:hover {
+.iconButton:hover {
   cursor: pointer;
   background-color: var(--color-lighter-green);
   transition: 0.2s;
 }
 
-.editUserButton:hover svg {
+.iconButton:hover svg {
   color: var(--color-white-text);
   transition: 0.2s;
 }
@@ -226,7 +188,7 @@
     border-bottom: none;
   }
 
-  .tableUsersList tr:last-child .editItem .editUserButton {
+  .tableUsersList tr:last-child .editItem .iconButton {
     border-radius: 0 0 12px 0;
   }
 
@@ -282,6 +244,7 @@
     position: relative;
     padding: .8rem 0;
     padding-left: 50%;
+    width: 100%;
   }
 
 
@@ -326,7 +289,7 @@
     border-radius: 0 0 0 12px;
   }
 
-  .tableUsersList tr:last-child .editItem .editUserButton {
+  .tableUsersList tr:last-child .editItem .iconButton {
     border-radius: 0 0 12px 12px;
   }
 }
