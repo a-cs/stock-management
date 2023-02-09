@@ -12,27 +12,41 @@ import EditUserPrivilegesModal from '../../components/EditUserPrivilegesModal';
 import loadingImg from '../../assets/loading1.gif';
 
 import './styles.css';
+import ResetPasswordModal from '../../components/ResetPasswordModal';
 
 interface User {
   id: string;
   name: string;
+  email?: string;
   is_admin: boolean;
   is_allowed: boolean;
 }
 
 const UsersList: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
-  // const [myUser, setMyUser] = useState<User>();
+  const [userToReset, setUserToReset] = useState<User>({
+    id: '',
+    name: '',
+    email: '',
+    is_admin: false,
+    is_allowed: false,
+  });
   const [editUserId, setEditUserId] = useState('0');
   const [modalOpenEditUser, setModalOpenEditUser] = useState(false);
+  const [modalOpenResetPassword, setModalOpenResetPassword] = useState(false);
   const [errorMsg, setErrorMsg] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const {
     user: { id },
   } = useAuth();
+
   function toggleEditUserModal(): void {
     setModalOpenEditUser(!modalOpenEditUser);
+  }
+
+  function toggleResetPasswordModal(): void {
+    setModalOpenResetPassword(!modalOpenResetPassword);
   }
 
   const history = useHistory();
@@ -64,6 +78,11 @@ const UsersList: React.FC = () => {
         users={users}
         setUsers={setUsers}
         editUserId={editUserId}
+      />
+      <ResetPasswordModal
+        isOpen={modalOpenResetPassword}
+        setIsOpen={toggleResetPasswordModal}
+        user={userToReset}
       />
 
       <div className="wrapperUsersList">
@@ -159,8 +178,8 @@ const UsersList: React.FC = () => {
                             className="iconButton"
                             type="button"
                             onClick={() => {
-                              setEditUserId(user.id);
-                              toggleEditUserModal();
+                              setUserToReset(user);
+                              toggleResetPasswordModal();
                             }}
                           >
                             <GrPowerReset size="20px" strokeWidth="1" />
